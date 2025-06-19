@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocMate - Mesajlar</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#4F46E5', secondary: '#8B5CF6' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #4F46E5;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        .message-item {
+            transition: all 0.2s ease;
+        }
+
+        .message-item:hover,
+        .message-item.active {
+            background-color: rgba(79, 70, 229, 0.05);
+        }
+
+        .message-item.active {
+            border-left: 3px solid #4F46E5;
+        }
+
+        .message-item.unread .sender-name {
+            font-weight: 600;
+        }
+
+        .message-item.unread .message-preview {
+            font-weight: 500;
+        }
+
+        .priority-high {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .priority-medium {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .priority-low {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .category-tag {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 9999px;
+        }
+
+        .category-patient {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: #4F46E5;
+        }
+
+        .category-colleague {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: #8B5CF6;
+        }
+
+        .category-urgent {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .category-admin {
+            background-color: rgba(75, 85, 99, 0.1);
+            color: #4b5563;
+        }
+
+        .message-bubble-received {
+            background-color: #f3f4f6;
+            border-radius: 0 8px 8px 8px;
+        }
+
+        .message-bubble-sent {
+            background-color: #4F46E5;
+            color: white;
+            border-radius: 8px 0 8px 8px;
+        }
+
+        .emoji-picker {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            width: 250px;
+            height: 200px;
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 8px;
+            z-index: 10;
+        }
+
+        .emoji-picker.active {
+            display: block;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+        }
+
+        .emoji-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.25rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+        }
+
+        .emoji-item:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex h-screen bg-gray-50">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-900 text-white flex flex-col">
+            <!-- Logo -->
+            <div class="p-4 border-b border-gray-800">
+                <div class="text-2xl font-['Pacifico'] text-white">DocMate</div>
+            </div>
+            <!-- Main Navigation -->
+            <nav class="flex-1 overflow-y-auto custom-scrollbar">
+                <div class="px-4 py-4">
+                    <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ana Menü</p>
+                    <a href="index.html" data-readdy="true"
+                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
+                            <i class="ri-dashboard-line"></i>
+                        </div>
+                        <span>Gösterge Paneli</span>
+                    </a>
+                    <a href="Hastalarım-Detayları-Sayfası.html" data-readdy="true"
+                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
+                            <i class="ri-user-line"></i>
+                        </div>
+                        <span>Hastalarım</span>
+                    </a>
+                    <a href="#"
+                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
+                            <i class="ri-calendar-line"></i>
+                        </div>
+                        <span>Randevular</span>
+                    </a>
+                    <a href="raporlar.html" data-readdy="true"
+                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
+                            <i class="ri-file-list-line"></i>
+                        </div>
+                        <span>Raporlar</span>
+                    </a>
+                    <a href="#"
+                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md bg-gray-800 text-white">
+                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
+                            <i class="ri-message-3-line"></i>
+                        </div>
+                        <span>Mesajlar</span>
+                    </a>
+                </div>
+                <!-- AI Asistan Bölümü -->
+                <div class="px-4 py-4 mt-2">
+                    <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">AI Asistan</p>
+                    <div class="mt-3 bg-gray-800 rounded-lg p-3">
+                        <div class="flex items-center mb-3">
+                            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                                <i class="ri-robot-line text-white"></i>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-white">DocMate AI</p>
+                                <p class="text-xs text-gray-400">Yapay Zeka Asistanı</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
+                                        <i class="ri-heart-pulse-line"></i>
+                                    </div>
+                                    <div class="ml-2">
+                                        <p class="text-xs font-medium text-gray-300">Hasta Durumu Analizi</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
+                                        <i class="ri-file-chart-line"></i>
+                                    </div>
+                                    <div class="ml-2">
+                                        <p class="text-xs font-medium text-gray-300">Rapor Analizi</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="module-card active p-2 border border-gray-700 rounded-md cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 flex items-center justify-center text-primary">
+                                        <i class="ri-message-2-line"></i>
+                                    </div>
+                                    <div class="ml-2">
+                                        <p class="text-xs font-medium text-white">Mesaj Asistanı</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
+                                        <i class="ri-medicine-bottle-line"></i>
+                                    </div>
+                                    <div class="ml-2">
+                                        <p class="text-xs font-medium text-gray-300">Tedavi Önerileri</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ayarlar -->
+                <div class="px-4 py-4 mt-2">
+                    <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ayarlar</p>
+                    <a href="#"
+                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
+                            <i class="ri-settings-line"></i>
+                        </div>
+                        <span>Genel Ayarlar</span>
+                    </a>
+                    <a href="#"
+                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
+                            <i class="ri-user-settings-line"></i>
+                        </div>
+                        <span>Profil</span>
+                    </a>
+                </div>
+            </nav>
+            <!-- User Profile -->
+            <div class="p-4 border-t border-gray-800">
+                <div class="flex items-center">
+                    <img class="h-10 w-10 rounded-full"
+                        src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520male%2520doctor%2520with%2520short%2520dark%2520hair%252C%2520wearing%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=doctor1&orientation=squarish"
+                        alt="Dr. Ahmet Yılmaz">
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-white">Dr. Ahmet Yılmaz</p>
+                        <p class="text-xs text-gray-400">Onkoloji Uzmanı</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top Header -->
+            <header class="bg-white shadow-sm z-10">
+                <div class="flex items-center justify-between px-6 py-3">
+                    <div class="flex items-center">
+                        <h1 class="text-xl font-semibold text-gray-800">Mesajlar</h1>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <!-- Search -->
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+                                    <i class="ri-search-line"></i>
+                                </div>
+                            </div>
+                            <input type="text"
+                                class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                                placeholder="Mesaj ara...">
+                        </div>
+                        <!-- Notifications -->
+                        <button class="relative p-1 rounded-full text-gray-500 hover:text-gray-700 focus:outline-none">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-notification-3-line"></i>
+                            </div>
+                            <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500"></span>
+                        </button>
+                        <!-- Theme Toggle -->
+                        <div class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+                                <i class="ri-sun-line"></i>
+                            </div>
+                            <label class="switch mx-2">
+                                <input type="checkbox" id="themeToggle">
+                                <span class="slider"></span>
+                            </label>
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-500">
+                                <i class="ri-moon-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Messages Content Area -->
+            <div class="flex-1 flex overflow-hidden">
+                <!-- Left Column - Conversations List -->
+                <div class="w-80 border-r border-gray-200 bg-white flex flex-col">
+                    <!-- Conversations Header -->
+                    <div class="p-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-lg font-semibold text-gray-800">Konuşmalar</h2>
+                            <button
+                                class="flex items-center justify-center w-8 h-8 bg-primary rounded-full text-white hover:bg-indigo-600">
+                                <i class="ri-add-line"></i>
+                            </button>
+                        </div>
+                        <!-- Search and Filter -->
+                        <div class="relative mb-3">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <div class="w-4 h-4 flex items-center justify-center text-gray-400">
+                                    <i class="ri-search-line"></i>
+                                </div>
+                            </div>
+                            <input type="text"
+                                class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-xs placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                                placeholder="Konuşma ara...">
+                        </div>
+                        <!-- Filters -->
+                        <div class="flex items-center space-x-2 mb-2">
+                            <button
+                                class="flex items-center px-2 py-1 bg-primary bg-opacity-10 rounded-full text-xs font-medium text-primary whitespace-nowrap">
+                                <div class="w-3 h-3 mr-1 flex items-center justify-center">
+                                    <i class="ri-mail-unread-line"></i>
+                                </div>
+                                <span>Okunmamış</span>
+                            </button>
+                            <div class="relative">
+                                <button id="priorityFilterBtn"
+                                    class="flex items-center px-2 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-700 whitespace-nowrap">
+                                    <div class="w-3 h-3 mr-1 flex items-center justify-center">
+                                        <i class="ri-flag-line"></i>
+                                    </div>
+                                    <span>Öncelik</span>
+                                </button>
+                                <div id="priorityDropdown"
+                                    class="hidden absolute left-0 mt-1 w-32 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+                                    <div class="py-1">
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-gray-100">Tümü</button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-xs text-red-600 hover:bg-gray-100">Yüksek</button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-xs text-amber-500 hover:bg-gray-100">Orta</button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-xs text-green-600 hover:bg-gray-100">Düşük</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <button id="categoryFilterBtn"
+                                    class="flex items-center px-2 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-700 whitespace-nowrap">
+                                    <div class="w-3 h-3 mr-1 flex items-center justify-center">
+                                        <i class="ri-price-tag-3-line"></i>
+                                    </div>
+                                    <span>Kategori</span>
+                                </button>
+                                <div id="categoryDropdown"
+                                    class="hidden absolute left-0 mt-1 w-32 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+                                    <div class="py-1">
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-gray-100">Tümü</button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-xs text-primary hover:bg-gray-100">Hastalar</button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-xs text-purple-600 hover:bg-gray-100">Meslektaşlar</button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-xs text-red-600 hover:bg-gray-100">Acil</button>
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-xs text-gray-600 hover:bg-gray-100">İdari</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Conversations List -->
+                    <div class="flex-1 overflow-y-auto custom-scrollbar">
+                        <!-- Conversation Item 1 - Active -->
+                        <div class="message-item active p-3 border-b border-gray-100 cursor-pointer">
+                            <div class="flex items-start">
+                                <div class="relative">
+                                    <img class="w-10 h-10 rounded-full object-cover"
+                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish"
+                                        alt="Zeynep Kaya">
+                                    <div
+                                        class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white">
+                                    </div>
+                                </div>
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-sm font-medium text-gray-900 sender-name">Zeynep Kaya</h3>
+                                        <span class="text-xs text-gray-500">10:32</span>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <span class="category-tag category-patient mr-1">Hasta</span>
+                                        <span class="category-tag priority-high">Yüksek</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1 message-preview">Dr. Yılmaz, son kemoterapi
+                                        seansı sonrası bazı yan etkiler yaşıyorum. Acaba size...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Conversation Item 2 - Unread -->
+                        <div class="message-item unread p-3 border-b border-gray-100 cursor-pointer">
+                            <div class="flex items-start">
+                                <div class="relative">
+                                    <img class="w-10 h-10 rounded-full object-cover"
+                                        src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520female%2520doctor%2520with%2520long%2520blonde%2520hair%2520in%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=doctor2&orientation=squarish"
+                                        alt="Dr. Elif Demir">
+                                    <div
+                                        class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white">
+                                    </div>
+                                </div>
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-sm font-medium text-gray-900 sender-name">Dr. Elif Demir</h3>
+                                        <span class="text-xs text-gray-500">09:15</span>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <span class="category-tag category-colleague mr-1">Meslektaş</span>
+                                        <span class="category-tag priority-medium">Orta</span>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-1">
+                                        <p class="text-xs text-gray-600 message-preview">Ahmet, Zeynep Kaya'nın MR
+                                            sonuçlarını inceledim. Görüşmek ister misin?</p>
+                                        <span
+                                            class="flex items-center justify-center w-5 h-5 bg-primary rounded-full text-xs text-white font-medium">2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Conversation Item 3 -->
+                        <div class="message-item p-3 border-b border-gray-100 cursor-pointer">
+                            <div class="flex items-start">
+                                <div class="relative">
+                                    <img class="w-10 h-10 rounded-full object-cover"
+                                        src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520male%2520doctor%2520with%2520glasses%2520and%2520gray%2520hair%252C%2520wearing%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=doctor3&orientation=squarish"
+                                        alt="Prof. Dr. Mehmet Öz">
+                                    <div
+                                        class="absolute bottom-0 right-0 w-3 h-3 bg-gray-300 rounded-full border-2 border-white">
+                                    </div>
+                                </div>
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-sm font-medium text-gray-900">Prof. Dr. Mehmet Öz</h3>
+                                        <span class="text-xs text-gray-500">Dün</span>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <span class="category-tag category-colleague mr-1">Meslektaş</span>
+                                        <span class="category-tag priority-low">Düşük</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">Önümüzdeki hafta yapılacak onkoloji konseyi
+                                        için hazırlık yapalım...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Conversation Item 4 - Unread -->
+                        <div class="message-item unread p-3 border-b border-gray-100 cursor-pointer">
+                            <div class="flex items-start">
+                                <div class="relative">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                                        <i class="ri-hospital-line ri-lg"></i>
+                                    </div>
+                                    <div
+                                        class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white">
+                                    </div>
+                                </div>
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-sm font-medium text-gray-900 sender-name">Onkoloji Departmanı
+                                        </h3>
+                                        <span class="text-xs text-gray-500">Dün</span>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <span class="category-tag category-admin mr-1">İdari</span>
+                                        <span class="category-tag priority-medium">Orta</span>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-1">
+                                        <p class="text-xs text-gray-600 message-preview">Sayın Dr. Yılmaz, önümüzdeki
+                                            hafta departman toplantısı...</p>
+                                        <span
+                                            class="flex items-center justify-center w-5 h-5 bg-primary rounded-full text-xs text-white font-medium">1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Conversation Item 5 -->
+                        <div class="message-item p-3 border-b border-gray-100 cursor-pointer">
+                            <div class="flex items-start">
+                                <div class="relative">
+                                    <img class="w-10 h-10 rounded-full object-cover"
+                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520an%2520elderly%2520man%2520with%2520white%2520hair%2520and%2520glasses%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient2&orientation=squarish"
+                                        alt="İbrahim Şahin">
+                                    <div
+                                        class="absolute bottom-0 right-0 w-3 h-3 bg-gray-300 rounded-full border-2 border-white">
+                                    </div>
+                                </div>
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-sm font-medium text-gray-900">İbrahim Şahin</h3>
+                                        <span class="text-xs text-gray-500">18 Haz</span>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <span class="category-tag category-patient mr-1">Hasta</span>
+                                        <span class="category-tag priority-medium">Orta</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">Doktor bey, ilaçlarımı düzenli kullanıyorum.
+                                        Kontrole ne zaman gelmeliyim?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Conversation Item 6 - Urgent -->
+                        <div class="message-item p-3 border-b border-gray-100 cursor-pointer">
+                            <div class="flex items-start">
+                                <div class="relative">
+                                    <img class="w-10 h-10 rounded-full object-cover"
+                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520woman%2520with%2520long%2520dark%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient3&orientation=squarish"
+                                        alt="Ayşe Yıldız">
+                                    <div
+                                        class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white">
+                                    </div>
+                                </div>
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-sm font-medium text-gray-900">Ayşe Yıldız</h3>
+                                        <span class="text-xs text-gray-500">17 Haz</span>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <span class="category-tag category-patient mr-1">Hasta</span>
+                                        <span class="category-tag category-urgent mr-1">Acil</span>
+                                        <span class="category-tag priority-high">Yüksek</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">Ateşim 39 dereceye yükseldi ve şiddetli baş
+                                        ağrım var. Ne yapmalıyım?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Conversation Item 7 -->
+                        <div class="message-item p-3 border-b border-gray-100 cursor-pointer">
+                            <div class="flex items-start">
+                                <div class="relative">
+                                    <img class="w-10 h-10 rounded-full object-cover"
+                                        src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520female%2520doctor%2520with%2520short%2520dark%2520hair%2520in%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=doctor4&orientation=squarish"
+                                        alt="Dr. Selin Aydın">
+                                    <div
+                                        class="absolute bottom-0 right-0 w-3 h-3 bg-gray-300 rounded-full border-2 border-white">
+                                    </div>
+                                </div>
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-sm font-medium text-gray-900">Dr. Selin Aydın</h3>
+                                        <span class="text-xs text-gray-500">15 Haz</span>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <span class="category-tag category-colleague mr-1">Meslektaş</span>
+                                        <span class="category-tag priority-low">Düşük</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">Ahmet, yeni tedavi protokolü hakkında
+                                        görüşlerini alabilir miyim?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Conversation Item 8 -->
+                        <div class="message-item p-3 border-b border-gray-100 cursor-pointer">
+                            <div class="flex items-start">
+                                <div class="relative">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                        <i class="ri-building-line ri-lg"></i>
+                                    </div>
+                                    <div
+                                        class="absolute bottom-0 right-0 w-3 h-3 bg-gray-300 rounded-full border-2 border-white">
+                                    </div>
+                                </div>
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-sm font-medium text-gray-900">İnsan Kaynakları</h3>
+                                        <span class="text-xs text-gray-500">12 Haz</span>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <span class="category-tag category-admin mr-1">İdari</span>
+                                        <span class="category-tag priority-low">Düşük</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">Sayın Dr. Yılmaz, yıllık izin planlaması için
+                                        formunuzu doldurmanızı rica ederiz.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Message Button (Mobile) -->
+                    <div class="p-4 border-t border-gray-200 md:hidden">
+                        <button
+                            class="w-full flex items-center justify-center px-4 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
+                            <div class="w-4 h-4 mr-2 flex items-center justify-center">
+                                <i class="ri-add-line"></i>
+                            </div>
+                            <span>Yeni Mesaj</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column - Message Detail -->
+                <div class="flex-1 flex flex-col bg-white">
+                    <!-- Conversation Header -->
+                    <div class="p-4 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="w-10 h-10 rounded-full object-cover"
+                                    src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish"
+                                    alt="Zeynep Kaya">
+                                <div class="ml-3">
+                                    <div class="flex items-center">
+                                        <h2 class="text-sm font-medium text-gray-900">Zeynep Kaya</h2>
+                                        <div class="ml-2 flex items-center">
+                                            <span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+                                            <span class="text-xs text-gray-500">Çevrimiçi</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center mt-1">
+                                        <span class="text-xs text-gray-500">Hasta ID: #ZK-10254</span>
+                                        <span class="mx-2 text-gray-300">•</span>
+                                        <span class="category-tag category-patient">Hasta</span>
+                                        <span class="ml-1 category-tag priority-high">Yüksek</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+                                    <i class="ri-phone-line"></i>
+                                </button>
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+                                    <i class="ri-vidicon-line"></i>
+                                </button>
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+                                    <i class="ri-information-line"></i>
+                                </button>
+                                <div class="relative">
+                                    <button id="messageOptionsBtn"
+                                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+                                        <i class="ri-more-2-fill"></i>
+                                    </button>
+                                    <div id="messageOptionsDropdown"
+                                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+                                        <div class="py-1">
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-archive-line mr-2"></i> Arşivle
+                                            </button>
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-delete-bin-line mr-2"></i> Sil
+                                            </button>
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-flag-line mr-2"></i> Raporla
+                                            </button>
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-volume-mute-line mr-2"></i> Sessize Al
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages Area -->
+                    <div class="flex-1 p-4 overflow-y-auto custom-scrollbar" id="messagesContainer">
+                        <!-- Date Separator -->
+                        <div class="flex items-center justify-center my-4">
+                            <div class="bg-gray-200 px-3 py-1 rounded-full">
+                                <span class="text-xs text-gray-600">19 Haziran 2025</span>
+                            </div>
+                        </div>
+
+                        <!-- System Message -->
+                        <div class="flex justify-center my-4">
+                            <div class="bg-gray-100 px-3 py-1 rounded-full">
+                                <span class="text-xs text-gray-600">Zeynep Kaya ile konuşma başladı</span>
+                            </div>
+                        </div>
+
+                        <!-- Received Message -->
+                        <div class="flex items-end mb-4">
+                            <img class="w-8 h-8 rounded-full mr-2 mb-1"
+                                src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish"
+                                alt="Zeynep Kaya">
+                            <div class="max-w-[75%]">
+                                <div class="message-bubble-received p-3">
+                                    <p class="text-sm text-gray-800">Merhaba Dr. Yılmaz, son kemoterapi seansı sonrası
+                                        bazı yan etkiler yaşıyorum. Özellikle bulantı ve yorgunluk çok fazla. Normal mi
+                                        bu durum?</p>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 ml-1">10:15</div>
+                            </div>
+                        </div>
+
+                        <!-- Sent Message -->
+                        <div class="flex items-end justify-end mb-4">
+                            <div class="max-w-[75%]">
+                                <div class="message-bubble-sent p-3">
+                                    <p class="text-sm">Merhaba Zeynep Hanım, kemoterapi sonrası bu tür yan etkiler
+                                        normal. Bulantı için size reçete ettiğim ilaçları kullanıyor musunuz?</p>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 mr-1 text-right">10:18</div>
+                            </div>
+                        </div>
+
+                        <!-- Received Message with Attachment -->
+                        <div class="flex items-end mb-4">
+                            <img class="w-8 h-8 rounded-full mr-2 mb-1"
+                                src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish"
+                                alt="Zeynep Kaya">
+                            <div class="max-w-[75%]">
+                                <div class="message-bubble-received p-3">
+                                    <p class="text-sm text-gray-800 mb-2">Evet, ilaçları kullanıyorum ama çok etkili
+                                        olmuyor gibi. Size son kan tahlili sonuçlarımı da göndermek istiyorum.</p>
+                                    <div class="flex items-center bg-white p-2 rounded border border-gray-200">
+                                        <div
+                                            class="w-8 h-8 rounded bg-red-100 flex items-center justify-center text-red-600 mr-2">
+                                            <i class="ri-file-pdf-line"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-xs font-medium text-gray-800">Kan_Tahlili_15_Haziran.pdf</p>
+                                            <p class="text-xs text-gray-500">1.2 MB</p>
+                                        </div>
+                                        <button
+                                            class="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+                                            <i class="ri-download-line"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 ml-1">10:22</div>
+                            </div>
+                        </div>
+
+                        <!-- Sent Message -->
+                        <div class="flex items-end justify-end mb-4">
+                            <div class="max-w-[75%]">
+                                <div class="message-bubble-sent p-3">
+                                    <p class="text-sm">Teşekkürler, sonuçları inceledim. Hemoglobin değeriniz biraz
+                                        düşük görünüyor, bu da yorgunluğunuzu açıklayabilir. Bulantı için daha güçlü bir
+                                        anti-emetik reçete edeceğim. Bugün eczaneden alabilirsiniz.</p>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 mr-1 text-right">10:28</div>
+                            </div>
+                        </div>
+
+                        <!-- Sent Message -->
+                        <div class="flex items-end justify-end mb-4">
+                            <div class="max-w-[75%]">
+                                <div class="message-bubble-sent p-3">
+                                    <p class="text-sm">Ayrıca, yorgunluk için günlük aktivitelerinizi planlamanızı ve
+                                        bol sıvı tüketmenizi öneririm. Bir sonraki kontrolünüzde hemoglobin değerinizi
+                                        tekrar kontrol edeceğiz.</p>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 mr-1 text-right">10:30</div>
+                            </div>
+                        </div>
+
+                        <!-- Received Message -->
+                        <div class="flex items-end mb-4">
+                            <img class="w-8 h-8 rounded-full mr-2 mb-1"
+                                src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish"
+                                alt="Zeynep Kaya">
+                            <div class="max-w-[75%]">
+                                <div class="message-bubble-received p-3">
+                                    <p class="text-sm text-gray-800">Çok teşekkür ederim doktor bey. Bir sorum daha var,
+                                        saçlarım dökülmeye başladı. Bu konuda ne yapabilirim?</p>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 ml-1">10:32</div>
+                            </div>
+                        </div>
+
+                        <!-- Typing Indicator -->
+                        <div class="flex items-end mb-4">
+                            <img class="w-8 h-8 rounded-full mr-2 mb-1"
+                                src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish"
+                                alt="Zeynep Kaya">
+                            <div class="message-bubble-received p-2 inline-flex">
+                                <div class="flex space-x-1">
+                                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                                        style="animation-delay: 0.2s"></div>
+                                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                                        style="animation-delay: 0.4s"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Input Area -->
+                    <div class="p-4 border-t border-gray-200">
+                        <!-- Attachment Preview (initially hidden) -->
+                        <div id="attachmentPreview"
+                            class="hidden mb-3 p-2 bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-8 h-8 rounded bg-blue-100 flex items-center justify-center text-blue-600 mr-2">
+                                        <i class="ri-file-text-line"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-medium text-gray-800">Reçete_Zeynep_Kaya.pdf</p>
+                                        <p class="text-xs text-gray-500">245 KB</p>
+                                    </div>
+                                </div>
+                                <button id="removeAttachment"
+                                    class="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+                                    <i class="ri-close-line"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Input Controls -->
+                        <div class="flex items-center">
+                            <div class="relative">
+                                <button id="attachmentBtn"
+                                    class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+                                    <i class="ri-attachment-2"></i>
+                                </button>
+                                <input type="file" id="fileInput" class="hidden">
+                            </div>
+                            <div class="relative flex-1 mx-2">
+                                <input type="text" id="messageInput"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-full text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                                    placeholder="Mesajınızı yazın...">
+                                <div
+                                    class="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center space-x-1">
+                                    <button id="emojiBtn"
+                                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+                                        <i class="ri-emotion-line"></i>
+                                    </button>
+                                    <div id="emojiPicker" class="emoji-picker">
+                                        <div class="p-2 border-b border-gray-200">
+                                            <p class="text-xs font-medium text-gray-700">Emoji Seçin</p>
+                                        </div>
+                                        <div class="emoji-grid p-2">
+                                            <div class="emoji-item">😊</div>
+                                            <div class="emoji-item">😂</div>
+                                            <div class="emoji-item">❤️</div>
+                                            <div class="emoji-item">👍</div>
+                                            <div class="emoji-item">🙏</div>
+                                            <div class="emoji-item">😍</div>
+                                            <div class="emoji-item">😒</div>
+                                            <div class="emoji-item">👌</div>
+                                            <div class="emoji-item">😘</div>
+                                            <div class="emoji-item">😔</div>
+                                            <div class="emoji-item">😁</div>
+                                            <div class="emoji-item">🤔</div>
+                                            <div class="emoji-item">🙂</div>
+                                            <div class="emoji-item">😉</div>
+                                            <div class="emoji-item">🤗</div>
+                                            <div class="emoji-item">🤒</div>
+                                            <div class="emoji-item">🤢</div>
+                                            <div class="emoji-item">😷</div>
+                                            <div class="emoji-item">🤕</div>
+                                            <div class="emoji-item">💊</div>
+                                            <div class="emoji-item">💉</div>
+                                            <div class="emoji-item">🏥</div>
+                                            <div class="emoji-item">👨‍⚕️</div>
+                                            <div class="emoji-item">👩‍⚕️</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="sendMessageBtn"
+                                class="w-10 h-10 flex items-center justify-center text-white bg-primary rounded-full hover:bg-indigo-600">
+                                <i class="ri-send-plane-fill"></i>
+                            </button>
+                        </div>
+
+                        <!-- Message Options -->
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center space-x-3">
+                                <div class="relative">
+                                    <button id="priorityBtn"
+                                        class="flex items-center text-xs text-gray-500 hover:text-gray-700">
+                                        <i class="ri-flag-line mr-1"></i>
+                                        <span>Öncelik</span>
+                                    </button>
+                                    <div id="priorityMessageDropdown"
+                                        class="hidden absolute left-0 mt-1 w-32 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+                                        <div class="py-1">
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-xs text-red-600 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-flag-line mr-2"></i> Yüksek
+                                            </button>
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-xs text-amber-500 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-flag-line mr-2"></i> Orta
+                                            </button>
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-xs text-green-600 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-flag-line mr-2"></i> Düşük
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <button id="categoryBtn"
+                                        class="flex items-center text-xs text-gray-500 hover:text-gray-700">
+                                        <i class="ri-price-tag-3-line mr-1"></i>
+                                        <span>Kategori</span>
+                                    </button>
+                                    <div id="categoryMessageDropdown"
+                                        class="hidden absolute left-0 mt-1 w-32 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+                                        <div class="py-1">
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-xs text-primary hover:bg-gray-100 flex items-center">
+                                                <i class="ri-user-line mr-2"></i> Hasta
+                                            </button>
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-xs text-purple-600 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-team-line mr-2"></i> Meslektaş
+                                            </button>
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-xs text-red-600 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-alarm-warning-line mr-2"></i> Acil
+                                            </button>
+                                            <button
+                                                class="w-full text-left px-4 py-2 text-xs text-gray-600 hover:bg-gray-100 flex items-center">
+                                                <i class="ri-building-line mr-2"></i> İdari
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="flex items-center text-xs text-gray-500 hover:text-gray-700">
+                                    <i class="ri-mic-line mr-1"></i>
+                                    <span>Sesli Mesaj</span>
+                                </button>
+                            </div>
+                            <div>
+                                <button
+                                    class="flex items-center text-xs text-primary font-medium hover:text-indigo-700">
+                                    <i class="ri-robot-line mr-1"></i>
+                                    <span>AI Yanıt Öner</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="dropdownToggleScript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Priority Filter Dropdown
+            const priorityFilterBtn = document.getElementById('priorityFilterBtn');
+            const priorityDropdown = document.getElementById('priorityDropdown');
+
+            priorityFilterBtn.addEventListener('click', function () {
+                priorityDropdown.classList.toggle('hidden');
+                // Hide other dropdowns
+                categoryDropdown.classList.add('hidden');
+                messageOptionsDropdown.classList.add('hidden');
+                priorityMessageDropdown.classList.add('hidden');
+                categoryMessageDropdown.classList.add('hidden');
+                emojiPicker.classList.add('hidden');
+            });
+
+            // Category Filter Dropdown
+            const categoryFilterBtn = document.getElementById('categoryFilterBtn');
+            const categoryDropdown = document.getElementById('categoryDropdown');
+
+            categoryFilterBtn.addEventListener('click', function () {
+                categoryDropdown.classList.toggle('hidden');
+                // Hide other dropdowns
+                priorityDropdown.classList.add('hidden');
+                messageOptionsDropdown.classList.add('hidden');
+                priorityMessageDropdown.classList.add('hidden');
+                categoryMessageDropdown.classList.add('hidden');
+                emojiPicker.classList.add('hidden');
+            });
+
+            // Message Options Dropdown
+            const messageOptionsBtn = document.getElementById('messageOptionsBtn');
+            const messageOptionsDropdown = document.getElementById('messageOptionsDropdown');
+
+            messageOptionsBtn.addEventListener('click', function () {
+                messageOptionsDropdown.classList.toggle('hidden');
+                // Hide other dropdowns
+                priorityDropdown.classList.add('hidden');
+                categoryDropdown.classList.add('hidden');
+                priorityMessageDropdown.classList.add('hidden');
+                categoryMessageDropdown.classList.add('hidden');
+                emojiPicker.classList.add('hidden');
+            });
+
+            // Priority Message Dropdown
+            const priorityBtn = document.getElementById('priorityBtn');
+            const priorityMessageDropdown = document.getElementById('priorityMessageDropdown');
+
+            priorityBtn.addEventListener('click', function () {
+                priorityMessageDropdown.classList.toggle('hidden');
+                // Hide other dropdowns
+                priorityDropdown.classList.add('hidden');
+                categoryDropdown.classList.add('hidden');
+                messageOptionsDropdown.classList.add('hidden');
+                categoryMessageDropdown.classList.add('hidden');
+                emojiPicker.classList.add('hidden');
+            });
+
+            // Category Message Dropdown
+            const categoryBtn = document.getElementById('categoryBtn');
+            const categoryMessageDropdown = document.getElementById('categoryMessageDropdown');
+
+            categoryBtn.addEventListener('click', function () {
+                categoryMessageDropdown.classList.toggle('hidden');
+                // Hide other dropdowns
+                priorityDropdown.classList.add('hidden');
+                categoryDropdown.classList.add('hidden');
+                messageOptionsDropdown.classList.add('hidden');
+                priorityMessageDropdown.classList.add('hidden');
+                emojiPicker.classList.add('hidden');
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('#priorityFilterBtn') && !event.target.closest('#priorityDropdown')) {
+                    priorityDropdown.classList.add('hidden');
+                }
+                if (!event.target.closest('#categoryFilterBtn') && !event.target.closest('#categoryDropdown')) {
+                    categoryDropdown.classList.add('hidden');
+                }
+                if (!event.target.closest('#messageOptionsBtn') && !event.target.closest('#messageOptionsDropdown')) {
+                    messageOptionsDropdown.classList.add('hidden');
+                }
+                if (!event.target.closest('#priorityBtn') && !event.target.closest('#priorityMessageDropdown')) {
+                    priorityMessageDropdown.classList.add('hidden');
+                }
+                if (!event.target.closest('#categoryBtn') && !event.target.closest('#categoryMessageDropdown')) {
+                    categoryMessageDropdown.classList.add('hidden');
+                }
+                if (!event.target.closest('#emojiBtn') && !event.target.closest('#emojiPicker')) {
+                    emojiPicker.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+    <script id="themeToggleScript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+
+            themeToggle.addEventListener('change', function () {
+                if (this.checked) {
+                    html.classList.add('dark');
+                    document.body.style.backgroundColor = '#111827';
+                } else {
+                    html.classList.remove('dark');
+                    document.body.style.backgroundColor = '#f9fafb';
+                }
+            });
+        });
+    </script>
+
+    <script id="messageInteractionScript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Message items
+            const messageItems = document.querySelectorAll('.message-item');
+            messageItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    // Remove active class from all items
+                    messageItems.forEach(i => i.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    // Remove unread status if present
+                    this.classList.remove('unread');
+                    // Remove unread badge if present
+                    const badge = this.querySelector('.bg-primary.rounded-full');
+                    if (badge) badge.remove();
+                });
+            });
+
+            // Attachment handling
+            const attachmentBtn = document.getElementById('attachmentBtn');
+            const fileInput = document.getElementById('fileInput');
+            const attachmentPreview = document.getElementById('attachmentPreview');
+            const removeAttachment = document.getElementById('removeAttachment');
+
+            attachmentBtn.addEventListener('click', function () {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', function () {
+                if (this.files.length > 0) {
+                    attachmentPreview.classList.remove('hidden');
+                }
+            });
+
+            removeAttachment.addEventListener('click', function () {
+                attachmentPreview.classList.add('hidden');
+                fileInput.value = '';
+            });
+
+            // Emoji picker
+            const emojiBtn = document.getElementById('emojiBtn');
+            const emojiPicker = document.getElementById('emojiPicker');
+            const emojiItems = document.querySelectorAll('.emoji-item');
+            const messageInput = document.getElementById('messageInput');
+
+            emojiBtn.addEventListener('click', function () {
+                emojiPicker.classList.toggle('active');
+            });
+
+            emojiItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    messageInput.value += this.textContent;
+                    emojiPicker.classList.remove('active');
+                    messageInput.focus();
+                });
+            });
+
+            // Send message
+            const sendMessageBtn = document.getElementById('sendMessageBtn');
+            const messagesContainer = document.getElementById('messagesContainer');
+
+            sendMessageBtn.addEventListener('click', function () {
+                sendMessage();
+            });
+
+            messageInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                const message = messageInput.value.trim();
+                if (message === '' && attachmentPreview.classList.contains('hidden')) return;
+
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const timeString = `${hours}:${minutes}`;
+
+                let messageContent = '';
+
+                if (!attachmentPreview.classList.contains('hidden')) {
+                    messageContent += `
+                <div class="flex items-center bg-white bg-opacity-20 p-2 rounded border border-white border-opacity-20 mb-2">
+                    <div class="w-8 h-8 rounded bg-blue-100 bg-opacity-20 flex items-center justify-center text-white mr-2">
+                        <i class="ri-file-text-line"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium text-white">Reçete_Zeynep_Kaya.pdf</p>
+                        <p class="text-xs text-white text-opacity-70">245 KB</p>
+                    </div>
+                </div>
+            `;
+                }
+
+                if (message !== '') {
+                    messageContent += `<p class="text-sm">${message}</p>`;
+                }
+
+                const messageHTML = `
+            <div class="flex items-end justify-end mb-4">
+                <div class="max-w-[75%]">
+                    <div class="message-bubble-sent p-3">
+                        ${messageContent}
+                    </div>
+                    <div class="text-xs text-gray-500 mt-1 mr-1 text-right">${timeString}</div>
+                </div>
+            </div>
+        `;
+
+                messagesContainer.insertAdjacentHTML('beforeend', messageHTML);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                // Clear input and attachment
+                messageInput.value = '';
+                attachmentPreview.classList.add('hidden');
+
+                // Simulate reply after 2 seconds
+                setTimeout(() => {
+                    const typingHTML = `
+                <div class="flex items-end mb-4" id="typingIndicator">
+                    <img class="w-8 h-8 rounded-full mr-2 mb-1" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish" alt="Zeynep Kaya">
+                    <div class="message-bubble-received p-2 inline-flex">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                    messagesContainer.insertAdjacentHTML('beforeend', typingHTML);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                    // Remove typing indicator and add reply after 2 more seconds
+                    setTimeout(() => {
+                        document.getElementById('typingIndicator').remove();
+
+                        const replyHTML = `
+                    <div class="flex items-end mb-4">
+                        <img class="w-8 h-8 rounded-full mr-2 mb-1" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish" alt="Zeynep Kaya">
+                        <div class="max-w-[75%]">
+                            <div class="message-bubble-received p-3">
+                                <p class="text-sm text-gray-800">Teşekkür ederim doktor bey. Reçeteyi hemen eczaneye götüreceğim. Saç dökülmesi için önerdiğiniz şampuanı da kullanmaya başlayacağım.</p>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1 ml-1">${hours}:${(parseInt(minutes) + 1).toString().padStart(2, '0')}</div>
+                        </div>
+                    </div>
+                `;
+
+                        messagesContainer.insertAdjacentHTML('beforeend', replyHTML);
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    }, 2000);
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+
+</html>
