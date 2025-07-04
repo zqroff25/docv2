@@ -6,53 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocMate - Hastalarım</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#4F46E5', secondary: '#8B5CF6' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#8B5CF6'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <style>
-        :where([class^="ri-"])::before {
+         :where([class^="ri-"])::before {
             content: "\f3c2";
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #d1d5db;
             border-radius: 10px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #9ca3af;
         }
-
+        
         .switch {
             position: relative;
             display: inline-block;
             width: 44px;
             height: 24px;
         }
-
+        
         .switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-
+        
         .slider {
             position: absolute;
             cursor: pointer;
@@ -64,7 +87,7 @@
             transition: .4s;
             border-radius: 24px;
         }
-
+        
         .slider:before {
             position: absolute;
             content: "";
@@ -76,34 +99,34 @@
             transition: .4s;
             border-radius: 50%;
         }
-
+        
         input:checked+.slider {
             background-color: #4F46E5;
         }
-
+        
         input:checked+.slider:before {
             transform: translateX(20px);
         }
-
+        
         .module-card {
             transition: all 0.3s ease;
         }
-
+        
         .module-card:hover {
             transform: translateY(-3px);
         }
-
+        
         .module-card.active {
             border-color: #4F46E5;
             background-color: rgba(79, 70, 229, 0.05);
         }
-
+        
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
-
+        
         .custom-checkbox {
             appearance: none;
             width: 18px;
@@ -115,12 +138,12 @@
             position: relative;
             background-color: white;
         }
-
+        
         .custom-checkbox:checked {
             background-color: #4F46E5;
             border-color: #4F46E5;
         }
-
+        
         .custom-checkbox:checked::after {
             content: "";
             position: absolute;
@@ -132,32 +155,32 @@
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
         }
-
+        
         .status-active {
             background-color: #dcfce7;
             color: #15803d;
         }
-
+        
         .status-follow {
             background-color: #dbeafe;
             color: #1d4ed8;
         }
-
+        
         .status-critical {
             background-color: #fee2e2;
             color: #b91c1c;
         }
-
+        
         .status-completed {
             background-color: #f3f4f6;
             color: #4b5563;
         }
-
+        
         .status-waiting {
             background-color: #fef3c7;
             color: #92400e;
         }
-
+        
         .table-row-hover:hover {
             background-color: #f9fafb;
         }
@@ -167,13 +190,13 @@
             align-items: center;
             cursor: pointer;
         }
-
+        
         .custom-checkbox input {
             position: absolute;
             opacity: 0;
             cursor: pointer;
         }
-
+        
         .checkmark {
             height: 20px;
             width: 20px;
@@ -184,17 +207,17 @@
             align-items: center;
             justify-content: center;
         }
-
+        
         .custom-checkbox input:checked~.checkmark {
             background-color: #2563eb;
             border-color: #2563eb;
         }
-
+        
         .checkmark:after {
             content: "";
             display: none;
         }
-
+        
         .custom-checkbox input:checked~.checkmark:after {
             display: block;
             width: 5px;
@@ -203,20 +226,20 @@
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
         }
-
+        
         .custom-switch {
             position: relative;
             display: inline-block;
             width: 44px;
             height: 24px;
         }
-
+        
         .custom-switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-
+        
         .switch-slider {
             position: absolute;
             cursor: pointer;
@@ -228,7 +251,7 @@
             transition: .4s;
             border-radius: 34px;
         }
-
+        
         .switch-slider:before {
             position: absolute;
             content: "";
@@ -240,15 +263,15 @@
             transition: .4s;
             border-radius: 50%;
         }
-
+        
         input:checked+.switch-slider {
             background-color: #2563eb;
         }
-
+        
         input:checked+.switch-slider:before {
             transform: translateX(20px);
         }
-
+        
         .custom-range {
             -webkit-appearance: none;
             appearance: none;
@@ -258,7 +281,7 @@
             background: #e5e7eb;
             outline: none;
         }
-
+        
         .custom-range::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -268,7 +291,7 @@
             background: #2563eb;
             cursor: pointer;
         }
-
+        
         .custom-range::-moz-range-thumb {
             width: 18px;
             height: 18px;
@@ -277,19 +300,19 @@
             cursor: pointer;
             border: none;
         }
-
+        
         .custom-radio {
             display: flex;
             align-items: center;
             cursor: pointer;
         }
-
+        
         .custom-radio input {
             position: absolute;
             opacity: 0;
             cursor: pointer;
         }
-
+        
         .radio-mark {
             height: 20px;
             width: 20px;
@@ -300,11 +323,11 @@
             align-items: center;
             justify-content: center;
         }
-
+        
         .custom-radio input:checked~.radio-mark {
             border-color: #2563eb;
         }
-
+        
         .radio-mark:after {
             content: "";
             display: none;
@@ -313,44 +336,44 @@
             border-radius: 50%;
             background: #2563eb;
         }
-
+        
         .custom-radio input:checked~.radio-mark:after {
             display: block;
         }
-
+        
         .calendar-day {
             min-height: 100px;
             border: 1px solid #e5e7eb;
         }
-
+        
         .calendar-day.has-appointments {
             background-color: rgba(37, 99, 235, 0.05);
         }
-
+        
         .calendar-day.today {
             border: 2px solid #2563eb;
         }
-
+        
         .calendar-day.other-month {
             background-color: #f9fafb;
             color: #9ca3af;
         }
-
+        
         .appointment-status-confirmed {
             background-color: #dcfce7;
             color: #166534;
         }
-
+        
         .appointment-status-pending {
             background-color: #fef9c3;
             color: #854d0e;
         }
-
+        
         .appointment-status-cancelled {
             background-color: #fee2e2;
             color: #b91c1c;
         }
-
+        
         .tab-button.active {
             background-color: #2563eb;
             color: white;
@@ -370,40 +393,29 @@
             <nav class="flex-1 overflow-y-auto custom-scrollbar">
                 <div class="px-4 py-4">
                     <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ana Menü</p>
-                    <a href="index.html"
-                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="index.html" class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-dashboard-line"></i>
                         </div>
                         <span>Gösterge Paneli</span>
                     </a>
-                    <a href="Hastalarım-Detayları-Sayfası.html"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md bg-gray-800 text-white">
+                    <a href="Hastalarım-Detayları-Sayfası.html" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md bg-gray-800 text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-user-line"></i>
                         </div>
                         <span>Hastalarım</span>
                     </a>
-                    <a href="#"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="#" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-calendar-line"></i>
                         </div>
                         <span>Randevular</span>
                     </a>
-                    <a href="raporlar.html"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="raporlar.html" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-file-list-line"></i>
                         </div>
                         <span>Raporlar</span>
-                    </a>
-                    <a href="mesajlar.html"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-message-3-line"></i>
-                        </div>
-                        <span>Mesajlar</span>
                     </a>
                 </div>
                 <!-- AI Asistan Bölümü -->
@@ -420,8 +432,7 @@
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <div id="patientAnalysisModule"
-                                class="module-card active p-2 border border-gray-700 rounded-md cursor-pointer">
+                            <div id="patientAnalysisModule" class="module-card active p-2 border border-gray-700 rounded-md cursor-pointer">
                                 <div class="flex items-center">
                                     <div class="w-6 h-6 flex items-center justify-center text-primary">
                                         <i class="ri-heart-pulse-line"></i>
@@ -431,36 +442,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="reportAnalysisModule"
-                                class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
-                                        <i class="ri-file-chart-line"></i>
-                                    </div>
-                                    <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Rapor Analizi</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="patientReportAnalysisModule"
-                                class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
-                                        <i class="ri-file-user-line"></i>
-                                    </div>
-                                    <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Hasta Raporu Analizi</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="treatmentRecommendationsModule"
-                                class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
+
+                            <div id="treatmentRecommendationsModule" class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
                                 <div class="flex items-center">
                                     <div class="w-6 h-6 flex items-center justify-center text-gray-400">
                                         <i class="ri-medicine-bottle-line"></i>
                                     </div>
                                     <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Tedavi Önerileri</p>
+                                        <p class="text-xs font-medium text-gray-300">Tedavi Önerileri (Yakında)</p>
                                     </div>
                                 </div>
                             </div>
@@ -468,29 +457,12 @@
                     </div>
                 </div>
                 <!-- Ayarlar -->
-                <div class="px-4 py-4 mt-2">
-                    <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ayarlar</p>
-                    <a href="#"
-                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-settings-line"></i>
-                        </div>
-                        <span>Genel Ayarlar</span>
-                    </a>
-                    <a href="#"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-user-settings-line"></i>
-                        </div>
-                        <span>Profil</span>
-                    </a>
-                </div>
+
             </nav>
             <!-- User Profile -->
             <div class="p-4 border-t border-gray-800">
                 <div class="flex items-center">
-                    <img class="h-10 w-10 rounded-full"
-                        src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520male%2520doctor%2520with%2520short%2520dark%2520hair%252C%2520wearing%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=doctor1&orientation=squarish"
+                    <img class="h-10 w-10 rounded-full" src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520male%2520doctor%2520with%2520short%2520dark%2520hair%252C%2520wearing%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=doctor1&orientation=squarish"
                         alt="Dr. Ahmet Yılmaz">
                     <div class="ml-3">
                         <p class="text-sm font-medium text-white">Dr. Ahmet Yılmaz</p>
@@ -500,7 +472,7 @@
             </div>
         </div>
         <!-- Main Content -->
-            <!-- Main Content -->
+        <!-- Main Content -->
         <main class="flex-1 overflow-auto">
             <div class="flex h-full">
                 <!-- Calendar and Appointments Section -->
@@ -513,245 +485,14 @@
                                     <span class="w-5 h-5 flex items-center justify-center text-gray-400">
                                         <i class="ri-search-line"></i>
                                     </span>
-                                    <input type="text" placeholder="Randevu ara..."
-                                        class="ml-2 text-sm w-full border-none focus:outline-none">
+                                    <input type="text" placeholder="Randevu ara..." class="ml-2 text-sm w-full border-none focus:outline-none">
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Calendar Controls -->
-                    <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
-                        <div class="flex flex-wrap justify-between items-center mb-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex items-center">
-                                    <button
-                                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
-                                        <i class="ri-arrow-left-s-line ri-lg"></i>
-                                    </button>
-                                    <h2 class="text-lg font-semibold text-gray-900 mx-2">Haziran 2025</h2>
-                                    <button
-                                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
-                                        <i class="ri-arrow-right-s-line ri-lg"></i>
-                                    </button>
-                                </div>
-                                <button
-                                    class="px-3 py-1 text-sm font-medium text-primary bg-blue-50 rounded-button !rounded-button whitespace-nowrap">
-                                    Bugün
-                                </button>
-                            </div>
-                            <div class="flex bg-gray-100 rounded-full p-1 mt-2 sm:mt-0">
-                                <button
-                                    class="px-3 py-1 text-sm font-medium text-white bg-primary rounded-full whitespace-nowrap">
-                                    Aylık
-                                </button>
-                            </div>
-                        </div>
 
-                        <!-- Calendar Grid -->
-                        <div class="grid grid-cols-7 gap-0">
-                            <div class="text-center p-2 font-medium text-gray-500 border-b border-gray-200">Pzt</div>
-                            <div class="text-center p-2 font-medium text-gray-500 border-b border-gray-200">Sal</div>
-                            <div class="text-center p-2 font-medium text-gray-500 border-b border-gray-200">Çar</div>
-                            <div class="text-center p-2 font-medium text-gray-500 border-b border-gray-200">Per</div>
-                            <div class="text-center p-2 font-medium text-gray-500 border-b border-gray-200">Cum</div>
-                            <div class="text-center p-2 font-medium text-gray-500 border-b border-gray-200">Cmt</div>
-                            <div class="text-center p-2 font-medium text-gray-500 border-b border-gray-200">Paz</div>
-
-                            <!-- Calendar Days -->
-                            <div class="calendar-day other-month">
-                                <div class="p-2">
-                                    <div class="text-sm">27</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day other-month">
-                                <div class="p-2">
-                                    <div class="text-sm">28</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day other-month">
-                                <div class="p-2">
-                                    <div class="text-sm">29</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day other-month">
-                                <div class="p-2">
-                                    <div class="text-sm">30</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day other-month">
-                                <div class="p-2">
-                                    <div class="text-sm">31</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">1</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">2</div>
-                                </div>
-                            </div>
-
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">3</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">4</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">5</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">3 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">6</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">7</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">2 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">8</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">9</div>
-                                </div>
-                            </div>
-
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">10</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">1 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">11</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">12</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">4 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">13</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">14</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">2 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">15</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">16</div>
-                                </div>
-                            </div>
-
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">17</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">3 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">18</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">2 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day today has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm font-semibold">19</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">5 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">20</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">1 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">21</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">22</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">23</div>
-                                </div>
-                            </div>
-
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">24</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">2 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">25</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">26</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">3 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">27</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day has-appointments">
-                                <div class="p-2">
-                                    <div class="text-sm">28</div>
-                                    <div class="mt-1 text-xs text-primary font-medium">1 Randevu</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">29</div>
-                                </div>
-                            </div>
-                            <div class="calendar-day">
-                                <div class="p-2">
-                                    <div class="text-sm">30</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Today's Appointments -->
                     <div class="bg-white rounded-lg shadow-sm p-6 mt-6">
@@ -759,15 +500,13 @@
                             <h2 class="text-lg font-semibold text-gray-900">19 Haziran 2025 Randevuları</h2>
                             <div class="flex space-x-2">
                                 <div class="relative">
-                                    <button id="filterButton"
-                                        class="px-3 py-1.5 text-sm font-medium text-gray-700 border border-gray-300 rounded-button !rounded-button hover:bg-gray-50 whitespace-nowrap">
+                                    <button id="filterButton" class="px-3 py-1.5 text-sm font-medium text-gray-700 border border-gray-300 rounded-button !rounded-button hover:bg-gray-50 whitespace-nowrap">
                                         <span class="flex items-center">
                                             <i class="ri-filter-3-line mr-1"></i>
                                             Filtrele
                                         </span>
                                     </button>
-                                    <div id="filterDropdown"
-                                        class="hidden absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg z-10 p-4">
+                                    <div id="filterDropdown" class="hidden absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg z-10 p-4">
                                         <div class="mb-3">
                                             <h3 class="text-sm font-medium text-gray-700 mb-2">Durum</h3>
                                             <div class="space-y-2">
@@ -809,8 +548,7 @@
                                             </div>
                                         </div>
                                         <div class="flex justify-end">
-                                            <button
-                                                class="px-3 py-1.5 text-xs font-medium text-primary rounded-button !rounded-button hover:bg-blue-50 whitespace-nowrap">
+                                            <button class="px-3 py-1.5 text-xs font-medium text-primary rounded-button !rounded-button hover:bg-blue-50 whitespace-nowrap">
                                                 Filtreleri Temizle
                                             </button>
                                         </div>
@@ -824,172 +562,97 @@
                             <div class="bg-gray-50 rounded-lg p-4">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
                                             <span class="text-primary font-medium">ME</span>
                                         </div>
                                         <div>
                                             <div class="flex items-center">
                                                 <h3 class="text-base font-semibold text-gray-900">Mehmet Erdem</h3>
-                                                <span
-                                                    class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-confirmed">Onaylandı</span>
+                                                <span class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-confirmed">Onaylandı</span>
                                             </div>
                                             <p class="text-sm text-gray-600">09:30 - 10:00 • İlk Muayene</p>
                                             <p class="text-sm text-gray-500">Akciğer Kanseri Şüphesi • Dr. Ayşe Demir
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="flex space-x-2">
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-file-list-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-edit-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-red-500 bg-white rounded-full">
-                                            <i class="ri-close-line"></i>
-                                        </button>
-                                    </div>
+
                                 </div>
                             </div>
 
                             <div class="bg-gray-50 rounded-lg p-4">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
                                             <span class="text-primary font-medium">ZK</span>
                                         </div>
                                         <div>
                                             <div class="flex items-center">
                                                 <h3 class="text-base font-semibold text-gray-900">Zeynep Kaya</h3>
-                                                <span
-                                                    class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-confirmed">Onaylandı</span>
+                                                <span class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-confirmed">Onaylandı</span>
                                             </div>
                                             <p class="text-sm text-gray-600">10:15 - 10:45 • Tedavi Planı</p>
                                             <p class="text-sm text-gray-500">Meme Kanseri Evre II • Dr. Ayşe Demir</p>
                                         </div>
                                     </div>
-                                    <div class="flex space-x-2">
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-file-list-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-edit-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-red-500 bg-white rounded-full">
-                                            <i class="ri-close-line"></i>
-                                        </button>
-                                    </div>
+
                                 </div>
                             </div>
 
                             <div class="bg-gray-50 rounded-lg p-4">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
                                             <span class="text-primary font-medium">OY</span>
                                         </div>
                                         <div>
                                             <div class="flex items-center">
                                                 <h3 class="text-base font-semibold text-gray-900">Osman Yılmaz</h3>
-                                                <span
-                                                    class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-pending">Beklemede</span>
+                                                <span class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-pending">Beklemede</span>
                                             </div>
                                             <p class="text-sm text-gray-600">11:45 - 12:15 • İlk Muayene</p>
                                             <p class="text-sm text-gray-500">Genel Kontrol • Dr. Ayşe Demir</p>
                                         </div>
                                     </div>
-                                    <div class="flex space-x-2">
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-file-list-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-edit-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-red-500 bg-white rounded-full">
-                                            <i class="ri-close-line"></i>
-                                        </button>
-                                    </div>
+
                                 </div>
                             </div>
 
                             <div class="bg-gray-50 rounded-lg p-4">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
                                             <span class="text-primary font-medium">SK</span>
                                         </div>
                                         <div>
                                             <div class="flex items-center">
                                                 <h3 class="text-base font-semibold text-gray-900">Selin Korkmaz</h3>
-                                                <span
-                                                    class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-confirmed">Onaylandı</span>
+                                                <span class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-confirmed">Onaylandı</span>
                                             </div>
                                             <p class="text-sm text-gray-600">14:30 - 15:00 • Kontrol</p>
                                             <p class="text-sm text-gray-500">Kemoterapi Sonrası • Dr. Ayşe Demir</p>
                                         </div>
                                     </div>
-                                    <div class="flex space-x-2">
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-file-list-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-edit-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-red-500 bg-white rounded-full">
-                                            <i class="ri-close-line"></i>
-                                        </button>
-                                    </div>
+
                                 </div>
                             </div>
 
                             <div class="bg-gray-50 rounded-lg p-4">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
                                             <span class="text-primary font-medium">CA</span>
                                         </div>
                                         <div>
                                             <div class="flex items-center">
                                                 <h3 class="text-base font-semibold text-gray-900">Canan Aksoy</h3>
-                                                <span
-                                                    class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-cancelled">İptal
+                                                <span class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full appointment-status-cancelled">İptal
                                                     Edildi</span>
                                             </div>
                                             <p class="text-sm text-gray-600">16:00 - 16:30 • Kontrol</p>
                                             <p class="text-sm text-gray-500">Tiroid Kanseri Evre I • Dr. Ayşe Demir</p>
                                         </div>
                                     </div>
-                                    <div class="flex space-x-2">
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-file-list-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary bg-white rounded-full">
-                                            <i class="ri-edit-line"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-red-500 bg-white rounded-full">
-                                            <i class="ri-close-line"></i>
-                                        </button>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -1002,14 +665,12 @@
     </div>
 
     <!-- New Appointment Modal -->
-    <div id="newAppointmentModal"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="newAppointmentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg w-full max-w-2xl max-h-[90vh] overflow-auto">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-xl font-semibold text-gray-900">Yeni Randevu Oluştur</h2>
-                    <button id="closeModal"
-                        class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                    <button id="closeModal" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700">
                         <i class="ri-close-line ri-lg"></i>
                     </button>
                 </div>
@@ -1023,8 +684,7 @@
                                     <span class="w-5 h-5 flex items-center justify-center text-gray-400">
                                         <i class="ri-user-search-line"></i>
                                     </span>
-                                    <input type="text" placeholder="Hasta ara..."
-                                        class="ml-2 text-sm w-full border-none focus:outline-none">
+                                    <input type="text" placeholder="Hasta ara..." class="ml-2 text-sm w-full border-none focus:outline-none">
                                 </div>
                             </div>
                         </div>
@@ -1035,8 +695,7 @@
                                     <span class="w-5 h-5 flex items-center justify-center text-gray-400">
                                         <i class="ri-user-star-line"></i>
                                     </span>
-                                    <input type="text" value="Dr. Ayşe Demir"
-                                        class="ml-2 text-sm w-full border-none focus:outline-none">
+                                    <input type="text" value="Dr. Ayşe Demir" class="ml-2 text-sm w-full border-none focus:outline-none">
                                 </div>
                             </div>
                         </div>
@@ -1058,8 +717,7 @@
                             <label class="block text-sm font-medium text-gray-700 mb-1">Saat</label>
                             <div class="grid grid-cols-2 gap-2">
                                 <div class="relative">
-                                    <div
-                                        class="flex items-center border border-gray-300 rounded-button px-3 py-2 w-full">
+                                    <div class="flex items-center border border-gray-300 rounded-button px-3 py-2 w-full">
                                         <span class="w-5 h-5 flex items-center justify-center text-gray-400">
                                             <i class="ri-time-line"></i>
                                         </span>
@@ -1067,8 +725,7 @@
                                     </div>
                                 </div>
                                 <div class="relative">
-                                    <div
-                                        class="flex items-center border border-gray-300 rounded-button px-3 py-2 w-full">
+                                    <div class="flex items-center border border-gray-300 rounded-button px-3 py-2 w-full">
                                         <span class="w-5 h-5 flex items-center justify-center text-gray-400">
                                             <i class="ri-time-line"></i>
                                         </span>
@@ -1135,25 +792,19 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Randevu Nedeni</label>
-                        <textarea
-                            class="w-full border border-gray-300 rounded-button px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                            rows="3" placeholder="Randevu nedenini yazın..."></textarea>
+                        <textarea class="w-full border border-gray-300 rounded-button px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" rows="3" placeholder="Randevu nedenini yazın..."></textarea>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Notlar</label>
-                        <textarea
-                            class="w-full border border-gray-300 rounded-button px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                            rows="3" placeholder="Ek notlar..."></textarea>
+                        <textarea class="w-full border border-gray-300 rounded-button px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" rows="3" placeholder="Ek notlar..."></textarea>
                     </div>
 
                     <div class="flex justify-end space-x-3 pt-4">
-                        <button
-                            class="px-4 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-button !rounded-button hover:bg-gray-50 whitespace-nowrap">
+                        <button class="px-4 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-button !rounded-button hover:bg-gray-50 whitespace-nowrap">
                             İptal
                         </button>
-                        <button
-                            class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-button !rounded-button hover:bg-blue-700 whitespace-nowrap">
+                        <button class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-button !rounded-button hover:bg-blue-700 whitespace-nowrap">
                             Randevu Oluştur
                         </button>
                     </div>
@@ -1162,19 +813,43 @@
         </div>
     </div>
 
+    <!-- Hasta Durumu Analizi Modalı (Sıfırdan) -->
+    <div id="myPatientModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-gray-800">Hasta Seçin</h3>
+                <button id="closeMyPatientModal" class="text-gray-500 hover:text-gray-700">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-4">
+                    <input type="text" id="myPatientSearchInput" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Hasta ara...">
+                </div>
+                <div class="max-h-64 overflow-y-auto custom-scrollbar">
+                    <div id="myPatientList" class="space-y-2">
+                        <!-- Hasta listesi dinamik olarak doldurulacak -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script id="appointmentPageInteractions">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Filter dropdown toggle
             const filterButton = document.getElementById('filterButton');
             const filterDropdown = document.getElementById('filterDropdown');
 
             if (filterButton && filterDropdown) {
-                filterButton.addEventListener('click', function () {
+                filterButton.addEventListener('click', function() {
                     filterDropdown.classList.toggle('hidden');
                 });
 
                 // Close dropdown when clicking outside
-                document.addEventListener('click', function (event) {
+                document.addEventListener('click', function(event) {
                     if (!filterButton.contains(event.target) && !filterDropdown.contains(event.target)) {
                         filterDropdown.classList.add('hidden');
                     }
@@ -1187,16 +862,16 @@
             const closeModal = document.getElementById('closeModal');
 
             if (newAppointmentBtn && newAppointmentModal && closeModal) {
-                newAppointmentBtn.addEventListener('click', function () {
+                newAppointmentBtn.addEventListener('click', function() {
                     newAppointmentModal.classList.remove('hidden');
                 });
 
-                closeModal.addEventListener('click', function () {
+                closeModal.addEventListener('click', function() {
                     newAppointmentModal.classList.add('hidden');
                 });
 
                 // Close modal when clicking outside
-                newAppointmentModal.addEventListener('click', function (event) {
+                newAppointmentModal.addEventListener('click', function(event) {
                     if (event.target === newAppointmentModal) {
                         newAppointmentModal.classList.add('hidden');
                     }
@@ -1208,7 +883,7 @@
 
             if (calendarDays.length > 0) {
                 calendarDays.forEach(day => {
-                    day.addEventListener('click', function () {
+                    day.addEventListener('click', function() {
                         // Remove 'selected' class from all days
                         calendarDays.forEach(d => d.classList.remove('bg-blue-50'));
                         // Add 'selected' class to clicked day
@@ -1218,7 +893,60 @@
             }
         });
     </script>
-        
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Buton ve modal referansları
+        const hastaAnalizBtn = document.getElementById('patientAnalysisModule');
+        const modal = document.getElementById('myPatientModal');
+        const closeModalBtn = document.getElementById('closeMyPatientModal');
+        const patientListDiv = document.getElementById('myPatientList');
+        const searchInput = document.getElementById('myPatientSearchInput');
+
+        // Örnek hasta verisi
+        const hastalar = [
+            { id: 'ZK-10254', name: 'Zeynep Kaya', diagnosis: 'Meme Kanseri', stage: 'Evre II' },
+            { id: 'MA-10255', name: 'Mehmet Aydın', diagnosis: 'Akciğer Kanseri', stage: 'Evre III' },
+            { id: 'AD-10256', name: 'Ayşe Demir', diagnosis: 'Lenfoma', stage: 'Hodgkin' }
+        ];
+
+        // Modalı aç
+        hastaAnalizBtn.addEventListener('click', function() {
+            modal.classList.remove('hidden');
+            showPatients(hastalar);
+        });
+        // Modalı kapat
+        closeModalBtn.addEventListener('click', function() {
+            modal.classList.add('hidden');
+        });
+        // Dışarı tıklayınca kapat
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+        // Hasta arama
+        searchInput.addEventListener('input', function() {
+            const term = searchInput.value.toLowerCase();
+            const filtered = hastalar.filter(h => h.name.toLowerCase().includes(term) || h.id.toLowerCase().includes(term));
+            showPatients(filtered);
+        });
+        // Hasta listesini göster
+        function showPatients(list) {
+            patientListDiv.innerHTML = '';
+            list.forEach(hasta => {
+                const div = document.createElement('div');
+                div.className = 'p-3 border border-gray-200 rounded-md hover:bg-gray-50 cursor-pointer flex justify-between items-center';
+                div.innerHTML = `<div><div class='text-sm font-medium text-gray-900'>${hasta.name}</div><div class='text-xs text-gray-500'>${hasta.id}</div></div><div class='text-right'><div class='text-sm text-gray-900'>${hasta.diagnosis}</div><div class='text-xs text-gray-500'>${hasta.stage}</div></div>`;
+                div.addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+                patientListDiv.appendChild(div);
+            });
+        }
+    });
+    </script>
+
 </body>
 
 </html>
