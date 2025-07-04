@@ -6,53 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocMate - Hastalarım</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#4F46E5', secondary: '#8B5CF6' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#8B5CF6'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <style>
-        :where([class^="ri-"])::before {
+         :where([class^="ri-"])::before {
             content: "\f3c2";
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #d1d5db;
             border-radius: 10px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #9ca3af;
         }
-
+        
         .switch {
             position: relative;
             display: inline-block;
             width: 44px;
             height: 24px;
         }
-
+        
         .switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-
+        
         .slider {
             position: absolute;
             cursor: pointer;
@@ -64,7 +87,7 @@
             transition: .4s;
             border-radius: 24px;
         }
-
+        
         .slider:before {
             position: absolute;
             content: "";
@@ -76,34 +99,34 @@
             transition: .4s;
             border-radius: 50%;
         }
-
+        
         input:checked+.slider {
             background-color: #4F46E5;
         }
-
+        
         input:checked+.slider:before {
             transform: translateX(20px);
         }
-
+        
         .module-card {
             transition: all 0.3s ease;
         }
-
+        
         .module-card:hover {
             transform: translateY(-3px);
         }
-
+        
         .module-card.active {
             border-color: #4F46E5;
             background-color: rgba(79, 70, 229, 0.05);
         }
-
+        
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
-
+        
         .custom-checkbox {
             appearance: none;
             width: 18px;
@@ -115,12 +138,12 @@
             position: relative;
             background-color: white;
         }
-
+        
         .custom-checkbox:checked {
             background-color: #4F46E5;
             border-color: #4F46E5;
         }
-
+        
         .custom-checkbox:checked::after {
             content: "";
             position: absolute;
@@ -132,32 +155,32 @@
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
         }
-
+        
         .status-active {
             background-color: #dcfce7;
             color: #15803d;
         }
-
+        
         .status-follow {
             background-color: #dbeafe;
             color: #1d4ed8;
         }
-
+        
         .status-critical {
             background-color: #fee2e2;
             color: #b91c1c;
         }
-
+        
         .status-completed {
             background-color: #f3f4f6;
             color: #4b5563;
         }
-
+        
         .status-waiting {
             background-color: #fef3c7;
             color: #92400e;
         }
-
+        
         .table-row-hover:hover {
             background-color: #f9fafb;
         }
@@ -176,40 +199,29 @@
             <nav class="flex-1 overflow-y-auto custom-scrollbar">
                 <div class="px-4 py-4">
                     <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ana Menü</p>
-                    <a href="index.html"
-                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="index.html" class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-dashboard-line"></i>
                         </div>
                         <span>Gösterge Paneli</span>
                     </a>
-                    <a href="#"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md bg-gray-800 text-white">
+                    <a href="#" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md bg-gray-800 text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-user-line"></i>
                         </div>
                         <span>Hastalarım</span>
                     </a>
-                    <a href="Randevular.html"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="Randevular.html" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-calendar-line"></i>
                         </div>
                         <span>Randevular</span>
                     </a>
-                    <a href="raporlar.html"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="raporlar.html" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-file-list-line"></i>
                         </div>
                         <span>Raporlar</span>
-                    </a>
-                    <a href="mesajlar.html"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-message-3-line"></i>
-                        </div>
-                        <span>Mesajlar</span>
                     </a>
                 </div>
                 <!-- AI Asistan Bölümü -->
@@ -226,8 +238,7 @@
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <div id="patientAnalysisModule"
-                                class="module-card active p-2 border border-gray-700 rounded-md cursor-pointer">
+                            <div id="patientAnalysisModule" class="module-card active p-2 border border-gray-700 rounded-md cursor-pointer">
                                 <div class="flex items-center">
                                     <div class="w-6 h-6 flex items-center justify-center text-primary">
                                         <i class="ri-heart-pulse-line"></i>
@@ -237,36 +248,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="reportAnalysisModule"
-                                class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
-                                        <i class="ri-file-chart-line"></i>
-                                    </div>
-                                    <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Rapor Analizi</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="patientReportAnalysisModule"
-                                class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
-                                        <i class="ri-file-user-line"></i>
-                                    </div>
-                                    <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Hasta Raporu Analizi</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="treatmentRecommendationsModule"
-                                class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
+                            <div id="treatmentRecommendationsModule" class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
                                 <div class="flex items-center">
                                     <div class="w-6 h-6 flex items-center justify-center text-gray-400">
                                         <i class="ri-medicine-bottle-line"></i>
                                     </div>
                                     <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Tedavi Önerileri</p>
+                                        <p class="text-xs font-medium text-gray-300">Tedavi Önerileri (Yakında)</p>
                                     </div>
                                 </div>
                             </div>
@@ -274,29 +262,12 @@
                     </div>
                 </div>
                 <!-- Ayarlar -->
-                <div class="px-4 py-4 mt-2">
-                    <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ayarlar</p>
-                    <a href="#"
-                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-settings-line"></i>
-                        </div>
-                        <span>Genel Ayarlar</span>
-                    </a>
-                    <a href="#"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-user-settings-line"></i>
-                        </div>
-                        <span>Profil</span>
-                    </a>
-                </div>
+
             </nav>
             <!-- User Profile -->
             <div class="p-4 border-t border-gray-800">
                 <div class="flex items-center">
-                    <img class="h-10 w-10 rounded-full"
-                        src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520male%2520doctor%2520with%2520short%2520dark%2520hair%252C%2520wearing%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=doctor1&orientation=squarish"
+                    <img class="h-10 w-10 rounded-full" src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520male%2520doctor%2520with%2520short%2520dark%2520hair%252C%2520wearing%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=doctor1&orientation=squarish"
                         alt="Dr. Ahmet Yılmaz">
                     <div class="ml-3">
                         <p class="text-sm font-medium text-white">Dr. Ahmet Yılmaz</p>
@@ -321,9 +292,7 @@
                                     <i class="ri-search-line"></i>
                                 </div>
                             </div>
-                            <input type="text" id="searchInput"
-                                class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-                                placeholder="Hasta ara...">
+                            <input type="text" id="searchInput" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Hasta ara...">
                         </div>
                         <!-- Notifications -->
                         <button class="relative p-1 rounded-full text-gray-500 hover:text-gray-700 focus:outline-none">
@@ -355,32 +324,10 @@
                     <div class="flex flex-wrap items-center justify-between mb-6">
                         <div class="flex items-center space-x-2 mb-4 sm:mb-0">
                             <h2 class="text-lg font-semibold text-gray-800">Tüm Hastalar</h2>
-                            <span
-                                class="px-2 py-1 bg-primary bg-opacity-10 text-primary text-xs font-medium rounded-full">42
+                            <span class="px-2 py-1 bg-primary bg-opacity-10 text-primary text-xs font-medium rounded-full">42
                                 Hasta</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-3">
-                            <button
-                                class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
-                                <div class="w-4 h-4 mr-2 flex items-center justify-center">
-                                    <i class="ri-download-line"></i>
-                                </div>
-                                <span>Dışa Aktar</span>
-                            </button>
-                            <button
-                                class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
-                                <div class="w-4 h-4 mr-2 flex items-center justify-center">
-                                    <i class="ri-filter-3-line"></i>
-                                </div>
-                                <span>Filtreler</span>
-                            </button>
-                            <button id="addPatientBtn"
-                                class="flex items-center px-3 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
-                                <div class="w-4 h-4 mr-2 flex items-center justify-center">
-                                    <i class="ri-add-line"></i>
-                                </div>
-                                <span>Yeni Hasta Ekle</span>
-                            </button>
                         </div>
                     </div>
                     <!-- Filters -->
@@ -391,8 +338,7 @@
                                 <label for="diagnosisFilter" class="block text-sm font-medium text-gray-700 mb-1">Tanıya
                                     Göre</label>
                                 <div class="relative">
-                                    <select id="diagnosisFilter"
-                                        class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
+                                    <select id="diagnosisFilter" class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
                                         <option value="">Tüm Tanılar</option>
                                         <option value="meme-kanseri">Meme Kanseri</option>
                                         <option value="akciğer-kanseri">Akciğer Kanseri</option>
@@ -413,8 +359,7 @@
                                 <label for="statusFilter" class="block text-sm font-medium text-gray-700 mb-1">Duruma
                                     Göre</label>
                                 <div class="relative">
-                                    <select id="statusFilter"
-                                        class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
+                                    <select id="statusFilter" class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
                                         <option value="">Tüm Durumlar</option>
                                         <option value="aktif-tedavi">Aktif Tedavi</option>
                                         <option value="takipte">Takipte</option>
@@ -431,11 +376,9 @@
                             </div>
                             <!-- Sıralama -->
                             <div class="w-full sm:w-auto">
-                                <label for="sortFilter"
-                                    class="block text-sm font-medium text-gray-700 mb-1">Sıralama</label>
+                                <label for="sortFilter" class="block text-sm font-medium text-gray-700 mb-1">Sıralama</label>
                                 <div class="relative">
-                                    <select id="sortFilter"
-                                        class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
+                                    <select id="sortFilter" class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
                                         <option value="son-randevu">Son Randevu Tarihi</option>
                                         <option value="ad-soyad">Ad Soyad</option>
                                         <option value="yaş">Yaş</option>
@@ -453,8 +396,7 @@
                                 <label for="dateRangeFilter" class="block text-sm font-medium text-gray-700 mb-1">Tarih
                                     Aralığı</label>
                                 <div class="relative">
-                                    <select id="dateRangeFilter"
-                                        class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
+                                    <select id="dateRangeFilter" class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
                                         <option value="tüm-zamanlar">Tüm Zamanlar</option>
                                         <option value="bugün">Bugün</option>
                                         <option value="bu-hafta">Bu Hafta</option>
@@ -473,15 +415,13 @@
                         </div>
                         <!-- Aktif Filtreler -->
                         <div class="mt-4 flex flex-wrap gap-2" id="activeFilters">
-                            <div
-                                class="inline-flex items-center px-2 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-800">
+                            <div class="inline-flex items-center px-2 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-800">
                                 <span>Meme Kanseri</span>
                                 <button class="ml-1 text-gray-500 hover:text-gray-700">
                                     <i class="ri-close-line"></i>
                                 </button>
                             </div>
-                            <div
-                                class="inline-flex items-center px-2 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-800">
+                            <div class="inline-flex items-center px-2 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-800">
                                 <span>Aktif Tedavi</span>
                                 <button class="ml-1 text-gray-500 hover:text-gray-700">
                                     <i class="ri-close-line"></i>
@@ -498,32 +438,23 @@
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             <div class="flex items-center">
                                                 <input type="checkbox" class="custom-checkbox" id="selectAll">
                                                 <span class="ml-3">Hasta</span>
                                             </div>
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Yaş
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Tanı
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Son Randevu
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Durum
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            İşlemler
                                         </th>
                                     </tr>
                                 </thead>
@@ -534,12 +465,10 @@
                                             <div class="flex items-center">
                                                 <input type="checkbox" class="custom-checkbox patient-checkbox">
                                                 <div class="flex items-center ml-3">
-                                                    <img class="h-10 w-10 rounded-full object-cover"
-                                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient1&orientation=squarish"
+                                                    <img class="h-10 w-10 rounded-full object-cover" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient1&orientation=squarish"
                                                         alt="Zeynep Kaya">
                                                     <div class="ml-3">
-                                                        <a href="index.html" data-readdy="true"
-                                                            class="text-sm font-medium text-gray-900 hover:text-primary">Zeynep
+                                                        <a href="index.html" data-readdy="true" class="text-sm font-medium text-gray-900 hover:text-primary">Zeynep
                                                             Kaya</a>
                                                         <div class="text-xs text-gray-500">ID: #ZK-10254</div>
                                                     </div>
@@ -558,39 +487,11 @@
                                             <div class="text-xs text-gray-500">14:30</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span
-                                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-active">
+                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-active">
                                                 Aktif Tedavi
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <div class="flex justify-end space-x-2">
-                                                <a href="#" data-readdy="true"
-                                                    class="text-primary hover:text-indigo-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-eye-line"></i>
-                                                    </div>
-                                                </a>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-edit-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-calendar-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-more-2-fill"></i>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </td>
+
                                     </tr>
                                     <!-- Mehmet Aydın -->
                                     <tr class="table-row-hover">
@@ -598,8 +499,7 @@
                                             <div class="flex items-center">
                                                 <input type="checkbox" class="custom-checkbox patient-checkbox">
                                                 <div class="flex items-center ml-3">
-                                                    <img class="h-10 w-10 rounded-full object-cover"
-                                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520an%2520elderly%2520man%2520with%2520gray%2520hair%2520and%2520glasses%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient2&orientation=squarish"
+                                                    <img class="h-10 w-10 rounded-full object-cover" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520an%2520elderly%2520man%2520with%2520gray%2520hair%2520and%2520glasses%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient2&orientation=squarish"
                                                         alt="Mehmet Aydın">
                                                     <div class="ml-3">
                                                         <div class="text-sm font-medium text-gray-900">Mehmet Aydın
@@ -621,39 +521,11 @@
                                             <div class="text-xs text-gray-500">10:15</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span
-                                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-critical">
+                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-critical">
                                                 Kritik
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <div class="flex justify-end space-x-2">
-                                                <button
-                                                    class="text-primary hover:text-indigo-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-eye-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-edit-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-calendar-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-more-2-fill"></i>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </td>
+
                                     </tr>
                                     <!-- Ayşe Demir -->
                                     <tr class="table-row-hover">
@@ -661,8 +533,7 @@
                                             <div class="flex items-center">
                                                 <input type="checkbox" class="custom-checkbox patient-checkbox">
                                                 <div class="flex items-center ml-3">
-                                                    <img class="h-10 w-10 rounded-full object-cover"
-                                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520woman%2520with%2520long%2520dark%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient3&orientation=squarish"
+                                                    <img class="h-10 w-10 rounded-full object-cover" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520woman%2520with%2520long%2520dark%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient3&orientation=squarish"
                                                         alt="Ayşe Demir">
                                                     <div class="ml-3">
                                                         <div class="text-sm font-medium text-gray-900">Ayşe Demir</div>
@@ -683,39 +554,11 @@
                                             <div class="text-xs text-gray-500">16:45</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span
-                                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-follow">
+                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-follow">
                                                 Takipte
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <div class="flex justify-end space-x-2">
-                                                <button
-                                                    class="text-primary hover:text-indigo-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-eye-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-edit-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-calendar-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-more-2-fill"></i>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </td>
+
                                     </tr>
                                     <!-- Mustafa Özkan -->
                                     <tr class="table-row-hover">
@@ -723,8 +566,7 @@
                                             <div class="flex items-center">
                                                 <input type="checkbox" class="custom-checkbox patient-checkbox">
                                                 <div class="flex items-center ml-3">
-                                                    <img class="h-10 w-10 rounded-full object-cover"
-                                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520man%2520with%2520short%2520black%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient4&orientation=squarish"
+                                                    <img class="h-10 w-10 rounded-full object-cover" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520man%2520with%2520short%2520black%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient4&orientation=squarish"
                                                         alt="Mustafa Özkan">
                                                     <div class="ml-3">
                                                         <div class="text-sm font-medium text-gray-900">Mustafa Özkan
@@ -746,39 +588,11 @@
                                             <div class="text-xs text-gray-500">11:30</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span
-                                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-active">
+                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-active">
                                                 Aktif Tedavi
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <div class="flex justify-end space-x-2">
-                                                <button
-                                                    class="text-primary hover:text-indigo-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-eye-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-edit-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-calendar-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-more-2-fill"></i>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </td>
+
                                     </tr>
                                     <!-- Fatma Yılmaz -->
                                     <tr class="table-row-hover">
@@ -786,8 +600,7 @@
                                             <div class="flex items-center">
                                                 <input type="checkbox" class="custom-checkbox patient-checkbox">
                                                 <div class="flex items-center ml-3">
-                                                    <img class="h-10 w-10 rounded-full object-cover"
-                                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520an%2520elderly%2520woman%2520with%2520gray%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient5&orientation=squarish"
+                                                    <img class="h-10 w-10 rounded-full object-cover" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520an%2520elderly%2520woman%2520with%2520gray%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient5&orientation=squarish"
                                                         alt="Fatma Yılmaz">
                                                     <div class="ml-3">
                                                         <div class="text-sm font-medium text-gray-900">Fatma Yılmaz
@@ -809,39 +622,11 @@
                                             <div class="text-xs text-gray-500">09:00</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span
-                                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-completed">
+                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-completed">
                                                 Tedavi Tamamlandı
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <div class="flex justify-end space-x-2">
-                                                <button
-                                                    class="text-primary hover:text-indigo-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-eye-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-edit-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-calendar-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-more-2-fill"></i>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </td>
+
                                     </tr>
                                     <!-- Ali Kaya -->
                                     <tr class="table-row-hover">
@@ -849,8 +634,7 @@
                                             <div class="flex items-center">
                                                 <input type="checkbox" class="custom-checkbox patient-checkbox">
                                                 <div class="flex items-center ml-3">
-                                                    <img class="h-10 w-10 rounded-full object-cover"
-                                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520man%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient6&orientation=squarish"
+                                                    <img class="h-10 w-10 rounded-full object-cover" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520man%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient6&orientation=squarish"
                                                         alt="Ali Kaya">
                                                     <div class="ml-3">
                                                         <div class="text-sm font-medium text-gray-900">Ali Kaya</div>
@@ -871,38 +655,9 @@
                                             <div class="text-xs text-gray-500">13:15</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span
-                                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-waiting">
+                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-waiting">
                                                 Beklemede
                                             </span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <div class="flex justify-end space-x-2">
-                                                <button
-                                                    class="text-primary hover:text-indigo-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-eye-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-edit-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-calendar-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-more-2-fill"></i>
-                                                    </div>
-                                                </button>
-                                            </div>
                                         </td>
                                     </tr>
                                     <!-- Sevgi Öztürk -->
@@ -911,8 +666,7 @@
                                             <div class="flex items-center">
                                                 <input type="checkbox" class="custom-checkbox patient-checkbox">
                                                 <div class="flex items-center ml-3">
-                                                    <img class="h-10 w-10 rounded-full object-cover"
-                                                        src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520blonde%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient7&orientation=squarish"
+                                                    <img class="h-10 w-10 rounded-full object-cover" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520blonde%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=patient7&orientation=squarish"
                                                         alt="Sevgi Öztürk">
                                                     <div class="ml-3">
                                                         <div class="text-sm font-medium text-gray-900">Sevgi Öztürk
@@ -934,95 +688,55 @@
                                             <div class="text-xs text-gray-500">15:00</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <span
-                                                class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-follow">
+                                            <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full status-follow">
                                                 Takipte
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <div class="flex justify-end space-x-2">
-                                                <button
-                                                    class="text-primary hover:text-indigo-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-eye-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-edit-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-calendar-line"></i>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    class="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100">
-                                                    <div class="w-5 h-5 flex items-center justify-center">
-                                                        <i class="ri-more-2-fill"></i>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <!-- Pagination -->
-                        <div
-                            class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                        <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
                             <div class="flex-1 flex justify-between sm:hidden">
-                                <button
-                                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                     Önceki
                                 </button>
-                                <button
-                                    class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                <button class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                     Sonraki
                                 </button>
                             </div>
                             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                                 <div>
                                     <p class="text-sm text-gray-700">
-                                        <span class="font-medium">1-7</span> / <span class="font-medium">42</span> hasta
-                                        gösteriliyor
+                                        <span class="font-medium">1-7</span> / <span class="font-medium">42</span> hasta gösteriliyor
                                     </p>
                                 </div>
                                 <div>
-                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
-                                        aria-label="Pagination">
-                                        <button
-                                            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                        <button class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                             <span class="sr-only">Önceki</span>
                                             <div class="w-5 h-5 flex items-center justify-center">
                                                 <i class="ri-arrow-left-s-line"></i>
                                             </div>
                                         </button>
-                                        <button aria-current="page"
-                                            class="z-10 bg-primary border-primary text-white relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <button aria-current="page" class="z-10 bg-primary border-primary text-white relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             1
                                         </button>
-                                        <button
-                                            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <button class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             2
                                         </button>
-                                        <button
-                                            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <button class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             3
                                         </button>
-                                        <span
-                                            class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                                        <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
                                             ...
                                         </span>
-                                        <button
-                                            class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        <button class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                             6
                                         </button>
-                                        <button
-                                            class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <button class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                             <span class="sr-only">Sonraki</span>
                                             <div class="w-5 h-5 flex items-center justify-center">
                                                 <i class="ri-arrow-right-s-line"></i>
@@ -1038,8 +752,7 @@
         </div>
     </div>
     <!-- Add Patient Modal -->
-    <div id="addPatientModal"
-        class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="addPatientModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-800">Yeni Hasta Ekle</h3>
@@ -1058,25 +771,21 @@
                         </div>
                         <div>
                             <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">Ad</label>
-                            <input type="text" id="firstName" name="firstName"
-                                class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                            <input type="text" id="firstName" name="firstName" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
                         </div>
                         <div>
                             <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Soyad</label>
-                            <input type="text" id="lastName" name="lastName"
-                                class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                            <input type="text" id="lastName" name="lastName" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
                         </div>
                         <div>
                             <label for="birthDate" class="block text-sm font-medium text-gray-700 mb-1">Doğum
                                 Tarihi</label>
-                            <input type="date" id="birthDate" name="birthDate"
-                                class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                            <input type="date" id="birthDate" name="birthDate" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
                         </div>
                         <div>
                             <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Cinsiyet</label>
                             <div class="relative">
-                                <select id="gender" name="gender"
-                                    class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
+                                <select id="gender" name="gender" class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
                                     <option value="">Seçiniz</option>
                                     <option value="kadın">Kadın</option>
                                     <option value="erkek">Erkek</option>
@@ -1095,18 +804,15 @@
                         </div>
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
-                            <input type="tel" id="phone" name="phone"
-                                class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                            <input type="tel" id="phone" name="phone" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-posta</label>
-                            <input type="email" id="email" name="email"
-                                class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                            <input type="email" id="email" name="email" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
                         </div>
                         <div class="md:col-span-2">
                             <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Adres</label>
-                            <textarea id="address" name="address" rows="3"
-                                class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
+                            <textarea id="address" name="address" rows="3" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
                         </div>
                         <!-- Tıbbi Bilgiler -->
                         <div class="md:col-span-2 mt-4">
@@ -1115,8 +821,7 @@
                         <div>
                             <label for="diagnosis" class="block text-sm font-medium text-gray-700 mb-1">Tanı</label>
                             <div class="relative">
-                                <select id="diagnosis" name="diagnosis"
-                                    class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
+                                <select id="diagnosis" name="diagnosis" class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
                                     <option value="">Seçiniz</option>
                                     <option value="meme-kanseri">Meme Kanseri</option>
                                     <option value="akciğer-kanseri">Akciğer Kanseri</option>
@@ -1137,8 +842,7 @@
                         <div>
                             <label for="stage" class="block text-sm font-medium text-gray-700 mb-1">Evre</label>
                             <div class="relative">
-                                <select id="stage" name="stage"
-                                    class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
+                                <select id="stage" name="stage" class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
                                     <option value="">Seçiniz</option>
                                     <option value="evre-0">Evre 0</option>
                                     <option value="evre-1">Evre I</option>
@@ -1158,8 +862,7 @@
                             <label for="bloodType" class="block text-sm font-medium text-gray-700 mb-1">Kan
                                 Grubu</label>
                             <div class="relative">
-                                <select id="bloodType" name="bloodType"
-                                    class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
+                                <select id="bloodType" name="bloodType" class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
                                     <option value="">Seçiniz</option>
                                     <option value="a-pozitif">A Rh+</option>
                                     <option value="a-negatif">A Rh-</option>
@@ -1180,8 +883,7 @@
                         <div>
                             <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Durum</label>
                             <div class="relative">
-                                <select id="status" name="status"
-                                    class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
+                                <select id="status" name="status" class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white">
                                     <option value="">Seçiniz</option>
                                     <option value="aktif-tedavi">Aktif Tedavi</option>
                                     <option value="takipte">Takipte</option>
@@ -1198,17 +900,14 @@
                         </div>
                         <div class="md:col-span-2">
                             <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Notlar</label>
-                            <textarea id="notes" name="notes" rows="3"
-                                class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
+                            <textarea id="notes" name="notes" rows="3" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
                         </div>
                     </div>
                     <div class="mt-6 flex justify-end space-x-3">
-                        <button type="button" id="cancelAddPatient"
-                            class="px-4 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                        <button type="button" id="cancelAddPatient" class="px-4 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                             İptal
                         </button>
-                        <button type="submit"
-                            class="px-4 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
+                        <button type="submit" class="px-4 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
                             Hasta Ekle
                         </button>
                     </div>
@@ -1217,10 +916,10 @@
         </div>
     </div>
     <script id="themeToggleScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
-            themeToggle.addEventListener('change', function () {
+            themeToggle.addEventListener('change', function() {
                 if (this.checked) {
                     html.classList.add('dark');
                     document.body.style.backgroundColor = '#111827';
@@ -1232,11 +931,11 @@
         });
     </script>
     <script id="patientTableScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Select All Checkbox
             const selectAllCheckbox = document.getElementById('selectAll');
             const patientCheckboxes = document.querySelectorAll('.patient-checkbox');
-            selectAllCheckbox.addEventListener('change', function () {
+            selectAllCheckbox.addEventListener('change', function() {
                 patientCheckboxes.forEach(checkbox => {
                     checkbox.checked = selectAllCheckbox.checked;
                 });
@@ -1244,7 +943,7 @@
             // Search Functionality
             const searchInput = document.getElementById('searchInput');
             const tableRows = document.querySelectorAll('#patientsTableBody tr');
-            searchInput.addEventListener('input', function () {
+            searchInput.addEventListener('input', function() {
                 const searchTerm = searchInput.value.toLowerCase();
                 tableRows.forEach(row => {
                     const patientName = row.querySelector('td:first-child .text-gray-900').textContent.toLowerCase();
@@ -1260,6 +959,7 @@
             // Filter Functionality
             const diagnosisFilter = document.getElementById('diagnosisFilter');
             const statusFilter = document.getElementById('statusFilter');
+
             function applyFilters() {
                 const diagnosisValue = diagnosisFilter.value.toLowerCase();
                 const statusValue = statusFilter.value.toLowerCase();
@@ -1281,7 +981,7 @@
             const activeFilters = document.getElementById('activeFilters');
             const filterCloseButtons = activeFilters.querySelectorAll('button');
             filterCloseButtons.forEach(button => {
-                button.addEventListener('click', function () {
+                button.addEventListener('click', function() {
                     const filterItem = button.parentElement;
                     const filterText = filterItem.querySelector('span').textContent.toLowerCase();
                     if (filterText.includes('meme kanseri')) {
@@ -1294,7 +994,7 @@
                 });
             });
             const clearFiltersButton = activeFilters.querySelector('button:last-child');
-            clearFiltersButton.addEventListener('click', function () {
+            clearFiltersButton.addEventListener('click', function() {
                 diagnosisFilter.value = '';
                 statusFilter.value = '';
                 const filterItems = activeFilters.querySelectorAll('div');
@@ -1304,14 +1004,14 @@
         });
     </script>
     <script id="modalScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const addPatientBtn = document.getElementById('addPatientBtn');
             const addPatientModal = document.getElementById('addPatientModal');
             const closeAddPatientModal = document.getElementById('closeAddPatientModal');
             const cancelAddPatient = document.getElementById('cancelAddPatient');
             const addPatientForm = document.getElementById('addPatientForm');
             // Open Modal
-            addPatientBtn.addEventListener('click', function () {
+            addPatientBtn.addEventListener('click', function() {
                 addPatientModal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
             });
@@ -1324,13 +1024,13 @@
             closeAddPatientModal.addEventListener('click', closeModal);
             cancelAddPatient.addEventListener('click', closeModal);
             // Close Modal when clicking outside
-            addPatientModal.addEventListener('click', function (e) {
+            addPatientModal.addEventListener('click', function(e) {
                 if (e.target === addPatientModal) {
                     closeModal();
                 }
             });
             // Form Submission
-            addPatientForm.addEventListener('submit', function (e) {
+            addPatientForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 // Here you would normally send the form data to the server
                 // For this example, we'll just close the modal
@@ -1340,8 +1040,7 @@
         });
     </script>
     <!-- Patient Selection Dialog -->
-    <div id="patientSelectionDialog"
-        class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="patientSelectionDialog" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
             <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-800">Hasta Seçin</h3>
@@ -1353,9 +1052,7 @@
             </div>
             <div class="p-6">
                 <div class="mb-4">
-                    <input type="text" id="patientSearchInput"
-                        class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-                        placeholder="Hasta ara...">
+                    <input type="text" id="patientSearchInput" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Hasta ara...">
                 </div>
                 <div class="max-h-64 overflow-y-auto custom-scrollbar">
                     <div id="patientList" class="space-y-2">
@@ -1366,8 +1063,7 @@
         </div>
     </div>
     <!-- Report Selection Dialog -->
-    <div id="reportSelectionDialog"
-        class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="reportSelectionDialog" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
             <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-800">Rapor Seçin</h3>
@@ -1379,9 +1075,7 @@
             </div>
             <div class="p-6">
                 <div class="mb-4">
-                    <input type="text" id="reportSearchInput"
-                        class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-                        placeholder="Rapor ara...">
+                    <input type="text" id="reportSearchInput" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Rapor ara...">
                 </div>
                 <div class="max-h-64 overflow-y-auto custom-scrollbar">
                     <div id="reportList" class="space-y-2">
@@ -1392,8 +1086,7 @@
         </div>
     </div>
     <!-- Report Analysis Dialog -->
-    <div id="reportAnalysisDialog"
-        class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="reportAnalysisDialog" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
             <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-800">Rapor Analizi</h3>
@@ -1409,8 +1102,7 @@
         </div>
     </div>
     <!-- Treatment Recommendations Dialog -->
-    <div id="treatmentRecommendationsDialog"
-        class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="treatmentRecommendationsDialog" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-800">Tedavi Önerileri</h3>
@@ -1427,8 +1119,7 @@
     </div>
 
     <!-- Analysis Report Dialog -->
-    <div id="analysisReportDialog"
-        class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="analysisReportDialog" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
             <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-800">Hasta Durum Analizi</h3>
@@ -1444,707 +1135,82 @@
         </div>
     </div>
     <script id="patientAnalysisScript">
-        document.addEventListener('DOMContentLoaded', function () {
-            const treatmentRecommendationsModule = document.getElementById('treatmentRecommendationsModule');
-            const treatmentRecommendationsDialog = document.getElementById('treatmentRecommendationsDialog');
-            const closeTreatmentRecommendationsDialog = document.getElementById('closeTreatmentRecommendationsDialog');
-            const treatmentRecommendationsContent = document.getElementById('treatmentRecommendationsContent');
+        // Tüm hasta seçme ve modal açma ile ilgili JS kodları temizlendi.
+    </script>
+    <!-- Hasta Durumu Analizi Modalı (Sıfırdan) -->
+    <div id="myPatientModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-gray-800">Hasta Seçin</h3>
+                <button id="closeMyPatientModal" class="text-gray-500 hover:text-gray-700">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-4">
+                    <input type="text" id="myPatientSearchInput" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Hasta ara...">
+                </div>
+                <div class="max-h-64 overflow-y-auto custom-scrollbar">
+                    <div id="myPatientList" class="space-y-2">
+                        <!-- Hasta listesi dinamik olarak doldurulacak -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Buton ve modal referansları
+        const hastaAnalizBtn = document.getElementById('patientAnalysisModule');
+        const modal = document.getElementById('myPatientModal');
+        const closeModalBtn = document.getElementById('closeMyPatientModal');
+        const patientListDiv = document.getElementById('myPatientList');
+        const searchInput = document.getElementById('myPatientSearchInput');
 
-            function showTreatmentRecommendations(patient) {
-                patientSelectionDialog.classList.add('hidden');
-                treatmentRecommendationsDialog.classList.remove('hidden');
+        // Örnek hasta verisi
+        const hastalar = [
+            { id: 'ZK-10254', name: 'Zeynep Kaya', diagnosis: 'Meme Kanseri', stage: 'Evre II' },
+            { id: 'MA-10255', name: 'Mehmet Aydın', diagnosis: 'Akciğer Kanseri', stage: 'Evre III' },
+            { id: 'AD-10256', name: 'Ayşe Demir', diagnosis: 'Lenfoma', stage: 'Hodgkin' }
+        ];
 
-                let recommendationsContent = '';
-                if (patient.diagnosis === 'Meme Kanseri') {
-                    recommendationsContent = `
-<div class="space-y-6">
-<div class="flex items-center justify-between pb-4 border-b border-gray-200">
-<div>
-<h4 class="text-xl font-semibold text-gray-900">${patient.name} - Tedavi Önerileri</h4>
-<p class="text-sm text-gray-500">Tanı: ${patient.diagnosis} ${patient.stage}</p>
-</div>
-<span class="px-3 py-1 text-sm font-semibold rounded-full ${patient.status === 'Aktif Tedavi' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">${patient.status}</span>
-</div>
-
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Mevcut Tedavi Planı</h5>
-<div class="p-4 bg-gray-50 rounded-lg space-y-2">
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary">
-<i class="ri-checkbox-circle-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Neoadjuvan Kemoterapi</span>
-</div>
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary">
-<i class="ri-checkbox-circle-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Cerrahi Planlama</span>
-</div>
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary">
-<i class="ri-checkbox-circle-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Radyoterapi</span>
-</div>
-</div>
-</div>
-
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">İlaç Önerileri</h5>
-<div class="space-y-3">
-<div class="p-3 border border-gray-200 rounded-lg">
-<div class="flex items-center justify-between">
-<div class="flex items-center">
-<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-<i class="ri-medicine-bottle-line text-blue-600"></i>
-</div>
-<div class="ml-3">
-<p class="text-sm font-medium text-gray-900">Doksorubisin + Siklofosfamid</p>
-<p class="text-xs text-gray-500">4 kür, 3 hafta ara ile</p>
-</div>
-</div>
-<span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">Birinci Basamak</span>
-</div>
-</div>
-
-<div class="p-3 border border-gray-200 rounded-lg">
-<div class="flex items-center justify-between">
-<div class="flex items-center">
-<div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
-<i class="ri-medicine-bottle-line text-purple-600"></i>
-</div>
-<div class="ml-3">
-<p class="text-sm font-medium text-gray-900">Paklitaksel</p>
-<p class="text-xs text-gray-500">12 hafta, haftalık uygulama</p>
-</div>
-</div>
-<span class="px-2 py-1 text-xs font-medium rounded-full bg-purple-100 text-purple-800">İkinci Basamak</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Yan Etki Yönetimi</h5>
-<div class="p-4 bg-yellow-50 rounded-lg space-y-2">
-<p class="text-sm text-yellow-800">• Bulantı ve kusma için antiemetik profilaksisi</p>
-<p class="text-sm text-yellow-800">• Nötropeni riski için G-CSF desteği</p>
-<p class="text-sm text-yellow-800">• Kardiyotoksisite için düzenli EKO takibi</p>
-</div>
-</div>
-
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Tedavi Başarı Oranları</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<div class="space-y-3">
-<div>
-<div class="flex items-center justify-between mb-1">
-<span class="text-sm text-gray-600">Tam Yanıt</span>
-<span class="text-sm font-medium text-gray-900">65%</span>
-</div>
-<div class="h-2 bg-gray-200 rounded-full">
-<div class="h-2 bg-green-500 rounded-full" style="width: 65%"></div>
-</div>
-</div>
-<div>
-<div class="flex items-center justify-between mb-1">
-<span class="text-sm text-gray-600">Kısmi Yanıt</span>
-<span class="text-sm font-medium text-gray-900">25%</span>
-</div>
-<div class="h-2 bg-gray-200 rounded-full">
-<div class="h-2 bg-yellow-500 rounded-full" style="width: 25%"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Klinik Kılavuzlar</h5>
-<div class="p-4 bg-blue-50 rounded-lg">
-<div class="space-y-2">
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-blue-600">
-<i class="ri-file-text-line"></i>
-</div>
-<span class="ml-2 text-sm text-blue-800">NCCN Kılavuzu 2025</span>
-</div>
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-blue-600">
-<i class="ri-file-text-line"></i>
-</div>
-<span class="ml-2 text-sm text-blue-800">ESMO Klinik Önerileri</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-`;
-                } else if (patient.diagnosis === 'Akciğer Kanseri') {
-                    // Similar structure but with lung cancer specific recommendations
-                    recommendationsContent = `
-<div class="space-y-6">
-<!-- Similar structure with lung cancer specific content -->
-</div>
-`;
-                } else {
-                    recommendationsContent = `
-<div class="p-4">
-<p class="text-gray-600">Bu tanı için henüz tedavi önerileri mevcut değil.</p>
-</div>
-`;
-                }
-
-                treatmentRecommendationsContent.innerHTML = recommendationsContent;
-            }
-
-            treatmentRecommendationsModule.addEventListener('click', () => {
-                patientSelectionDialog.classList.remove('hidden');
-                populatePatientList(activePatients);
-            });
-
-            closeTreatmentRecommendationsDialog.addEventListener('click', () => {
-                treatmentRecommendationsDialog.classList.add('hidden');
-            });
-
-            treatmentRecommendationsDialog.addEventListener('click', (e) => {
-                if (e.target === treatmentRecommendationsDialog) {
-                    treatmentRecommendationsDialog.classList.add('hidden');
-                }
-            });
-
-            // Modify the existing showAnalysisReport function to handle treatment recommendations
-            const originalShowAnalysisReport = showAnalysisReport;
-            showAnalysisReport = function (patient) {
-                if (treatmentRecommendationsDialog.classList.contains('hidden')) {
-                    originalShowAnalysisReport(patient);
-                } else {
-                    showTreatmentRecommendations(patient);
-                }
-            };
-            const patientReportAnalysisModule = document.getElementById('patientReportAnalysisModule');
-            patientReportAnalysisModule.addEventListener('click', () => {
-                patientSelectionDialog.classList.remove('hidden');
-                populatePatientList(activePatients);
-            });
-            // Extend showAnalysisReport function to show patient reports after patient selection
-            function showAnalysisReport(patient) {
-                patientSelectionDialog.classList.add('hidden');
-                reportSelectionDialog.classList.remove('hidden');
-                // Filter reports for selected patient
-                const patientReports = sampleReports.filter(report => report.patient === patient.name);
-                populateReportList(patientReports);
-            }
-            // Extend showReportAnalysis function to show detailed analysis
-            function showReportAnalysis(report) {
-                reportSelectionDialog.classList.add('hidden');
-                reportAnalysisDialog.classList.remove('hidden');
-                let analysisContent = `
-<div class="space-y-6">
-<div class="flex items-center justify-between pb-4 border-b border-gray-200">
-<div>
-<h4 class="text-xl font-semibold text-gray-900">Rapor Analizi</h4>
-<p class="text-sm text-gray-500">${report.id} - ${report.date}</p>
-</div>
-<span class="px-3 py-1 text-sm font-semibold rounded-full ${report.status === 'Anormal Değerler' ? 'bg-yellow-100 text-yellow-800' :
-                        report.status === 'Kritik Bulgular' ? 'bg-red-100 text-red-800' :
-                            'bg-green-100 text-green-800'
-                    }">${report.status}</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Rapor Özeti</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<p class="text-sm text-gray-600">${report.type} bölümü tarafından yapılan incelemede ${report.status.toLowerCase()} tespit edildi.</p>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Bulgular</h5>
-<div class="space-y-2">
-<div class="flex items-center p-2 bg-gray-50 rounded-md">
-<div class="w-5 h-5 flex items-center justify-center text-gray-600">
-<i class="ri-file-list-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Detaylı bulgular için tam raporu inceleyiniz</span>
-</div>
-</div>
-</div>
-</div>
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">AI Önerileri</h5>
-<div class="p-4 bg-blue-50 rounded-lg space-y-2">
-<p class="text-sm text-blue-800">• Kontrol muayenesi planlanması</p>
-<p class="text-sm text-blue-800">• İlgili branş konsültasyonu</p>
-<p class="text-sm text-blue-800">• Tedavi planının gözden geçirilmesi</p>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Takip Planı</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<div class="space-y-2">
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary">
-<i class="ri-calendar-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Önerilen kontrol: 2 hafta sonra</span>
-</div>
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary">
-<i class="ri-file-list-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Kontrol tetkikleri planlanmalı</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-`;
-                reportAnalysisContent.innerHTML = analysisContent;
-            }
-            // Report Analysis Module
-            const reportAnalysisModule = document.getElementById('reportAnalysisModule');
-            const reportSelectionDialog = document.getElementById('reportSelectionDialog');
-            const reportAnalysisDialog = document.getElementById('reportAnalysisDialog');
-            const closeReportSelectionDialog = document.getElementById('closeReportSelectionDialog');
-            const closeReportAnalysisDialog = document.getElementById('closeReportAnalysisDialog');
-            const reportSearchInput = document.getElementById('reportSearchInput');
-            const reportList = document.getElementById('reportList');
-            const reportAnalysisContent = document.getElementById('reportAnalysisContent');
-            // Sample reports data
-            const sampleReports = [
-                {
-                    id: 'LAB-001',
-                    type: 'Laboratuvar',
-                    date: '15 Haziran 2025',
-                    patient: 'Zeynep Kaya',
-                    department: 'Hematoloji',
-                    status: 'Anormal Değerler'
-                },
-                {
-                    id: 'RAD-002',
-                    type: 'Radyoloji',
-                    date: '12 Haziran 2025',
-                    patient: 'Mehmet Aydın',
-                    department: 'Göğüs Hastalıkları',
-                    status: 'Kritik Bulgular'
-                },
-                {
-                    id: 'PAT-003',
-                    type: 'Patoloji',
-                    date: '10 Haziran 2025',
-                    patient: 'Ayşe Demir',
-                    department: 'Onkoloji',
-                    status: 'Normal'
-                }
-            ];
-            function populateReportList(reports) {
-                reportList.innerHTML = '';
-                reports.forEach(report => {
-                    const reportElement = document.createElement('div');
-                    reportElement.className = 'p-3 border border-gray-200 rounded-md hover:bg-gray-50 cursor-pointer';
-                    reportElement.innerHTML = `
-<div class="flex items-center justify-between">
-<div>
-<div class="text-sm font-medium text-gray-900">${report.type} Raporu</div>
-<div class="text-xs text-gray-500">${report.id} - ${report.date}</div>
-</div>
-<div class="text-right">
-<div class="text-sm text-gray-900">${report.patient}</div>
-<div class="text-xs text-gray-500">${report.department}</div>
-</div>
-</div>
-`;
-                    reportElement.addEventListener('click', () => showReportAnalysis(report));
-                    reportList.appendChild(reportElement);
-                });
-            }
-            function showReportAnalysis(report) {
-                reportSelectionDialog.classList.add('hidden');
-                reportAnalysisDialog.classList.remove('hidden');
-                // Generate analysis report content based on report type
-                let analysisContent = '';
-                if (report.type === 'Laboratuvar') {
-                    analysisContent = `
-<div class="space-y-6">
-<div class="flex items-center justify-between pb-4 border-b border-gray-200">
-<div>
-<h4 class="text-xl font-semibold text-gray-900">Laboratuvar Rapor Analizi</h4>
-<p class="text-sm text-gray-500">${report.id} - ${report.date}</p>
-</div>
-<span class="px-3 py-1 text-sm font-semibold rounded-full ${report.status === 'Anormal Değerler' ? 'bg-yellow-100 text-yellow-800' :
-                            report.status === 'Kritik Bulgular' ? 'bg-red-100 text-red-800' :
-                                'bg-green-100 text-green-800'
-                        }">${report.status}</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Özet</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<p class="text-sm text-gray-600">Hemogram ve biyokimya değerlerinde bazı anormallikler tespit edildi. Özellikle hemoglobin ve ferritin değerleri referans aralığının altında seyrediyor.</p>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Anormal Değerler</h5>
-<div class="space-y-2">
-<div class="flex items-center p-2 bg-yellow-50 rounded-md">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600">
-<i class="ri-error-warning-line"></i>
-</div>
-<span class="ml-2 text-sm text-yellow-800">Hemoglobin: 10.2 g/dL (↓)</span>
-</div>
-<div class="flex items-center p-2 bg-yellow-50 rounded-md">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600">
-<i class="ri-error-warning-line"></i>
-</div>
-<span class="ml-2 text-sm text-yellow-800">Ferritin: 15 ng/mL (↓)</span>
-</div>
-</div>
-</div>
-</div>
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Öneriler</h5>
-<div class="p-4 bg-blue-50 rounded-lg space-y-2">
-<p class="text-sm text-blue-800">• Demir takviyesi başlanması önerilir</p>
-<p class="text-sm text-blue-800">• 2 hafta sonra kontrol hemogram</p>
-<p class="text-sm text-blue-800">• Demir eksikliği nedenleri araştırılmalı</p>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Takip Planı</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<div class="space-y-2">
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary">
-<i class="ri-calendar-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Kontrol tarihi: 29 Haziran 2025</span>
-</div>
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary">
-<i class="ri-file-list-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">İstenecek testler: Hemogram, Ferritin, Demir, TDBK</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-`;
-                } else if (report.type === 'Radyoloji') {
-                    analysisContent = `
-<div class="space-y-6">
-<div class="flex items-center justify-between pb-4 border-b border-gray-200">
-<div>
-<h4 class="text-xl font-semibold text-gray-900">Radyoloji Rapor Analizi</h4>
-<p class="text-sm text-gray-500">${report.id} - ${report.date}</p>
-</div>
-<span class="px-3 py-1 text-sm font-semibold rounded-full bg-red-100 text-red-800">${report.status}</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Bulgular</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<p class="text-sm text-gray-600">Toraks BT'de sağ akciğer üst lobda 2.8 cm çapında düzensiz sınırlı kitle lezyonu ve mediastinal lenf nodları izlendi.</p>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Kritik Noktalar</h5>
-<div class="space-y-2">
-<div class="flex items-center p-2 bg-red-50 rounded-md">
-<div class="w-5 h-5 flex items-center justify-center text-red-600">
-<i class="ri-error-warning-line"></i>
-</div>
-<span class="ml-2 text-sm text-red-800">Kitle boyutunda artış (önceki: 2.3 cm)</span>
-</div>
-<div class="flex items-center p-2 bg-red-50 rounded-md">
-<div class="w-5 h-5 flex items-center justify-center text-red-600">
-<i class="ri-error-warning-line"></i>
-</div>
-<span class="ml-2 text-sm text-red-800">Yeni mediastinal lenf nodları</span>
-</div>
-</div>
-</div>
-</div>
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Öneriler</h5>
-<div class="p-4 bg-blue-50 rounded-lg space-y-2">
-<p class="text-sm text-blue-800">• PET-CT planlanması</p>
-<p class="text-sm text-blue-800">• Mediastinoskopi değerlendirmesi</p>
-<p class="text-sm text-blue-800">• Onkoloji konsültasyonu</p>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Karşılaştırmalı Analiz</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<div class="space-y-2">
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600">
-<i class="ri-line-chart-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Progresyon hızı: 0.5 cm / 2 ay</span>
-</div>
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-red-600">
-<i class="ri-node-tree"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Lenf nodu tutulumu: Yeni gelişen</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-`;
-                } else {
-                    analysisContent = `
-<div class="space-y-6">
-<div class="flex items-center justify-between pb-4 border-b border-gray-200">
-<div>
-<h4 class="text-xl font-semibold text-gray-900">Patoloji Rapor Analizi</h4>
-<p class="text-sm text-gray-500">${report.id} - ${report.date}</p>
-</div>
-<span class="px-3 py-1 text-sm font-semibold rounded-full bg-green-100 text-green-800">${report.status}</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Mikroskopik Bulgular</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<p class="text-sm text-gray-600">Lenf nodu biyopsisinde reaktif değişiklikler izlendi. Malignite lehine bulgu saptanmadı.</p>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">İmmünohistokimya</h5>
-<div class="space-y-2">
-<div class="flex items-center p-2 bg-green-50 rounded-md">
-<div class="w-5 h-5 flex items-center justify-center text-green-600">
-<i class="ri-checkbox-circle-line"></i>
-</div>
-<span class="ml-2 text-sm text-green-800">CD3, CD20: Normal dağılım</span>
-</div>
-<div class="flex items-center p-2 bg-green-50 rounded-md">
-<div class="w-5 h-5 flex items-center justify-center text-green-600">
-<i class="ri-checkbox-circle-line"></i>
-</div>
-<span class="ml-2 text-sm text-green-800">Ki-67: %10 (Normal sınırlarda)</span>
-</div>
-</div>
-</div>
-</div>
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Değerlendirme</h5>
-<div class="p-4 bg-blue-50 rounded-lg space-y-2">
-<p class="text-sm text-blue-800">• Reaktif lenfadenopati ile uyumlu</p>
-<p class="text-sm text-blue-800">• Malignite bulgusu yok</p>
-<p class="text-sm text-blue-800">• Klinik takip önerilir</p>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Öneriler</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<div class="space-y-2">
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary">
-<i class="ri-calendar-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">3 ay sonra kontrol muayene</span>
-</div>
-<div class="flex items-center">
-<div class="w-5 h-5 flex items-center justify-center text-primary">
-<i class="ri-heart-pulse-line"></i>
-</div>
-<span class="ml-2 text-sm text-gray-600">Enfeksiyon parametrelerinin takibi</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-`;
-                }
-                reportAnalysisContent.innerHTML = analysisContent;
-            }
-            // Event Listeners for Report Analysis
-            reportAnalysisModule.addEventListener('click', () => {
-                reportSelectionDialog.classList.remove('hidden');
-                populateReportList(sampleReports);
-            });
-            closeReportSelectionDialog.addEventListener('click', () => {
-                reportSelectionDialog.classList.add('hidden');
-            });
-            closeReportAnalysisDialog.addEventListener('click', () => {
-                reportAnalysisDialog.classList.add('hidden');
-            });
-            reportSearchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
-                const filteredReports = sampleReports.filter(report =>
-                    report.id.toLowerCase().includes(searchTerm) ||
-                    report.patient.toLowerCase().includes(searchTerm) ||
-                    report.type.toLowerCase().includes(searchTerm)
-                );
-                populateReportList(filteredReports);
-            });
-            // Close report dialogs when clicking outside
-            [reportSelectionDialog, reportAnalysisDialog].forEach(dialog => {
-                dialog.addEventListener('click', (e) => {
-                    if (e.target === dialog) {
-                        dialog.classList.add('hidden');
-                    }
-                });
-            });
-            const patientAnalysisModule = document.getElementById('patientAnalysisModule');
-            const patientSelectionDialog = document.getElementById('patientSelectionDialog');
-            const analysisReportDialog = document.getElementById('analysisReportDialog');
-            const closePatientSelectionDialog = document.getElementById('closePatientSelectionDialog');
-            const closeAnalysisReportDialog = document.getElementById('closeAnalysisReportDialog');
-            const patientSearchInput = document.getElementById('patientSearchInput');
-            const patientList = document.getElementById('patientList');
-            const analysisReportContent = document.getElementById('analysisReportContent');
-            // Sample active patients data
-            const activePatients = [
-                { id: 'ZK-10254', name: 'Zeynep Kaya', diagnosis: 'Meme Kanseri', stage: 'Evre II', status: 'Aktif Tedavi' },
-                { id: 'MA-10255', name: 'Mehmet Aydın', diagnosis: 'Akciğer Kanseri', stage: 'Evre III', status: 'Kritik' },
-                { id: 'AD-10256', name: 'Ayşe Demir', diagnosis: 'Lenfoma', stage: 'Hodgkin', status: 'Takipte' }
-            ];
-            function populatePatientList(patients) {
-                patientList.innerHTML = '';
-                patients.forEach(patient => {
-                    const patientElement = document.createElement('div');
-                    patientElement.className = 'p-3 border border-gray-200 rounded-md hover:bg-gray-50 cursor-pointer';
-                    patientElement.innerHTML = `
-<div class="flex items-center justify-between">
-<div>
-<div class="text-sm font-medium text-gray-900">${patient.name}</div>
-<div class="text-xs text-gray-500">${patient.id}</div>
-</div>
-<div class="text-right">
-<div class="text-sm text-gray-900">${patient.diagnosis}</div>
-<div class="text-xs text-gray-500">${patient.stage}</div>
-</div>
-</div>
-`;
-                    patientElement.addEventListener('click', () => showAnalysisReport(patient));
-                    patientList.appendChild(patientElement);
-                });
-            }
-            function showAnalysisReport(patient) {
-                patientSelectionDialog.classList.add('hidden');
-                analysisReportDialog.classList.remove('hidden');
-                // Generate analysis report content
-                analysisReportContent.innerHTML = `
-<div class="space-y-6">
-<div class="flex items-center justify-between pb-4 border-b border-gray-200">
-<div>
-<h4 class="text-xl font-semibold text-gray-900">${patient.name}</h4>
-<p class="text-sm text-gray-500">${patient.id}</p>
-</div>
-<span class="px-3 py-1 text-sm font-semibold rounded-full ${patient.status === 'Kritik' ? 'bg-red-100 text-red-800' :
-                        patient.status === 'Aktif Tedavi' ? 'bg-green-100 text-green-800' :
-                            'bg-blue-100 text-blue-800'
-                    }">${patient.status}</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Mevcut Durum</h5>
-<div class="p-4 bg-gray-50 rounded-lg">
-<p class="text-sm text-gray-600">Hasta ${patient.diagnosis} tedavisi görüyor. ${patient.stage} aşamasında ve ${patient.status.toLowerCase()} durumunda.</p>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Tedavi İlerlemesi</h5>
-<div class="space-y-2">
-<div class="flex items-center">
-<div class="flex-1">
-<div class="h-2 bg-gray-200 rounded-full">
-<div class="h-2 bg-primary rounded-full" style="width: 75%"></div>
-</div>
-</div>
-<span class="ml-2 text-sm text-gray-600">75%</span>
-</div>
-<p class="text-sm text-gray-600">Tedavi planına uyum gösteriyor ve beklenen ilerleme kaydediliyor.</p>
-</div>
-</div>
-</div>
-<div class="space-y-4">
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Risk Faktörleri</h5>
-<div class="space-y-2">
-<div class="flex items-center p-2 bg-yellow-50 rounded-md">
-<div class="w-5 h-5 flex items-center justify-center text-yellow-600">
-<i class="ri-error-warning-line"></i>
-</div>
-<span class="ml-2 text-sm text-yellow-800">Yaş faktörü</span>
-</div>
-<div class="flex items-center p-2 bg-red-50 rounded-md">
-<div class="w-5 h-5 flex items-center justify-center text-red-600">
-<i class="ri-heart-pulse-line"></i>
-</div>
-<span class="ml-2 text-sm text-red-800">Kardiyovasküler risk</span>
-</div>
-</div>
-</div>
-<div>
-<h5 class="text-sm font-medium text-gray-700 mb-2">Öneriler</h5>
-<div class="p-4 bg-blue-50 rounded-lg space-y-2">
-<p class="text-sm text-blue-800">• Düzenli egzersiz programına devam edilmeli</p>
-<p class="text-sm text-blue-800">• Beslenme planına sıkı uyum gösterilmeli</p>
-<p class="text-sm text-blue-800">• Stres yönetimi için destek alınmalı</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-`;
-            }
-            // Event Listeners
-            patientAnalysisModule.addEventListener('click', () => {
-                patientSelectionDialog.classList.remove('hidden');
-                populatePatientList(activePatients);
-            });
-            closePatientSelectionDialog.addEventListener('click', () => {
-                patientSelectionDialog.classList.add('hidden');
-            });
-            closeAnalysisReportDialog.addEventListener('click', () => {
-                analysisReportDialog.classList.add('hidden');
-            });
-            patientSearchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
-                const filteredPatients = activePatients.filter(patient =>
-                    patient.name.toLowerCase().includes(searchTerm) ||
-                    patient.id.toLowerCase().includes(searchTerm)
-                );
-                populatePatientList(filteredPatients);
-            });
-            // Close dialogs when clicking outside
-            [patientSelectionDialog, analysisReportDialog].forEach(dialog => {
-                dialog.addEventListener('click', (e) => {
-                    if (e.target === dialog) {
-                        dialog.classList.add('hidden');
-                    }
-                });
-            });
+        // Modalı aç
+        hastaAnalizBtn.addEventListener('click', function() {
+            modal.classList.remove('hidden');
+            showPatients(hastalar);
         });
+        // Modalı kapat
+        closeModalBtn.addEventListener('click', function() {
+            modal.classList.add('hidden');
+        });
+        // Dışarı tıklayınca kapat
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+        // Hasta arama
+        searchInput.addEventListener('input', function() {
+            const term = searchInput.value.toLowerCase();
+            const filtered = hastalar.filter(h => h.name.toLowerCase().includes(term) || h.id.toLowerCase().includes(term));
+            showPatients(filtered);
+        });
+        // Hasta listesini göster
+        function showPatients(list) {
+            patientListDiv.innerHTML = '';
+            list.forEach(hasta => {
+                const div = document.createElement('div');
+                div.className = 'p-3 border border-gray-200 rounded-md hover:bg-gray-50 cursor-pointer flex justify-between items-center';
+                div.innerHTML = `<div><div class='text-sm font-medium text-gray-900'>${hasta.name}</div><div class='text-xs text-gray-500'>${hasta.id}</div></div><div class='text-right'><div class='text-sm text-gray-900'>${hasta.diagnosis}</div><div class='text-xs text-gray-500'>${hasta.stage}</div></div>`;
+                div.addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+                patientListDiv.appendChild(div);
+            });
+        }
+    });
     </script>
 </body>
 
