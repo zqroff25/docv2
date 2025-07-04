@@ -6,22 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocMate - Yapay Zekâ Destekli Onkoloji Takip Platformu</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#4F46E5', secondary: '#8B5CF6' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#8B5CF6'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <style>
-        :where([class^="ri-"])::before {
+         :where([class^="ri-"])::before {
             content: "\f3c2";
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb;
         }
-
+        
         .wave-animation {
             position: relative;
             height: 40px;
@@ -30,7 +53,7 @@
             border-radius: 4px;
             overflow: hidden;
         }
-
+        
         .wave-animation::before {
             content: "";
             position: absolute;
@@ -42,17 +65,16 @@
             background-size: 100% 100%;
             animation: wave 2s linear infinite;
         }
-
+        
         @keyframes wave {
             0% {
                 background-position: 0 0;
             }
-
             100% {
                 background-position: 100% 0;
             }
         }
-
+        
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -62,44 +84,44 @@
             background: #4F46E5;
             cursor: pointer;
         }
-
+        
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #d1d5db;
             border-radius: 10px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #9ca3af;
         }
-
+        
         .switch {
             position: relative;
             display: inline-block;
             width: 44px;
             height: 24px;
         }
-
+        
         .switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-
+        
         .slider {
             position: absolute;
             cursor: pointer;
@@ -111,7 +133,7 @@
             transition: .4s;
             border-radius: 24px;
         }
-
+        
         .slider:before {
             position: absolute;
             content: "";
@@ -123,23 +145,23 @@
             transition: .4s;
             border-radius: 50%;
         }
-
+        
         input:checked+.slider {
             background-color: #4F46E5;
         }
-
+        
         input:checked+.slider:before {
             transform: translateX(20px);
         }
-
+        
         .module-card {
             transition: all 0.3s ease;
         }
-
+        
         .module-card:hover {
             transform: translateY(-3px);
         }
-
+        
         .module-card.active {
             border-color: #4F46E5;
             background-color: rgba(79, 70, 229, 0.05);
@@ -159,59 +181,43 @@
             <nav class="flex-1 overflow-y-auto custom-scrollbar">
                 <div class="px-4 py-4">
                     <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ana Menü</p>
-                    <a href="#"
-                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md bg-gray-800 text-white">
+                    <a href="#" class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md bg-gray-800 text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-dashboard-line"></i>
                         </div>
                         <span>Gösterge Paneli</span>
                     </a>
-                    <a href="Hastalarım-Detayları-Sayfası.html"
-                        data-readdy="true"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="Hastalarım-Detayları-Sayfası.html" data-readdy="true" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-user-line"></i>
                         </div>
                         <span>Hastalarım</span>
                     </a>
-                    <a href="Randevular.html"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="Randevular.html" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-calendar-line"></i>
                         </div>
                         <span>Randevular</span>
                     </a>
-                    <a href="raporlar.html"
-                        data-readdy="true"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="raporlar.html" data-readdy="true" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-file-list-line"></i>
                         </div>
                         <span>Raporlar</span>
                     </a>
-                    <a href="mesajlar.html"
-                        data-readdy="true"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-message-3-line"></i>
-                        </div>
-                        <span>Mesajlar</span>
-                    </a>
-                    <a href="#" id="aiAnalysisLink"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+
+                    <a href="#" id="aiAnalysisLink" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-brain-line"></i>
                         </div>
                         <span>AI Analiz Aracı</span>
                     </a>
-                    <div id="aiAnalysisModal"
-                        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+                    <div id="aiAnalysisModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
                         <div class="bg-white rounded-lg w-[90%] max-w-6xl h-[80vh] flex">
                             <div class="flex-1 flex flex-col border-r border-gray-200">
                                 <div class="p-4 border-b border-gray-200 flex items-center justify-between">
                                     <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+                                        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
                                             <i class="ri-robot-line"></i>
                                         </div>
                                         <div class="ml-2">
@@ -225,14 +231,12 @@
                                 </div>
                                 <div class="flex-1 p-4 overflow-y-auto custom-scrollbar" id="aiChatMessages">
                                     <div class="flex items-start mb-4">
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
+                                        <div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
                                             <i class="ri-robot-line"></i>
                                         </div>
                                         <div class="ml-2 bg-gray-100 rounded-lg p-3 max-w-[85%]">
                                             <p class="text-sm text-gray-800">
-                                                Merhaba, ben DocMate AI Asistanınız. Size nasıl yardımcı olabilirim? Sağ
-                                                taraftaki modüllerden birini seçerek analiz yapmaya başlayabilirsiniz.
+                                                Merhaba, ben DocMate AI Asistanınız. Size nasıl yardımcı olabilirim? Sağ taraftaki modüllerden birini seçerek analiz yapmaya başlayabilirsiniz.
                                             </p>
                                         </div>
                                     </div>
@@ -240,12 +244,9 @@
                                 <div class="p-4 border-t border-gray-200">
                                     <div class="flex items-center">
                                         <div class="relative flex-1">
-                                            <input type="text" id="aiMessageInput"
-                                                class="w-full px-4 py-2 border border-gray-300 rounded-full text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-                                                placeholder="Mesajınızı yazın...">
+                                            <input type="text" id="aiMessageInput" class="w-full px-4 py-2 border border-gray-300 rounded-full text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Mesajınızı yazın...">
                                         </div>
-                                        <button id="aiSendMessage"
-                                            class="ml-2 w-10 h-10 flex items-center justify-center text-white bg-primary rounded-full hover:bg-indigo-600">
+                                        <button id="aiSendMessage" class="ml-2 w-10 h-10 flex items-center justify-center text-white bg-primary rounded-full hover:bg-indigo-600">
                                             <i class="ri-send-plane-fill"></i>
                                         </button>
                                     </div>
@@ -256,11 +257,9 @@
                                     <h3 class="text-lg font-semibold text-gray-800">Analiz Modülleri</h3>
                                 </div>
                                 <div class="p-4 space-y-4">
-                                    <div
-                                        class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                                    <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
                                         <div class="flex items-center mb-3">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                                            <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
                                                 <i class="ri-file-text-line ri-lg"></i>
                                             </div>
                                             <div class="ml-3">
@@ -268,18 +267,15 @@
                                                 <p class="text-xs text-gray-500">Laboratuvar sonuçlarını analiz eder</p>
                                             </div>
                                         </div>
-                                        <label
-                                            class="flex items-center justify-center w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-100">
+                                        <label class="flex items-center justify-center w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-100">
                                             <i class="ri-upload-line mr-2"></i>
                                             <span class="text-sm text-gray-600">Tahlil Yükle</span>
                                             <input type="file" class="hidden" accept=".pdf,.jpg,.png">
                                         </label>
                                     </div>
-                                    <div
-                                        class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                                    <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
                                         <div class="flex items-center mb-3">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
+                                            <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
                                                 <i class="ri-file-paper-line ri-lg"></i>
                                             </div>
                                             <div class="ml-3">
@@ -287,18 +283,15 @@
                                                 <p class="text-xs text-gray-500">Tıbbi raporları değerlendirir</p>
                                             </div>
                                         </div>
-                                        <label
-                                            class="flex items-center justify-center w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-100">
+                                        <label class="flex items-center justify-center w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-100">
                                             <i class="ri-upload-line mr-2"></i>
                                             <span class="text-sm text-gray-600">Rapor Yükle</span>
                                             <input type="file" class="hidden" accept=".pdf,.doc,.docx">
                                         </label>
                                     </div>
-                                    <div
-                                        class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                                    <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
                                         <div class="flex items-center mb-3">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
+                                            <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
                                                 <i class="ri-image-line ri-lg"></i>
                                             </div>
                                             <div class="ml-3">
@@ -306,8 +299,7 @@
                                                 <p class="text-xs text-gray-500">Radyolojik görüntüleri analiz eder</p>
                                             </div>
                                         </div>
-                                        <label
-                                            class="flex items-center justify-center w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-100">
+                                        <label class="flex items-center justify-center w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-100">
                                             <i class="ri-upload-line mr-2"></i>
                                             <span class="text-sm text-gray-600">Görüntü Yükle</span>
                                             <input type="file" class="hidden" accept=".jpg,.png,.dicom">
@@ -342,26 +334,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
-                                        <i class="ri-file-chart-line"></i>
-                                    </div>
-                                    <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Rapor Analizi</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
-                                        <i class="ri-file-user-line"></i>
-                                    </div>
-                                    <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Hasta Raporu Analizi</p>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
                                 <div class="flex items-center">
                                     <div class="w-6 h-6 flex items-center justify-center text-gray-400">
@@ -376,29 +349,12 @@
                     </div>
                 </div>
                 <!-- Ayarlar -->
-                <div class="px-4 py-4 mt-2">
-                    <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ayarlar</p>
-                    <a href="#"
-                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-settings-line"></i>
-                        </div>
-                        <span>Genel Ayarlar</span>
-                    </a>
-                    <a href="#"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-user-settings-line"></i>
-                        </div>
-                        <span>Profil</span>
-                    </a>
-                </div>
+
             </nav>
             <!-- User Profile -->
             <div class="p-4 border-t border-gray-800">
                 <div class="flex items-center">
-                    <img class="h-10 w-10 rounded-full"
-                        src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20male%20doctor%20with%20short%20dark%20hair%2C%20wearing%20a%20white%20coat%2C%20neutral%20background%2C%20photorealistic%2C%20high%20quality%2C%20professional%20headshot&width=100&height=100&seq=doctor1&orientation=squarish"
+                    <img class="h-10 w-10 rounded-full" src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20male%20doctor%20with%20short%20dark%20hair%2C%20wearing%20a%20white%20coat%2C%20neutral%20background%2C%20photorealistic%2C%20high%20quality%2C%20professional%20headshot&width=100&height=100&seq=doctor1&orientation=squarish"
                         alt="Dr. Ahmet Yılmaz">
                     <div class="ml-3">
                         <p class="text-sm font-medium text-white">Dr. Ahmet Yılmaz</p>
@@ -423,9 +379,7 @@
                                     <i class="ri-search-line"></i>
                                 </div>
                             </div>
-                            <input type="text"
-                                class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-                                placeholder="Hasta ara...">
+                            <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Hasta ara...">
                         </div>
                         <!-- Notifications -->
                         <button class="relative p-1 rounded-full text-gray-500 hover:text-gray-700 focus:outline-none">
@@ -452,20 +406,12 @@
                 <!-- Tab Navigation -->
                 <div class="px-6 py-2 border-t border-gray-200">
                     <nav class="flex space-x-6">
-                        <a href="#"
-                            class="px-1 py-2 text-sm font-medium text-primary border-b-2 border-primary">Profil</a>
-                        <a href="indexDokümanlar.html"
-                            data-readdy="true"
-                            class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Dokümanlar</a>
-                        <a href="indexFeed.html"
-                            data-readdy="true"
-                            class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Feed</a>
-                        <a href="#"
-                            class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Tedavi
+                        <a href="#" class="px-1 py-2 text-sm font-medium text-primary border-b-2 border-primary">Profil</a>
+                        <a href="indexDokümanlar.html" data-readdy="true" class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Dokümanlar</a>
+                        <a href="indexFeed.html" data-readdy="true" class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Feed</a>
+                        <a href="#" class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Tedavi
                             Planı (Yakında)</a>
-                        <a href="indexNotlar.html"
-                            data-readdy="true"
-                            class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Notlar</a>
+                        <a href="indexNotlar.html" data-readdy="true" class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Notlar</a>
                     </nav>
                 </div>
             </header>
@@ -475,8 +421,7 @@
                     <!-- Patient Info -->
                     <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
                         <div class="flex items-start">
-                            <img class="h-24 w-24 rounded-full object-cover"
-                                src="https://readdy.ai/api/search-image?query=portrait%20of%20a%20middle-aged%20woman%20with%20short%20brown%20hair%2C%20neutral%20expression%2C%20light%20background%2C%20photorealistic%2C%20high%20quality%2C%20professional%20headshot&width=200&height=200&seq=patient1&orientation=squarish"
+                            <img class="h-24 w-24 rounded-full object-cover" src="https://readdy.ai/api/search-image?query=portrait%20of%20a%20middle-aged%20woman%20with%20short%20brown%20hair%2C%20neutral%20expression%2C%20light%20background%2C%20photorealistic%2C%20high%20quality%2C%20professional%20headshot&width=200&height=200&seq=patient1&orientation=squarish"
                                 alt="Hasta Fotoğrafı">
                             <div class="ml-6 flex-1">
                                 <div class="flex items-center justify-between">
@@ -485,14 +430,7 @@
                                         <p class="text-sm text-gray-500">Hasta ID: #ZK-10254</p>
                                     </div>
                                     <div class="flex space-x-3">
-                
-                                        <button
-                                            class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
-                                            <div class="w-4 h-4 mr-2 flex items-center justify-center">
-                                                <i class="ri-message-2-line"></i>
-                                            </div>
-                                            <span>Mesaj</span>
-                                        </button>
+
                                     </div>
                                 </div>
                                 <div class="mt-4 grid grid-cols-3 gap-4">
@@ -523,14 +461,11 @@
                                 </div>
                                 <div class="mt-4">
                                     <div class="flex items-center">
-                                        <span
-                                            class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Meme
+                                        <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Meme
                                             Kanseri - Evre II</span>
-                                        <span
-                                            class="ml-2 px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Kemoterapi
+                                        <span class="ml-2 px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Kemoterapi
                                             Devam Ediyor</span>
-                                        <span
-                                            class="ml-2 px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Takip
+                                        <span class="ml-2 px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Takip
                                             Aktif</span>
                                     </div>
                                 </div>
@@ -555,41 +490,34 @@
                                 </div>
                                 <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                                     <p class="text-sm text-gray-700">
-                                        <span class="font-medium">Zeynep Kaya</span>, 42 yaşında kadın hasta, <span
-                                            class="font-medium">Meme Kanseri (Evre II)</span> tanısı ile takip
-                                        edilmektedir. İlk tanı 15 Mayıs 2025 tarihinde konulmuştur. Sağ memede 2.8 cm
-                                        çapında invaziv duktal karsinom tespit edilmiştir. Lenf nodu tutulumu mevcuttur
-                                        (2/15). ER+, PR+, HER2-.
+                                        <span class="font-medium">Zeynep Kaya</span>, 42 yaşında kadın hasta, <span class="font-medium">Meme Kanseri (Evre II)</span> tanısı ile takip edilmektedir. İlk tanı 15 Mayıs 2025 tarihinde konulmuştur. Sağ memede
+                                        2.8 cm çapında invaziv duktal karsinom tespit edilmiştir. Lenf nodu tutulumu mevcuttur (2/15). ER+, PR+, HER2-.
                                     </p>
                                     <div class="mt-3 border-t border-gray-200 pt-3">
                                         <p class="text-sm font-medium text-gray-700">Güncel Tedavi Planı:</p>
                                         <ul class="mt-2 text-sm text-gray-700 space-y-1">
                                             <li class="flex items-start">
-                                                <div
-                                                    class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
+                                                <div class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
                                                     <i class="ri-checkbox-circle-line"></i>
                                                 </div>
                                                 <span>Neoadjuvan kemoterapi (AC-T protokolü) - 2. kür tamamlandı, 4 kür
                                                     daha planlanıyor</span>
                                             </li>
                                             <li class="flex items-start">
-                                                <div
-                                                    class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-gray-400">
+                                                <div class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-gray-400">
                                                     <i class="ri-checkbox-blank-circle-line"></i>
                                                 </div>
                                                 <span>Cerrahi müdahale (lumpektomi + sentinel lenf nodu biyopsisi) -
                                                     kemoterapi sonrası planlanacak</span>
                                             </li>
                                             <li class="flex items-start">
-                                                <div
-                                                    class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-gray-400">
+                                                <div class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-gray-400">
                                                     <i class="ri-checkbox-blank-circle-line"></i>
                                                 </div>
                                                 <span>Radyoterapi - cerrahi sonrası planlanacak</span>
                                             </li>
                                             <li class="flex items-start">
-                                                <div
-                                                    class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-gray-400">
+                                                <div class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-gray-400">
                                                     <i class="ri-checkbox-blank-circle-line"></i>
                                                 </div>
                                                 <span>Hormonal terapi (Tamoksifen) - 5 yıl süreyle</span>
@@ -600,23 +528,20 @@
                                         <p class="text-sm font-medium text-gray-700">Önemli Notlar:</p>
                                         <ul class="mt-2 text-sm text-gray-700 space-y-1">
                                             <li class="flex items-start">
-                                                <div
-                                                    class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-amber-500">
+                                                <div class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-amber-500">
                                                     <i class="ri-alert-line"></i>
                                                 </div>
                                                 <span>Hasta kemoterapi sırasında grade 2 bulantı ve yorgunluk
                                                     bildirmektedir</span>
                                             </li>
                                             <li class="flex items-start">
-                                                <div
-                                                    class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-amber-500">
+                                                <div class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-amber-500">
                                                     <i class="ri-alert-line"></i>
                                                 </div>
                                                 <span>Aile öyküsü: Anne 58 yaşında meme kanseri tanısı almış</span>
                                             </li>
                                             <li class="flex items-start">
-                                                <div
-                                                    class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-amber-500">
+                                                <div class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-amber-500">
                                                     <i class="ri-alert-line"></i>
                                                 </div>
                                                 <span>BRCA1/2 genetik test sonuçları bekleniyor</span>
@@ -625,8 +550,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-4 flex justify-end">
-                                    <button
-                                        class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                    <button class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                         <div class="w-4 h-4 mr-2 flex items-center justify-center">
                                             <i class="ri-download-line"></i>
                                         </div>
@@ -643,8 +567,7 @@
                                 </div>
                                 <div class="space-y-4">
                                     <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                                        <div
-                                            class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600">
+                                        <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600">
                                             <i class="ri-file-pdf-line ri-lg"></i>
                                         </div>
                                         <div class="ml-3 flex-1">
@@ -652,19 +575,16 @@
                                             <p class="text-xs text-gray-500">10 Haziran 2025 • 2.4 MB</p>
                                         </div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                            <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                 <i class="ri-eye-line"></i>
                                             </button>
-                                            <button
-                                                class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                            <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                 <i class="ri-download-line"></i>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                                        <div
-                                            class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                                        <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
                                             <i class="ri-file-text-line ri-lg"></i>
                                         </div>
                                         <div class="ml-3 flex-1">
@@ -672,19 +592,16 @@
                                             <p class="text-xs text-gray-500">5 Haziran 2025 • 1.1 MB</p>
                                         </div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                            <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                 <i class="ri-eye-line"></i>
                                             </button>
-                                            <button
-                                                class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                            <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                 <i class="ri-download-line"></i>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                                        <div
-                                            class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
+                                        <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
                                             <i class="ri-image-line ri-lg"></i>
                                         </div>
                                         <div class="ml-3 flex-1">
@@ -692,19 +609,16 @@
                                             <p class="text-xs text-gray-500">1 Haziran 2025 • 18.7 MB</p>
                                         </div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                            <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                 <i class="ri-eye-line"></i>
                                             </button>
-                                            <button
-                                                class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                            <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                 <i class="ri-download-line"></i>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                                        <div
-                                            class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
+                                        <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
                                             <i class="ri-file-music-line ri-lg"></i>
                                         </div>
                                         <div class="ml-3 flex-1">
@@ -712,20 +626,17 @@
                                             <p class="text-xs text-gray-500">28 Mayıs 2025 • 3:42 dk</p>
                                         </div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                            <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                 <i class="ri-play-line"></i>
                                             </button>
-                                            <button
-                                                class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                            <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                 <i class="ri-download-line"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mt-4 flex justify-center">
-                                    <button
-                                        class="flex items-center px-4 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
+                                    <button class="flex items-center px-4 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
                                         <div class="w-4 h-4 mr-2 flex items-center justify-center">
                                             <i class="ri-upload-line"></i>
                                         </div>
@@ -744,40 +655,34 @@
                                     <div class="p-4 bg-gray-50 rounded-lg">
                                         <div class="flex items-center justify-between mb-2">
                                             <div class="flex items-center">
-                                                <div
-                                                    class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+                                                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
                                                     <i class="ri-mic-line"></i>
                                                 </div>
                                                 <div class="ml-2">
-                                                    <p class="text-sm font-medium text-gray-800">Kemoterapi Sonrası
-                                                        Değerlendirme</p>
+                                                    <p class="text-sm font-medium text-gray-800">Kemoterapi Sonrası Değerlendirme
+                                                    </p>
                                                     <p class="text-xs text-gray-500">12 Haziran 2025 • 2:18 dk</p>
                                                 </div>
                                             </div>
                                             <div class="flex space-x-2">
-                                                <button
-                                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                                <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                     <i class="ri-play-line"></i>
                                                 </button>
-                                                <button
-                                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                                <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                     <i class="ri-download-line"></i>
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="wave-animation"></div>
                                         <div class="mt-3 text-sm text-gray-700">
-                                            <p>Hasta ikinci kemoterapi kürünü tamamladı. Genel durumu iyi, ancak hafif
-                                                bulantı ve yorgunluk şikayetleri devam ediyor. Anti-emetik tedavisi
-                                                düzenlendi. Kan değerleri normal sınırlarda. Bir sonraki kür için 2
+                                            <p>Hasta ikinci kemoterapi kürünü tamamladı. Genel durumu iyi, ancak hafif bulantı ve yorgunluk şikayetleri devam ediyor. Anti-emetik tedavisi düzenlendi. Kan değerleri normal sınırlarda. Bir sonraki kür için 2
                                                 hafta sonraya randevu verildi.</p>
                                         </div>
                                     </div>
                                     <div class="p-4 bg-gray-50 rounded-lg">
                                         <div class="flex items-center justify-between mb-2">
                                             <div class="flex items-center">
-                                                <div
-                                                    class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+                                                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
                                                     <i class="ri-mic-line"></i>
                                                 </div>
                                                 <div class="ml-2">
@@ -787,28 +692,23 @@
                                                 </div>
                                             </div>
                                             <div class="flex space-x-2">
-                                                <button
-                                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                                <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                     <i class="ri-play-line"></i>
                                                 </button>
-                                                <button
-                                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
+                                                <button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-200">
                                                     <i class="ri-download-line"></i>
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="wave-animation"></div>
                                         <div class="mt-3 text-sm text-gray-700">
-                                            <p>İlk görüşme. Hasta tanı sürecini ve tedavi seçeneklerini anladı.
-                                                Neoadjuvan kemoterapi, ardından cerrahi ve radyoterapi planlandı.
-                                                Hastanın soruları yanıtlandı. Genetik test için kan örneği alındı.
-                                                Psikolojik destek önerildi.</p>
+                                            <p>İlk görüşme. Hasta tanı sürecini ve tedavi seçeneklerini anladı. Neoadjuvan kemoterapi, ardından cerrahi ve radyoterapi planlandı. Hastanın soruları yanıtlandı. Genetik test için kan örneği alındı. Psikolojik
+                                                destek önerildi.</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mt-4 flex justify-center">
-                                    <button
-                                        class="flex items-center px-4 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
+                                    <button class="flex items-center px-4 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
                                         <div class="w-4 h-4 mr-2 flex items-center justify-center">
                                             <i class="ri-mic-line"></i>
                                         </div>
@@ -818,202 +718,37 @@
                             </div>
                         </div>
                         <!-- Right Column - AI Chat -->
-                        <div class="col-span-1">
-                            <div class="bg-white rounded-lg shadow-sm h-full flex flex-col">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center">
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+                        <div class="col-span-1 flex flex-col items-stretch">
+                            <div class="sticky top-8">
+                                <div class="bg-white rounded-2xl shadow-lg p-6 mb-4 flex flex-col" style="min-width:400px; max-width:440px; min-height:520px; height:600px;">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
                                             <i class="ri-robot-line"></i>
                                         </div>
                                         <div class="ml-2">
-                                            <p class="text-sm font-medium text-gray-800">DocMate AI Asistan</p>
+                                            <p class="text-base font-semibold text-gray-800">DocMate AI Asistan</p>
                                             <p class="text-xs text-gray-500">Hasta Durumu Analizi</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="p-4 bg-gray-50 border-b border-gray-200">
-                                    <p class="text-sm text-gray-700">
-                                        Bu modül, hastanın mevcut durumunu analiz eder ve klinik değerlendirme sunar.
-                                        Aşağıdaki konularda yardım isteyebilirsiniz:
+                                    <p class="text-sm text-gray-700 mb-4">
+                                        Bu modül, hastanın mevcut durumunu analiz eder ve klinik değerlendirme sunar. Aşağıdaki konularda yardım isteyebilirsiniz:
                                     </p>
-                                    <div class="mt-3 grid grid-cols-2 gap-2">
-                                        <button
-                                            class="p-2 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:bg-gray-50 text-left whitespace-nowrap">
-                                            Semptom değerlendirmesi
-                                        </button>
-                                        <button
-                                            class="p-2 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:bg-gray-50 text-left whitespace-nowrap">
-                                            Laboratuvar sonuçları
-                                        </button>
-                                        <button
-                                            class="p-2 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:bg-gray-50 text-left whitespace-nowrap">
-                                            Doküman İste
-                                        </button>
-                                        <button
-                                            class="p-2 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:bg-gray-50 text-left whitespace-nowrap">
-                                            Yan etki yönetimi
-                                        </button>
+                                    <div class="grid grid-cols-2 gap-2 mb-4">
+                                        <button class="p-2 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:bg-gray-50 text-left whitespace-nowrap">Semptom değerlendirmesi</button>
+                                        <button class="p-2 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:bg-gray-50 text-left whitespace-nowrap">Laboratuvar sonuçları</button>
+                                        <button id="aiSideDocRequestBtn" type="button" class="p-2 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:bg-gray-50 text-left whitespace-nowrap">Doküman İste</button>
+                                        <button class="p-2 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:bg-gray-50 text-left whitespace-nowrap">Yan etki yönetimi</button>
                                     </div>
-                                </div>
-                                <div class="flex-1 p-4 overflow-y-auto custom-scrollbar" id="chatMessages">
-                                    <!-- System Message -->
-                                    <div class="flex items-start mb-4">
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
-                                            <i class="ri-robot-line"></i>
-                                        </div>
-                                        <div class="ml-2 bg-gray-100 rounded-lg p-3 max-w-[85%]">
-                                            <p class="text-sm text-gray-800">
-                                                Merhaba Dr. Ahmet, Zeynep Kaya'nın hasta durumu analizine hoş geldiniz.
-                                                Size nasıl yardımcı olabilirim?
-                                            </p>
-                                        </div>
+                                    <!-- Chat Alanı -->
+                                    <div id="aiSideChatArea" class="flex-1 overflow-y-auto custom-scrollbar bg-gray-50 rounded-lg p-3 mb-1" style="min-height:120px; max-height:280px;">
+                                        <!-- Mesajlar buraya eklenecek -->
                                     </div>
-                                    <!-- User Message -->
-                                    <div class="flex items-start justify-end mb-4">
-                                        <div class="mr-2 bg-primary rounded-lg p-3 max-w-[85%]">
-                                            <p class="text-sm text-white">
-                                                Hastanın son kan tahlillerini analiz eder misin? Özellikle hematolojik
-                                                parametrelere odaklanarak kemoterapi yan etkilerini değerlendir.
-                                            </p>
-                                        </div>
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center text-gray-700">
-                                            <i class="ri-user-line"></i>
-                                        </div>
-                                    </div>
-                                    <!-- System Message with Loading -->
-                                    <div class="flex items-start mb-4">
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
-                                            <i class="ri-robot-line"></i>
-                                        </div>
-                                        <div class="ml-2 bg-gray-100 rounded-lg p-3 max-w-[85%]">
-                                            <p class="text-sm text-gray-800">
-                                                5 Haziran 2025 tarihli kan tahlili sonuçlarını analiz ediyorum:
-                                            </p>
-                                            <ul class="mt-2 text-sm text-gray-700 space-y-1">
-                                                <li><span class="font-medium">Hemoglobin:</span> 11.2 g/dL (Normal:
-                                                    12.0-15.5) - <span class="text-amber-600">Hafif düşük</span></li>
-                                                <li><span class="font-medium">Lökosit:</span> 3.8 x10³/µL (Normal:
-                                                    4.5-11.0) - <span class="text-amber-600">Hafif düşük</span></li>
-                                                <li><span class="font-medium">Nötrofil:</span> 1.9 x10³/µL (Normal:
-                                                    2.0-7.5) - <span class="text-amber-600">Hafif düşük</span></li>
-                                                <li><span class="font-medium">Trombosit:</span> 142 x10³/µL (Normal:
-                                                    150-450) - <span class="text-amber-600">Hafif düşük</span></li>
-                                                <li><span class="font-medium">Karaciğer enzimleri (ALT, AST):</span>
-                                                    Normal sınırlarda</li>
-                                                <li><span class="font-medium">Böbrek fonksiyon testleri (BUN,
-                                                        Kreatinin):</span> Normal sınırlarda</li>
-                                            </ul>
-                                            <p class="mt-2 text-sm text-gray-800">
-                                                <span class="font-medium">Değerlendirme:</span> Hastada kemoterapiye
-                                                bağlı grade 1 miyelosupresyon görülmektedir. Hemoglobin, lökosit,
-                                                nötrofil ve trombosit değerleri hafif düşük ancak kritik seviyede değil.
-                                                Karaciğer ve böbrek fonksiyonları etkilenmemiş. Bu değerler AC-T
-                                                protokolü için beklenen yan etki profili ile uyumludur.
-                                            </p>
-                                            <p class="mt-2 text-sm text-gray-800">
-                                                <span class="font-medium">Öneriler:</span>
-                                            </p>
-                                            <ul class="mt-1 text-sm text-gray-700 space-y-1">
-                                                <li>Hematolojik parametrelerin yakın takibi</li>
-                                                <li>Nötropenik ateş açısından hasta eğitimi</li>
-                                                <li>Şu aşamada doz modifikasyonu gerekmemektedir</li>
-                                                <li>Bir sonraki kemoterapi öncesi tam kan sayımı tekrarı</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- User Message -->
-                                    <div class="flex items-start justify-end mb-4">
-                                        <div class="mr-2 bg-primary rounded-lg p-3 max-w-[85%]">
-                                            <p class="text-sm text-white">
-                                                Teşekkürler. Hastanın bildirdiği bulantı ve yorgunluk şikayetleri için
-                                                önerilerin neler?
-                                            </p>
-                                        </div>
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center text-gray-700">
-                                            <i class="ri-user-line"></i>
-                                        </div>
-                                    </div>
-                                    <!-- System Message -->
-                                    <div class="flex items-start mb-4">
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
-                                            <i class="ri-robot-line"></i>
-                                        </div>
-                                        <div class="ml-2 bg-gray-100 rounded-lg p-3 max-w-[85%]">
-                                            <p class="text-sm text-gray-800">
-                                                <span class="font-medium">Bulantı yönetimi (Grade 2):</span>
-                                            </p>
-                                            <ul class="mt-1 text-sm text-gray-700 space-y-1">
-                                                <li>Mevcut anti-emetik tedavinin optimizasyonu: 5-HT3 antagonisti
-                                                    (ondansetron) + deksametazon kombinasyonu</li>
-                                                <li>NK1 reseptör antagonisti (aprepitant) eklenmesi düşünülebilir</li>
-                                                <li>Kemoterapi öncesi ve sonrası 2-3 gün boyunca profilaktik anti-emetik
-                                                    kullanımı</li>
-                                                <li>Küçük öğünler, soğuk yiyecekler ve zencefil içeren gıdalar
-                                                    önerilmesi</li>
-                                                <li>Bulantıyı tetikleyebilecek koku ve yiyeceklerden kaçınma</li>
-                                            </ul>
-                                            <p class="mt-2 text-sm text-gray-800">
-                                                <span class="font-medium">Yorgunluk yönetimi:</span>
-                                            </p>
-                                            <ul class="mt-1 text-sm text-gray-700 space-y-1">
-                                                <li>Anemi açısından hemoglobin takibi (mevcut değer 11.2 g/dL - hafif
-                                                    anemi)</li>
-                                                <li>Günlük aktivite planlaması, enerji koruma stratejileri</li>
-                                                <li>Hafif-orta şiddette fiziksel aktivite (günlük 15-30 dakika yürüyüş)
-                                                </li>
-                                                <li>Yeterli hidrasyon ve dengeli beslenme</li>
-                                                <li>Gerekirse psikolojik destek</li>
-                                                <li>Hemoglobin değeri 10 g/dL'nin altına düşerse eritropoetin tedavisi
-                                                    değerlendirilebilir</li>
-                                            </ul>
-                                            <p class="mt-2 text-sm text-gray-800">
-                                                Bu öneriler hastanın mevcut tedavi protokolü ve yan etki profiliyle
-                                                uyumludur. Bir sonraki kontrolde semptomların yeniden değerlendirilmesi
-                                                önerilir.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-4 border-t border-gray-200">
-                                    <div class="flex items-center mb-2">
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
-                                            <i class="ri-attachment-2"></i>
-                                        </button>
-                                        <button
-                                            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100 ml-1">
-                                            <i class="ri-mic-line"></i>
-                                        </button>
-                                        <div class="relative flex-1 ml-2">
-                                            <input type="text" id="messageInput"
-                                                class="w-full px-3 py-2 border border-gray-300 rounded-full text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-                                                placeholder="Mesajınızı yazın...">
-                                        </div>
-                                        <button id="sendMessage"
-                                            class="w-8 h-8 flex items-center justify-center text-white bg-primary rounded-full hover:bg-indigo-600 ml-2">
+                                    <form class="flex items-center gap-1 mt-auto" onsubmit="event.preventDefault(); sendAiSideMessage();">
+                                        <input type="text" id="aiSideMessageInput" class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Mesajınızı yazın...">
+                                        <button id="aiSideSendMessage" type="submit" class="w-9 h-9 flex items-center justify-center text-white bg-primary rounded-full hover:bg-indigo-600">
                                             <i class="ri-send-plane-fill"></i>
                                         </button>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs text-gray-500">
-                                        <div class="flex items-center">
-                                            <div class="w-4 h-4 mr-1 flex items-center justify-center">
-                                                <i class="ri-information-line"></i>
-                                            </div>
-                                            <span>Supported by DocMate</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <button class="text-xs text-gray-500 hover:text-gray-700">Gizlilik
-                                                Politikası</button>
-                                            <span class="mx-1">•</span>
-                                            <button class="text-xs text-gray-500 hover:text-gray-700">Yardım</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -1023,10 +758,10 @@
         </div>
     </div>
     <script id="themeToggleScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
-            themeToggle.addEventListener('change', function () {
+            themeToggle.addEventListener('change', function() {
                 if (this.checked) {
                     html.classList.add('dark');
                     document.body.style.backgroundColor = '#111827';
@@ -1038,7 +773,7 @@
         });
     </script>
     <script id="chatInteractionScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const messageInput = document.getElementById('messageInput');
             // AI Analysis Modal Functionality
             const aiAnalysisLink = document.getElementById('aiAnalysisLink');
@@ -1056,7 +791,7 @@
                 }
 
                 // Open modal
-                aiAnalysisLink.addEventListener('click', function (e) {
+                aiAnalysisLink.addEventListener('click', function(e) {
                     e.preventDefault();
                     aiAnalysisModal.classList.remove('hidden');
                     document.body.style.overflow = 'hidden';
@@ -1064,13 +799,13 @@
                 });
 
                 // Close modal
-                closeAiModal.addEventListener('click', function () {
+                closeAiModal.addEventListener('click', function() {
                     aiAnalysisModal.classList.add('hidden');
                     document.body.style.overflow = 'auto';
                 });
 
                 // Close on outside click
-                aiAnalysisModal.addEventListener('click', function (e) {
+                aiAnalysisModal.addEventListener('click', function(e) {
                     if (e.target === aiAnalysisModal) {
                         aiAnalysisModal.classList.add('hidden');
                         document.body.style.overflow = 'auto';
@@ -1078,7 +813,7 @@
                 });
 
                 // Close on Escape key
-                document.addEventListener('keydown', function (e) {
+                document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && !aiAnalysisModal.classList.contains('hidden')) {
                         aiAnalysisModal.classList.add('hidden');
                         document.body.style.overflow = 'auto';
@@ -1090,7 +825,7 @@
             // Handle file upload functionality
             const fileInputs = aiAnalysisModal.querySelectorAll('input[type="file"]');
             fileInputs.forEach(input => {
-                input.addEventListener('change', function (e) {
+                input.addEventListener('change', function(e) {
                     const file = e.target.files[0];
                     if (!file) return;
 
@@ -1126,7 +861,7 @@
 
             // Handle AI message sending
             aiSendMessage.addEventListener('click', sendAiMessage);
-            aiMessageInput.addEventListener('keypress', function (e) {
+            aiMessageInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     sendAiMessage();
                 }
@@ -1168,219 +903,112 @@
 
                 aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
             }
-            function sendAiMessage() {
-                const message = aiMessageInput.value.trim();
-                if (message === '') return;
-                // Add user message
-                const userMessageHTML = `
-<div class="flex items-start justify-end mb-4">
-<div class="mr-2 bg-primary rounded-lg p-3 max-w-[85%]">
-<p class="text-sm text-white">${message}</p>
-</div>
-<div class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center text-gray-700">
-<i class="ri-user-line"></i>
-</div>
-</div>
-`;
-                aiChatMessages.insertAdjacentHTML('beforeend', userMessageHTML);
-                // Clear input
-                aiMessageInput.value = '';
-                // Simulate AI response
+
+            function sendAiSideMessage() {
+                const input = document.getElementById('aiSideMessageInput');
+                const chatArea = document.getElementById('aiSideChatArea');
+                const msg = input.value.trim();
+                if (!msg) return;
+                // Kullanıcı mesajı
+                chatArea.insertAdjacentHTML('beforeend', `<div class='flex justify-end mb-2'><div class='bg-primary text-white rounded-lg px-3 py-2 max-w-[80%] text-sm'>${msg}</div></div>`);
+                input.value = '';
+                chatArea.scrollTop = chatArea.scrollHeight;
+                // AI cevabı (örnek)
                 setTimeout(() => {
-                    const aiResponseHTML = `
-<div class="flex items-start mb-4">
-<div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
-<i class="ri-robot-line"></i>
-</div>
-<div class="ml-2 bg-gray-100 rounded-lg p-3 max-w-[85%]">
-<p class="text-sm text-gray-800">Analiziniz devam ediyor. Lütfen sağ taraftan ilgili dokümanları yükleyiniz.</p>
-</div>
-</div>
-`;
-                    aiChatMessages.insertAdjacentHTML('beforeend', aiResponseHTML);
-                    aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
-                }, 1000);
-                aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+                    chatArea.insertAdjacentHTML('beforeend', `<div class='flex justify-start mb-2'><div class='bg-white border border-gray-200 text-gray-800 rounded-lg px-3 py-2 max-w-[80%] text-sm'>AI: Sorunuzu aldım, analiz ediyorum...</div></div>`);
+                    chatArea.scrollTop = chatArea.scrollHeight;
+                }, 600);
             }
-            aiSendMessage.addEventListener('click', sendAiMessage);
-            aiMessageInput.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    sendAiMessage();
-                }
-            });
-            // Handle file uploads
-            function handleFileUpload(input, moduleType) {
-                const file = input.files[0];
-                if (!file) return;
-                const maxSize = 10 * 1024 * 1024; // 10MB
-                if (file.size > maxSize) {
-                    const errorHTML = `
-<div class="flex items-start mb-4">
-<div class="w-8 h-8 rounded-full bg-red-500 flex-shrink-0 flex items-center justify-center text-white">
-<i class="ri-error-warning-line"></i>
-</div>
-<div class="ml-2 bg-red-50 rounded-lg p-3 max-w-[85%]">
-<p class="text-sm text-red-800">Dosya boyutu çok büyük. Lütfen 10MB'dan küçük bir dosya seçin.</p>
-</div>
-</div>
-`;
-                    aiChatMessages.insertAdjacentHTML('beforeend', errorHTML);
-                    input.value = '';
-                    return;
-                }
-                const loadingHTML = `
-<div class="flex items-start mb-4">
-<div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
-<i class="ri-robot-line"></i>
-</div>
-<div class="ml-2 bg-gray-100 rounded-lg p-3 max-w-[85%]">
-<p class="text-sm text-gray-800">${moduleType} için "${file.name}" dosyası yükleniyor...</p>
-<div class="mt-2 h-1 w-full bg-gray-200 rounded-full overflow-hidden">
-<div class="h-full bg-primary rounded-full transition-all duration-300" style="width: 0%"></div>
-</div>
-</div>
-</div>
-`;
-                aiChatMessages.insertAdjacentHTML('beforeend', loadingHTML);
-                // Simulate upload progress
-                const progressBar = aiChatMessages.lastElementChild.querySelector('.bg-primary');
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += 10;
-                    progressBar.style.width = `${progress}%`;
-                    if (progress >= 100) {
-                        clearInterval(interval);
-                        const successHTML = `
-<div class="flex items-start mb-4">
-<div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
-<i class="ri-robot-line"></i>
-</div>
-<div class="ml-2 bg-gray-100 rounded-lg p-3 max-w-[85%]">
-<p class="text-sm text-gray-800">${moduleType} için "${file.name}" dosyası başarıyla yüklendi. Analiz başlatılıyor...</p>
-</div>
-</div>
-`;
-                        aiChatMessages.insertAdjacentHTML('beforeend', successHTML);
-                    }
-                    aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
-                }, 200);
-            }
-            document.querySelectorAll('input[type="file"]').forEach(input => {
-                input.addEventListener('change', function (e) {
-                    const moduleType = this.closest('.bg-white').querySelector('h4').textContent;
-                    handleFileUpload(this, moduleType);
-                });
-            });
-            const sendButton = document.getElementById('sendMessage');
-            const chatMessages = document.getElementById('chatMessages');
-            const aiModules = document.querySelectorAll('.module-card');
-            function updateModuleStyles(selectedCard) {
-                const allCards = document.querySelectorAll('.module-card');
-                allCards.forEach(card => {
-                    const icon = card.querySelector('.w-6.h-6');
-                    const text = card.querySelector('.text-xs');
-                    if (card === selectedCard) {
-                        card.classList.add('active');
-                        icon.classList.remove('text-gray-400');
-                        icon.classList.add('text-primary');
-                        text.classList.remove('text-gray-300');
-                        text.classList.add('text-white');
-                    } else {
-                        card.classList.remove('active');
-                        icon.classList.remove('text-primary');
-                        icon.classList.add('text-gray-400');
-                        text.classList.remove('text-white');
-                        text.classList.add('text-gray-300');
-                    }
-                });
-            }
-            function handleModuleClick(event) {
-                const moduleCard = event.target.closest('.module-card');
-                if (!moduleCard) return;
-                updateModuleStyles(moduleCard);
-                let message = '';
-                if (moduleCard.querySelector('.text-xs').textContent.includes('Hasta Durumu')) {
-                    message = 'Hasta durumu analizi başlatıldı. Güncel vital bulgular ve laboratuvar sonuçları inceleniyor...';
-                } else if (moduleCard.querySelector('.text-xs').textContent.includes('Rapor Analizi')) {
-                    message = 'Rapor analizi başlatıldı. Son tetkik ve görüntüleme sonuçları değerlendiriliyor...';
-                } else if (moduleCard.querySelector('.text-xs').textContent.includes('Hasta Raporu')) {
-                    message = 'Hasta raporu analizi başlatıldı. Tüm klinik veriler ve tedavi yanıtları inceleniyor...';
-                } else if (moduleCard.querySelector('.text-xs').textContent.includes('Tedavi')) {
-                    message = 'Tedavi önerileri analizi başlatıldı. Güncel protokoller ve hasta verileri değerlendiriliyor...';
-                }
-                const aiResponseHTML = `
-<div class="flex items-start mb-4">
-<div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
-<i class="ri-robot-line"></i>
-</div>
-<div class="ml-2 bg-gray-100 rounded-lg p-3 max-w-[85%]">
-<p class="text-sm text-gray-800">${message}</p>
-</div>
-</div>
-`;
-                chatMessages.insertAdjacentHTML('beforeend', aiResponseHTML);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-            aiModules.forEach(module => {
-                module.addEventListener('click', handleModuleClick);
-            });
-            function sendMessage() {
-                const message = messageInput.value.trim();
-                if (message === '') return;
-                // Add user message
-                const userMessageHTML = `
-<div class="flex items-start justify-end mb-4">
-<div class="mr-2 bg-primary rounded-lg p-3 max-w-[85%]">
-<p class="text-sm text-white">${message}</p>
-</div>
-<div class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center text-gray-700">
-<i class="ri-user-line"></i>
-</div>
-</div>
-`;
-                chatMessages.insertAdjacentHTML('beforeend', userMessageHTML);
-                // Clear input
-                messageInput.value = '';
-                // Simulate AI response (in a real app, this would be an API call)
+
+            // Doküman İste butonu için
+            const docRequestBtn = document.getElementById('aiSideDocRequestBtn');
+            docRequestBtn.addEventListener('click', function() {
+                const chatArea = document.getElementById('aiSideChatArea');
+                // Kullanıcı mesajı
+                chatArea.insertAdjacentHTML('beforeend', `<div class='flex justify-end mb-2'><div class='bg-primary text-white rounded-lg px-3 py-2 max-w-[80%] text-sm'>Doküman talebinde bulundunuz.</div></div>`);
+                chatArea.scrollTop = chatArea.scrollHeight;
+                // AI cevabı (örnek)
                 setTimeout(() => {
-                    const aiResponseHTML = `
-<div class="flex items-start mb-4">
-<div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white">
-<i class="ri-robot-line"></i>
-</div>
-<div class="ml-2 bg-gray-100 rounded-lg p-3 max-w-[85%]">
-<p class="text-sm text-gray-800">
-Mesajınızı aldım. Hasta dosyasını inceleyerek en kısa sürede yanıt vereceğim.
-</p>
-</div>
-</div>
-`;
-                    chatMessages.insertAdjacentHTML('beforeend', aiResponseHTML);
-                    // Scroll to bottom
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 1000);
-                // Scroll to bottom
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-            // Send message on button click
-            sendButton.addEventListener('click', sendMessage);
-            // Send message on Enter key
-            messageInput.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
-            // Module card selection
-            const moduleCards = document.querySelectorAll('.module-card');
-            moduleCards.forEach(card => {
-                card.addEventListener('click', function () {
-                    // Remove active class from all cards
-                    moduleCards.forEach(c => c.classList.remove('active'));
-                    // Add active class to clicked card
-                    this.classList.add('active');
-                });
+                    chatArea.insertAdjacentHTML('beforeend', `<div class='flex justify-start mb-2'><div class='bg-white border border-gray-200 text-gray-800 rounded-lg px-3 py-2 max-w-[80%] text-sm'>AI: İlgili doküman hazırlanıyor ve kısa süre içinde sunulacak.</div></div>`);
+                    chatArea.scrollTop = chatArea.scrollHeight;
+                }, 600);
             });
         });
+    </script>
+    <!-- Hasta Durumu Analizi Modalı (Sıfırdan) -->
+    <div id="myPatientModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-gray-800">Hasta Seçin</h3>
+                <button id="closeMyPatientModal" class="text-gray-500 hover:text-gray-700">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-4">
+                    <input type="text" id="myPatientSearchInput" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Hasta ara...">
+                </div>
+                <div class="max-h-64 overflow-y-auto custom-scrollbar">
+                    <div id="myPatientList" class="space-y-2">
+                        <!-- Hasta listesi dinamik olarak doldurulacak -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Buton ve modal referansları
+        const hastaAnalizBtn = document.getElementById('patientAnalysisModule');
+        const modal = document.getElementById('myPatientModal');
+        const closeModalBtn = document.getElementById('closeMyPatientModal');
+        const patientListDiv = document.getElementById('myPatientList');
+        const searchInput = document.getElementById('myPatientSearchInput');
+
+        // Örnek hasta verisi
+        const hastalar = [
+            { id: 'ZK-10254', name: 'Zeynep Kaya', diagnosis: 'Meme Kanseri', stage: 'Evre II' },
+            { id: 'MA-10255', name: 'Mehmet Aydın', diagnosis: 'Akciğer Kanseri', stage: 'Evre III' },
+            { id: 'AD-10256', name: 'Ayşe Demir', diagnosis: 'Lenfoma', stage: 'Hodgkin' }
+        ];
+
+        // Modalı aç
+        hastaAnalizBtn.addEventListener('click', function() {
+            modal.classList.remove('hidden');
+            showPatients(hastalar);
+        });
+        // Modalı kapat
+        closeModalBtn.addEventListener('click', function() {
+            modal.classList.add('hidden');
+        });
+        // Dışarı tıklayınca kapat
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+        // Hasta arama
+        searchInput.addEventListener('input', function() {
+            const term = searchInput.value.toLowerCase();
+            const filtered = hastalar.filter(h => h.name.toLowerCase().includes(term) || h.id.toLowerCase().includes(term));
+            showPatients(filtered);
+        });
+        // Hasta listesini göster
+        function showPatients(list) {
+            patientListDiv.innerHTML = '';
+            list.forEach(hasta => {
+                const div = document.createElement('div');
+                div.className = 'p-3 border border-gray-200 rounded-md hover:bg-gray-50 cursor-pointer flex justify-between items-center';
+                div.innerHTML = `<div><div class='text-sm font-medium text-gray-900'>${hasta.name}</div><div class='text-xs text-gray-500'>${hasta.id}</div></div><div class='text-right'><div class='text-sm text-gray-900'>${hasta.diagnosis}</div><div class='text-xs text-gray-500'>${hasta.stage}</div></div>`;
+                div.addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+                patientListDiv.appendChild(div);
+            });
+        }
+    });
     </script>
 </body>
 
