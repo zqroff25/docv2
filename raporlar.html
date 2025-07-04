@@ -6,7 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocMate - Hasta Raporları</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#4F46E5', secondary: '#8B5CF6' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#8B5CF6'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -14,52 +37,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
     <style>
-        :where([class^="ri-"])::before {
+         :where([class^="ri-"])::before {
             content: "\f3c2";
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb;
         }
-
+        
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #d1d5db;
             border-radius: 10px;
         }
-
+        
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #9ca3af;
         }
-
+        
         .switch {
             position: relative;
             display: inline-block;
             width: 44px;
             height: 24px;
         }
-
+        
         .switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-
+        
         .slider {
             position: absolute;
             cursor: pointer;
@@ -71,7 +94,7 @@
             transition: .4s;
             border-radius: 24px;
         }
-
+        
         .slider:before {
             position: absolute;
             content: "";
@@ -83,27 +106,27 @@
             transition: .4s;
             border-radius: 50%;
         }
-
+        
         input:checked+.slider {
             background-color: #4F46E5;
         }
-
+        
         input:checked+.slider:before {
             transform: translateX(20px);
         }
-
+        
         .custom-radio {
             display: flex;
             align-items: center;
             cursor: pointer;
         }
-
+        
         .custom-radio input {
             position: absolute;
             opacity: 0;
             cursor: pointer;
         }
-
+        
         .radio-checkmark {
             position: relative;
             height: 18px;
@@ -112,15 +135,15 @@
             border: 2px solid #d1d5db;
             border-radius: 50%;
         }
-
+        
         .custom-radio:hover .radio-checkmark {
             border-color: #9ca3af;
         }
-
+        
         .custom-radio input:checked~.radio-checkmark {
             border-color: #4F46E5;
         }
-
+        
         .radio-checkmark:after {
             content: "";
             position: absolute;
@@ -132,23 +155,23 @@
             border-radius: 50%;
             background: #4F46E5;
         }
-
+        
         .custom-radio input:checked~.radio-checkmark:after {
             display: block;
         }
-
+        
         .custom-checkbox {
             display: flex;
             align-items: center;
             cursor: pointer;
         }
-
+        
         .custom-checkbox input {
             position: absolute;
             opacity: 0;
             cursor: pointer;
         }
-
+        
         .checkbox-checkmark {
             position: relative;
             height: 18px;
@@ -157,16 +180,16 @@
             border: 2px solid #d1d5db;
             border-radius: 4px;
         }
-
+        
         .custom-checkbox:hover .checkbox-checkmark {
             border-color: #9ca3af;
         }
-
+        
         .custom-checkbox input:checked~.checkbox-checkmark {
             background-color: #4F46E5;
             border-color: #4F46E5;
         }
-
+        
         .checkbox-checkmark:after {
             content: "";
             position: absolute;
@@ -179,30 +202,30 @@
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
         }
-
+        
         .custom-checkbox input:checked~.checkbox-checkmark:after {
             display: block;
         }
-
+        
         .tab-active {
             color: #4F46E5;
             border-bottom: 2px solid #4F46E5;
         }
-
+        
         .tab-inactive {
             color: #6B7280;
             border-bottom: 2px solid transparent;
         }
-
+        
         .tab-inactive:hover {
             color: #4B5563;
             border-bottom: 2px solid #E5E7EB;
         }
-
+        
         .report-card {
             transition: all 0.2s ease;
         }
-
+        
         .report-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -222,41 +245,31 @@
             <nav class="flex-1 overflow-y-auto custom-scrollbar">
                 <div class="px-4 py-4">
                     <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ana Menü</p>
-                    <a href="index.html"
-                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="index.html" class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-dashboard-line"></i>
                         </div>
                         <span>Gösterge Paneli</span>
                     </a>
-                    <a href="Hastalarım-Detayları-Sayfası.html" data-readdy="true"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="Hastalarım-Detayları-Sayfası.html" data-readdy="true" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-user-line"></i>
                         </div>
                         <span>Hastalarım</span>
                     </a>
-                    <a href="Randevular.html"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
+                    <a href="Randevular.html" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-calendar-line"></i>
                         </div>
                         <span>Randevular</span>
                     </a>
-                    <a href="raporlar.html" data-readdy="true"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md bg-gray-800 text-white">
+                    <a href="raporlar.html" data-readdy="true" class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md bg-gray-800 text-white">
                         <div class="w-5 h-5 mr-3 flex items-center justify-center">
                             <i class="ri-file-list-line"></i>
                         </div>
                         <span>Raporlar</span>
                     </a>
-                    <a href="mesajlar.html"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-message-3-line"></i>
-                        </div>
-                        <span>Mesajlar</span>
-                    </a>
+
                 </div>
                 <!-- AI Asistan Bölümü -->
                 <div class="px-4 py-4 mt-2">
@@ -272,7 +285,7 @@
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <div class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
+                            <div id="patientAnalysisModule" class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
                                 <div class="flex items-center">
                                     <div class="w-6 h-6 flex items-center justify-center text-gray-400">
                                         <i class="ri-heart-pulse-line"></i>
@@ -282,33 +295,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="module-card active p-2 border border-gray-700 rounded-md cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 flex items-center justify-center text-primary">
-                                        <i class="ri-file-chart-line"></i>
-                                    </div>
-                                    <div class="ml-2">
-                                        <p class="text-xs font-medium text-white">Rapor Analizi</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 flex items-center justify-center text-gray-400">
-                                        <i class="ri-file-user-line"></i>
-                                    </div>
-                                    <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Hasta Raporu Analizi</p>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="module-card p-2 border border-gray-700 rounded-md cursor-pointer">
                                 <div class="flex items-center">
                                     <div class="w-6 h-6 flex items-center justify-center text-gray-400">
                                         <i class="ri-medicine-bottle-line"></i>
                                     </div>
                                     <div class="ml-2">
-                                        <p class="text-xs font-medium text-gray-300">Tedavi Önerileri</p>
+                                        <p class="text-xs font-medium text-gray-300">Tedavi Önerileri (Yakında)</p>
                                     </div>
                                 </div>
                             </div>
@@ -316,29 +310,12 @@
                     </div>
                 </div>
                 <!-- Ayarlar -->
-                <div class="px-4 py-4 mt-2">
-                    <p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Ayarlar</p>
-                    <a href="#"
-                        class="mt-3 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-settings-line"></i>
-                        </div>
-                        <span>Genel Ayarlar</span>
-                    </a>
-                    <a href="#"
-                        class="mt-1 flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white">
-                        <div class="w-5 h-5 mr-3 flex items-center justify-center">
-                            <i class="ri-user-settings-line"></i>
-                        </div>
-                        <span>Profil</span>
-                    </a>
-                </div>
+
             </nav>
             <!-- User Profile -->
             <div class="p-4 border-t border-gray-800">
                 <div class="flex items-center">
-                    <img class="h-10 w-10 rounded-full"
-                        src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520male%2520doctor%2520with%2520short%2520dark%2520hair%252C%2520wearing%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=doctor1&orientation=squarish"
+                    <img class="h-10 w-10 rounded-full" src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520male%2520doctor%2520with%2520short%2520dark%2520hair%252C%2520wearing%2520a%2520white%2520coat%252C%2520neutral%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=100&height=100&seq=doctor1&orientation=squarish"
                         alt="Dr. Ahmet Yılmaz">
                     <div class="ml-3">
                         <p class="text-sm font-medium text-white">Dr. Ahmet Yılmaz</p>
@@ -368,9 +345,7 @@
                                     <i class="ri-search-line"></i>
                                 </div>
                             </div>
-                            <input type="text"
-                                class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-                                placeholder="Rapor ara...">
+                            <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Rapor ara...">
                         </div>
                         <!-- Notifications -->
                         <button class="relative p-1 rounded-full text-gray-500 hover:text-gray-700 focus:outline-none">
@@ -397,19 +372,13 @@
                 <!-- Tab Navigation -->
                 <div class="px-6 py-2 border-t border-gray-200">
                     <nav class="flex space-x-6">
-                        <a href="#" data-readdy="true"
-                            class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Profil</a>
-                        <a href="indexDokümanlar.html" data-readdy="true"
-                            class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Dokümanlar</a>
-                        <a href="indexFeed.html" data-readdy="true"
-                            class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Feed</a>
-                        <a href="#"
-                            class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Tedavi
-                            Planı</a>
-                        <a href="indexNotlar.html" data-readdy="true"
-                            class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Notlar</a>
-                        <a href="#"
-                            class="px-1 py-2 text-sm font-medium text-primary border-b-2 border-primary">Raporlar</a>
+                        <a href="#" data-readdy="true" class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Profil</a>
+                        <a href="indexDokümanlar.html" data-readdy="true" class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Dokümanlar</a>
+                        <a href="indexFeed.html" data-readdy="true" class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Feed</a>
+                        <a href="#" class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Tedavi
+                            Planı (Yakında)</a>
+                        <a href="indexNotlar.html" data-readdy="true" class="px-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300">Notlar</a>
+                        <a href="#" class="px-1 py-2 text-sm font-medium text-primary border-b-2 border-primary">Raporlar</a>
                     </nav>
                 </div>
             </header>
@@ -421,14 +390,12 @@
                         <!-- Patient Info Card -->
                         <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
                             <div class="flex items-center">
-                                <img class="h-14 w-14 rounded-full object-cover"
-                                    src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish"
+                                <img class="h-14 w-14 rounded-full object-cover" src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520middle-aged%2520woman%2520with%2520short%2520brown%2520hair%252C%2520neutral%2520expression%252C%2520light%2520background%252C%2520photorealistic%252C%2520high%2520quality%252C%2520professional%2520headshot&width=200&height=200&seq=patient1&orientation=squarish"
                                     alt="Hasta Fotoğrafı">
                                 <div class="ml-4">
                                     <div class="flex items-center">
                                         <h2 class="text-lg font-semibold text-gray-800">Zeynep Kaya</h2>
-                                        <span
-                                            class="ml-2 px-2 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Meme
+                                        <span class="ml-2 px-2 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Meme
                                             Kanseri - Evre II</span>
                                     </div>
                                     <div class="mt-1 grid grid-cols-4 gap-4">
@@ -456,22 +423,19 @@
                         <!-- Controls Bar -->
                         <div class="flex flex-wrap items-center justify-between mb-6 gap-4">
                             <div class="flex items-center space-x-4">
-                                <button id="btnListView"
-                                    class="flex items-center px-3 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-indigo-600 whitespace-nowrap">
+                                <button id="btnListView" class="flex items-center px-3 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-indigo-600 whitespace-nowrap">
                                     <div class="w-4 h-4 mr-2 flex items-center justify-center">
                                         <i class="ri-list-check"></i>
                                     </div>
                                     <span>Liste Görünümü</span>
                                 </button>
-                                <button id="btnGridView"
-                                    class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                <button id="btnGridView" class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                     <div class="w-4 h-4 mr-2 flex items-center justify-center">
                                         <i class="ri-grid-line"></i>
                                     </div>
                                     <span>Kart Görünümü</span>
                                 </button>
-                                <button id="btnAIAnalysis"
-                                    class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                <button id="btnAIAnalysis" class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                     <div class="w-4 h-4 mr-2 flex items-center justify-center">
                                         <i class="ri-brain-line"></i>
                                     </div>
@@ -480,8 +444,7 @@
                             </div>
                             <div class="flex items-center space-x-4">
                                 <div class="relative">
-                                    <button id="dateFilterBtn"
-                                        class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                    <button id="dateFilterBtn" class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                         <div class="w-4 h-4 mr-2 flex items-center justify-center">
                                             <i class="ri-calendar-line"></i>
                                         </div>
@@ -490,8 +453,7 @@
                                             <i class="ri-arrow-down-s-line"></i>
                                         </div>
                                     </button>
-                                    <div id="dateFilterDropdown"
-                                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 py-1">
+                                    <div id="dateFilterDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 py-1">
                                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Son
                                             7 Gün</a>
                                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Son
@@ -507,8 +469,7 @@
                                     </div>
                                 </div>
                                 <div class="relative">
-                                    <button id="sortFilterBtn"
-                                        class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                    <button id="sortFilterBtn" class="flex items-center px-3 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                         <div class="w-4 h-4 mr-2 flex items-center justify-center">
                                             <i class="ri-sort-desc"></i>
                                         </div>
@@ -517,20 +478,16 @@
                                             <i class="ri-arrow-down-s-line"></i>
                                         </div>
                                     </button>
-                                    <div id="sortFilterDropdown"
-                                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 py-1">
+                                    <div id="sortFilterDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 py-1">
                                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">En
                                             Yeni</a>
                                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">En
                                             Eski</a>
-                                        <a href="#"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">A-Z</a>
-                                        <a href="#"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Z-A</a>
+                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">A-Z</a>
+                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Z-A</a>
                                     </div>
                                 </div>
-                                <button
-                                    class="flex items-center px-3 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
+                                <button class="flex items-center px-3 py-2 bg-primary rounded-button text-sm font-medium text-white hover:bg-indigo-600 whitespace-nowrap">
                                     <div class="w-4 h-4 mr-2 flex items-center justify-center">
                                         <i class="ri-add-line"></i>
                                     </div>
@@ -557,11 +514,9 @@
                             <div class="mb-8">
                                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Laboratuvar Raporları</h3>
                                 <div class="space-y-4">
-                                    <div
-                                        class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
+                                    <div class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
                                         <div class="flex items-start">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                            <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
                                                 <i class="ri-test-tube-line ri-lg"></i>
                                             </div>
                                             <div class="ml-4 flex-1">
@@ -569,16 +524,13 @@
                                                     <div>
                                                         <h4 class="text-base font-medium text-gray-900">Tam Kan Sayımı
                                                         </h4>
-                                                        <p class="text-sm text-gray-500">Dr. Mehmet Demir • 15 Haziran
-                                                            2025</p>
+                                                        <p class="text-sm text-gray-500">Dr. Mehmet Demir • 15 Haziran 2025
+                                                        </p>
                                                     </div>
-                                                    <span
-                                                        class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Anormal</span>
+                                                    <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Anormal</span>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-600 line-clamp-2">
-                                                    Hemoglobin: 11.2 g/dL (düşük), Lökosit: 3.8 x10³/µL (düşük),
-                                                    Nötrofil: 1.9 x10³/µL (düşük), Trombosit: 142 x10³/µL (düşük).
-                                                    Kemoterapiye bağlı grade 1 miyelosupresyon ile uyumlu.
+                                                    Hemoglobin: 11.2 g/dL (düşük), Lökosit: 3.8 x10³/µL (düşük), Nötrofil: 1.9 x10³/µL (düşük), Trombosit: 142 x10³/µL (düşük). Kemoterapiye bağlı grade 1 miyelosupresyon ile uyumlu.
                                                 </p>
                                                 <div class="mt-3 flex items-center justify-between">
                                                     <div class="flex items-center text-xs text-gray-500">
@@ -588,15 +540,13 @@
                                                         <span>Rapor No: LAB-2025-0612</span>
                                                     </div>
                                                     <div class="flex space-x-2">
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-eye-line"></i>
                                                             </div>
                                                             <span>Görüntüle</span>
                                                         </button>
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-download-line"></i>
                                                             </div>
@@ -608,11 +558,9 @@
                                         </div>
                                     </div>
 
-                                    <div
-                                        class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
+                                    <div class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
                                         <div class="flex items-start">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                            <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
                                                 <i class="ri-test-tube-line ri-lg"></i>
                                             </div>
                                             <div class="ml-4 flex-1">
@@ -620,16 +568,13 @@
                                                     <div>
                                                         <h4 class="text-base font-medium text-gray-900">Biyokimya Paneli
                                                         </h4>
-                                                        <p class="text-sm text-gray-500">Dr. Mehmet Demir • 15 Haziran
-                                                            2025</p>
+                                                        <p class="text-sm text-gray-500">Dr. Mehmet Demir • 15 Haziran 2025
+                                                        </p>
                                                     </div>
-                                                    <span
-                                                        class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Normal</span>
+                                                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Normal</span>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-600 line-clamp-2">
-                                                    Karaciğer enzimleri (ALT, AST), böbrek fonksiyon testleri (BUN,
-                                                    Kreatinin) ve elektrolit değerleri normal sınırlarda. Kemoterapi
-                                                    protokolüne devam edilebilir.
+                                                    Karaciğer enzimleri (ALT, AST), böbrek fonksiyon testleri (BUN, Kreatinin) ve elektrolit değerleri normal sınırlarda. Kemoterapi protokolüne devam edilebilir.
                                                 </p>
                                                 <div class="mt-3 flex items-center justify-between">
                                                     <div class="flex items-center text-xs text-gray-500">
@@ -639,15 +584,13 @@
                                                         <span>Rapor No: LAB-2025-0613</span>
                                                     </div>
                                                     <div class="flex space-x-2">
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-eye-line"></i>
                                                             </div>
                                                             <span>Görüntüle</span>
                                                         </button>
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-download-line"></i>
                                                             </div>
@@ -659,28 +602,23 @@
                                         </div>
                                     </div>
 
-                                    <div
-                                        class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
+                                    <div class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-blue-500">
                                         <div class="flex items-start">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                            <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
                                                 <i class="ri-test-tube-line ri-lg"></i>
                                             </div>
                                             <div class="ml-4 flex-1">
                                                 <div class="flex items-center justify-between">
                                                     <div>
-                                                        <h4 class="text-base font-medium text-gray-900">Tümör
-                                                            Belirteçleri</h4>
-                                                        <p class="text-sm text-gray-500">Dr. Mehmet Demir • 1 Haziran
-                                                            2025</p>
+                                                        <h4 class="text-base font-medium text-gray-900">Tümör Belirteçleri
+                                                        </h4>
+                                                        <p class="text-sm text-gray-500">Dr. Mehmet Demir • 1 Haziran 2025
+                                                        </p>
                                                     </div>
-                                                    <span
-                                                        class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Anormal</span>
+                                                    <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Anormal</span>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-600 line-clamp-2">
-                                                    CA 15-3: 32 U/mL (referans: &lt;25 U/mL), CEA: 3.8 ng/mL (referans:
-                                                    &lt;5.0 ng/mL). CA 15-3 seviyesi hafif yüksek, tedavi yanıtı
-                                                    takibinde kullanılabilir.
+                                                    CA 15-3: 32 U/mL (referans: &lt;25 U/mL), CEA: 3.8 ng/mL (referans: &lt;5.0 ng/mL). CA 15-3 seviyesi hafif yüksek, tedavi yanıtı takibinde kullanılabilir.
                                                 </p>
                                                 <div class="mt-3 flex items-center justify-between">
                                                     <div class="flex items-center text-xs text-gray-500">
@@ -690,15 +628,13 @@
                                                         <span>Rapor No: LAB-2025-0601</span>
                                                     </div>
                                                     <div class="flex space-x-2">
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-eye-line"></i>
                                                             </div>
                                                             <span>Görüntüle</span>
                                                         </button>
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-download-line"></i>
                                                             </div>
@@ -716,29 +652,24 @@
                             <div class="mb-8">
                                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Görüntüleme Raporları</h3>
                                 <div class="space-y-4">
-                                    <div
-                                        class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-purple-500">
+                                    <div class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-purple-500">
                                         <div class="flex items-start">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
+                                            <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
                                                 <i class="ri-image-line ri-lg"></i>
                                             </div>
                                             <div class="ml-4 flex-1">
                                                 <div class="flex items-center justify-between">
                                                     <div>
-                                                        <h4 class="text-base font-medium text-gray-900">Meme MR
-                                                            Görüntüleme</h4>
-                                                        <p class="text-sm text-gray-500">Dr. Ayşe Yıldız • 10 Haziran
-                                                            2025</p>
+                                                        <h4 class="text-base font-medium text-gray-900">Meme MR Görüntüleme
+                                                        </h4>
+                                                        <p class="text-sm text-gray-500">Dr. Ayşe Yıldız • 10 Haziran 2025
+                                                        </p>
                                                     </div>
-                                                    <span
-                                                        class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Tedavi
+                                                    <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Tedavi
                                                         Yanıtı</span>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-600 line-clamp-2">
-                                                    Sağ memede 2.8 cm'den 2.2 cm'ye küçülen kitle izlenmektedir.
-                                                    Neoadjuvan kemoterapiye kısmi yanıt mevcuttur. Aksiller lenf
-                                                    nodlarında boyut azalması gözlenmiştir.
+                                                    Sağ memede 2.8 cm'den 2.2 cm'ye küçülen kitle izlenmektedir. Neoadjuvan kemoterapiye kısmi yanıt mevcuttur. Aksiller lenf nodlarında boyut azalması gözlenmiştir.
                                                 </p>
                                                 <div class="mt-3 flex items-center justify-between">
                                                     <div class="flex items-center text-xs text-gray-500">
@@ -748,15 +679,13 @@
                                                         <span>Rapor No: RAD-2025-0610</span>
                                                     </div>
                                                     <div class="flex space-x-2">
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-eye-line"></i>
                                                             </div>
                                                             <span>Görüntüle</span>
                                                         </button>
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-download-line"></i>
                                                             </div>
@@ -768,11 +697,9 @@
                                         </div>
                                     </div>
 
-                                    <div
-                                        class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-purple-500">
+                                    <div class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-purple-500">
                                         <div class="flex items-start">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
+                                            <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
                                                 <i class="ri-image-line ri-lg"></i>
                                             </div>
                                             <div class="ml-4 flex-1">
@@ -782,14 +709,11 @@
                                                         <p class="text-sm text-gray-500">Dr. Ayşe Yıldız • 15 Mayıs 2025
                                                         </p>
                                                     </div>
-                                                    <span
-                                                        class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">BIRADS
+                                                    <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">BIRADS
                                                         5</span>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-600 line-clamp-2">
-                                                    Sağ memede üst dış kadranda 2.8 cm çapında spiküle konturlu kitle
-                                                    lezyonu izlenmektedir. Aksiller bölgede şüpheli lenf nodları
-                                                    mevcuttur. BIRADS 5 - Yüksek olasılıkla malign.
+                                                    Sağ memede üst dış kadranda 2.8 cm çapında spiküle konturlu kitle lezyonu izlenmektedir. Aksiller bölgede şüpheli lenf nodları mevcuttur. BIRADS 5 - Yüksek olasılıkla malign.
                                                 </p>
                                                 <div class="mt-3 flex items-center justify-between">
                                                     <div class="flex items-center text-xs text-gray-500">
@@ -799,15 +723,13 @@
                                                         <span>Rapor No: RAD-2025-0515</span>
                                                     </div>
                                                     <div class="flex space-x-2">
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-eye-line"></i>
                                                             </div>
                                                             <span>Görüntüle</span>
                                                         </button>
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-download-line"></i>
                                                             </div>
@@ -825,11 +747,9 @@
                             <div class="mb-8">
                                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Patoloji Raporları</h3>
                                 <div class="space-y-4">
-                                    <div
-                                        class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-500">
+                                    <div class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-500">
                                         <div class="flex items-start">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0">
+                                            <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0">
                                                 <i class="ri-microscope-line ri-lg"></i>
                                             </div>
                                             <div class="ml-4 flex-1">
@@ -837,16 +757,13 @@
                                                     <div>
                                                         <h4 class="text-base font-medium text-gray-900">Meme Biyopsisi
                                                         </h4>
-                                                        <p class="text-sm text-gray-500">Dr. Canan Öztürk • 18 Mayıs
-                                                            2025</p>
+                                                        <p class="text-sm text-gray-500">Dr. Canan Öztürk • 18 Mayıs 2025
+                                                        </p>
                                                     </div>
-                                                    <span
-                                                        class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Malign</span>
+                                                    <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Malign</span>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-600 line-clamp-2">
-                                                    İnvaziv duktal karsinom, histolojik grade 2. İmmünohistokimyasal
-                                                    incelemede ER(+), PR(+), HER2(-), Ki-67 proliferasyon indeksi %22.
-                                                    Luminal A alt tipi ile uyumlu.
+                                                    İnvaziv duktal karsinom, histolojik grade 2. İmmünohistokimyasal incelemede ER(+), PR(+), HER2(-), Ki-67 proliferasyon indeksi %22. Luminal A alt tipi ile uyumlu.
                                                 </p>
                                                 <div class="mt-3 flex items-center justify-between">
                                                     <div class="flex items-center text-xs text-gray-500">
@@ -856,15 +773,13 @@
                                                         <span>Rapor No: PAT-2025-0518</span>
                                                     </div>
                                                     <div class="flex space-x-2">
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-eye-line"></i>
                                                             </div>
                                                             <span>Görüntüle</span>
                                                         </button>
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-download-line"></i>
                                                             </div>
@@ -876,28 +791,23 @@
                                         </div>
                                     </div>
 
-                                    <div
-                                        class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-500">
+                                    <div class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-red-500">
                                         <div class="flex items-start">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0">
+                                            <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0">
                                                 <i class="ri-microscope-line ri-lg"></i>
                                             </div>
                                             <div class="ml-4 flex-1">
                                                 <div class="flex items-center justify-between">
                                                     <div>
-                                                        <h4 class="text-base font-medium text-gray-900">Lenf Nodu
-                                                            Biyopsisi</h4>
-                                                        <p class="text-sm text-gray-500">Dr. Canan Öztürk • 20 Mayıs
-                                                            2025</p>
+                                                        <h4 class="text-base font-medium text-gray-900">Lenf Nodu Biyopsisi
+                                                        </h4>
+                                                        <p class="text-sm text-gray-500">Dr. Canan Öztürk • 20 Mayıs 2025
+                                                        </p>
                                                     </div>
-                                                    <span
-                                                        class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Metastaz</span>
+                                                    <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Metastaz</span>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-600 line-clamp-2">
-                                                    Aksiller lenf nodunda metastatik karsinom odakları izlenmiştir.
-                                                    İncelenen 3 lenf nodundan 2'sinde metastaz saptanmıştır.
-                                                    Ekstrakapsüler yayılım görülmemiştir.
+                                                    Aksiller lenf nodunda metastatik karsinom odakları izlenmiştir. İncelenen 3 lenf nodundan 2'sinde metastaz saptanmıştır. Ekstrakapsüler yayılım görülmemiştir.
                                                 </p>
                                                 <div class="mt-3 flex items-center justify-between">
                                                     <div class="flex items-center text-xs text-gray-500">
@@ -907,15 +817,13 @@
                                                         <span>Rapor No: PAT-2025-0520</span>
                                                     </div>
                                                     <div class="flex space-x-2">
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-eye-line"></i>
                                                             </div>
                                                             <span>Görüntüle</span>
                                                         </button>
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-download-line"></i>
                                                             </div>
@@ -933,28 +841,22 @@
                             <div class="mb-8">
                                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Tedavi Raporları</h3>
                                 <div class="space-y-4">
-                                    <div
-                                        class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-green-500">
+                                    <div class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-green-500">
                                         <div class="flex items-start">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
+                                            <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
                                                 <i class="ri-medicine-bottle-line ri-lg"></i>
                                             </div>
                                             <div class="ml-4 flex-1">
                                                 <div class="flex items-center justify-between">
                                                     <div>
-                                                        <h4 class="text-base font-medium text-gray-900">Kemoterapi
-                                                            Uygulama - 2. Kür</h4>
-                                                        <p class="text-sm text-gray-500">Dr. Ahmet Yılmaz • 12 Haziran
-                                                            2025</p>
+                                                        <h4 class="text-base font-medium text-gray-900">Kemoterapi Uygulama - 2. Kür</h4>
+                                                        <p class="text-sm text-gray-500">Dr. Ahmet Yılmaz • 12 Haziran 2025
+                                                        </p>
                                                     </div>
-                                                    <span
-                                                        class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Tamamlandı</span>
+                                                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Tamamlandı</span>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-600 line-clamp-2">
-                                                    AC-T protokolü 2. kür uygulaması tamamlandı. Doxorubicin 60 mg/m² ve
-                                                    Siklofosfamid 600 mg/m² IV olarak uygulandı. Grade 2 bulantı ve
-                                                    yorgunluk dışında önemli yan etki gözlenmedi.
+                                                    AC-T protokolü 2. kür uygulaması tamamlandı. Doxorubicin 60 mg/m² ve Siklofosfamid 600 mg/m² IV olarak uygulandı. Grade 2 bulantı ve yorgunluk dışında önemli yan etki gözlenmedi.
                                                 </p>
                                                 <div class="mt-3 flex items-center justify-between">
                                                     <div class="flex items-center text-xs text-gray-500">
@@ -964,15 +866,13 @@
                                                         <span>Rapor No: TED-2025-0612</span>
                                                     </div>
                                                     <div class="flex space-x-2">
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-eye-line"></i>
                                                             </div>
                                                             <span>Görüntüle</span>
                                                         </button>
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-download-line"></i>
                                                             </div>
@@ -984,28 +884,22 @@
                                         </div>
                                     </div>
 
-                                    <div
-                                        class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-green-500">
+                                    <div class="report-card bg-white rounded-lg shadow-sm p-4 border-l-4 border-green-500">
                                         <div class="flex items-start">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
+                                            <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
                                                 <i class="ri-medicine-bottle-line ri-lg"></i>
                                             </div>
                                             <div class="ml-4 flex-1">
                                                 <div class="flex items-center justify-between">
                                                     <div>
-                                                        <h4 class="text-base font-medium text-gray-900">Kemoterapi
-                                                            Uygulama - 1. Kür</h4>
-                                                        <p class="text-sm text-gray-500">Dr. Ahmet Yılmaz • 29 Mayıs
-                                                            2025</p>
+                                                        <h4 class="text-base font-medium text-gray-900">Kemoterapi Uygulama - 1. Kür</h4>
+                                                        <p class="text-sm text-gray-500">Dr. Ahmet Yılmaz • 29 Mayıs 2025
+                                                        </p>
                                                     </div>
-                                                    <span
-                                                        class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Tamamlandı</span>
+                                                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Tamamlandı</span>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-600 line-clamp-2">
-                                                    AC-T protokolü 1. kür uygulaması tamamlandı. Doxorubicin 60 mg/m² ve
-                                                    Siklofosfamid 600 mg/m² IV olarak uygulandı. Grade 1 bulantı dışında
-                                                    önemli yan etki gözlenmedi.
+                                                    AC-T protokolü 1. kür uygulaması tamamlandı. Doxorubicin 60 mg/m² ve Siklofosfamid 600 mg/m² IV olarak uygulandı. Grade 1 bulantı dışında önemli yan etki gözlenmedi.
                                                 </p>
                                                 <div class="mt-3 flex items-center justify-between">
                                                     <div class="flex items-center text-xs text-gray-500">
@@ -1015,15 +909,13 @@
                                                         <span>Rapor No: TED-2025-0529</span>
                                                     </div>
                                                     <div class="flex space-x-2">
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-eye-line"></i>
                                                             </div>
                                                             <span>Görüntüle</span>
                                                         </button>
-                                                        <button
-                                                            class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                                        <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                             <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                                 <i class="ri-download-line"></i>
                                                             </div>
@@ -1046,8 +938,7 @@
                                     <div class="p-4 border-b border-gray-100">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                                                <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
                                                     <i class="ri-test-tube-line ri-lg"></i>
                                                 </div>
                                                 <div class="ml-3">
@@ -1055,29 +946,24 @@
                                                     <p class="text-xs text-gray-500">15 Haziran 2025</p>
                                                 </div>
                                             </div>
-                                            <span
-                                                class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Anormal</span>
+                                            <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Anormal</span>
                                         </div>
                                     </div>
                                     <div class="p-4">
                                         <p class="text-sm text-gray-600 line-clamp-3">
-                                            Hemoglobin: 11.2 g/dL (düşük), Lökosit: 3.8 x10³/µL (düşük), Nötrofil: 1.9
-                                            x10³/µL (düşük), Trombosit: 142 x10³/µL (düşük). Kemoterapiye bağlı grade 1
-                                            miyelosupresyon ile uyumlu.
+                                            Hemoglobin: 11.2 g/dL (düşük), Lökosit: 3.8 x10³/µL (düşük), Nötrofil: 1.9 x10³/µL (düşük), Trombosit: 142 x10³/µL (düşük). Kemoterapiye bağlı grade 1 miyelosupresyon ile uyumlu.
                                         </p>
                                     </div>
                                     <div class="px-4 py-3 bg-gray-50 flex items-center justify-between">
                                         <div class="text-xs text-gray-500">Dr. Mehmet Demir</div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-eye-line"></i>
                                                 </div>
                                                 <span>Görüntüle</span>
                                             </button>
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-download-line"></i>
                                                 </div>
@@ -1091,8 +977,7 @@
                                     <div class="p-4 border-b border-gray-100">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                                                <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
                                                     <i class="ri-test-tube-line ri-lg"></i>
                                                 </div>
                                                 <div class="ml-3">
@@ -1101,29 +986,24 @@
                                                     <p class="text-xs text-gray-500">15 Haziran 2025</p>
                                                 </div>
                                             </div>
-                                            <span
-                                                class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Normal</span>
+                                            <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Normal</span>
                                         </div>
                                     </div>
                                     <div class="p-4">
                                         <p class="text-sm text-gray-600 line-clamp-3">
-                                            Karaciğer enzimleri (ALT, AST), böbrek fonksiyon testleri (BUN, Kreatinin)
-                                            ve elektrolit değerleri normal sınırlarda. Kemoterapi protokolüne devam
-                                            edilebilir.
+                                            Karaciğer enzimleri (ALT, AST), böbrek fonksiyon testleri (BUN, Kreatinin) ve elektrolit değerleri normal sınırlarda. Kemoterapi protokolüne devam edilebilir.
                                         </p>
                                     </div>
                                     <div class="px-4 py-3 bg-gray-50 flex items-center justify-between">
                                         <div class="text-xs text-gray-500">Dr. Mehmet Demir</div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-eye-line"></i>
                                                 </div>
                                                 <span>Görüntüle</span>
                                             </button>
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-download-line"></i>
                                                 </div>
@@ -1138,8 +1018,7 @@
                                     <div class="p-4 border-b border-gray-100">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
+                                                <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
                                                     <i class="ri-image-line ri-lg"></i>
                                                 </div>
                                                 <div class="ml-3">
@@ -1148,30 +1027,25 @@
                                                     <p class="text-xs text-gray-500">10 Haziran 2025</p>
                                                 </div>
                                             </div>
-                                            <span
-                                                class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Tedavi
+                                            <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Tedavi
                                                 Yanıtı</span>
                                         </div>
                                     </div>
                                     <div class="p-4">
                                         <p class="text-sm text-gray-600 line-clamp-3">
-                                            Sağ memede 2.8 cm'den 2.2 cm'ye küçülen kitle izlenmektedir. Neoadjuvan
-                                            kemoterapiye kısmi yanıt mevcuttur. Aksiller lenf nodlarında boyut azalması
-                                            gözlenmiştir.
+                                            Sağ memede 2.8 cm'den 2.2 cm'ye küçülen kitle izlenmektedir. Neoadjuvan kemoterapiye kısmi yanıt mevcuttur. Aksiller lenf nodlarında boyut azalması gözlenmiştir.
                                         </p>
                                     </div>
                                     <div class="px-4 py-3 bg-gray-50 flex items-center justify-between">
                                         <div class="text-xs text-gray-500">Dr. Ayşe Yıldız</div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-eye-line"></i>
                                                 </div>
                                                 <span>Görüntüle</span>
                                             </button>
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-download-line"></i>
                                                 </div>
@@ -1186,8 +1060,7 @@
                                     <div class="p-4 border-b border-gray-100">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600">
+                                                <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600">
                                                     <i class="ri-microscope-line ri-lg"></i>
                                                 </div>
                                                 <div class="ml-3">
@@ -1195,29 +1068,24 @@
                                                     <p class="text-xs text-gray-500">18 Mayıs 2025</p>
                                                 </div>
                                             </div>
-                                            <span
-                                                class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Malign</span>
+                                            <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Malign</span>
                                         </div>
                                     </div>
                                     <div class="p-4">
                                         <p class="text-sm text-gray-600 line-clamp-3">
-                                            İnvaziv duktal karsinom, histolojik grade 2. İmmünohistokimyasal incelemede
-                                            ER(+), PR(+), HER2(-), Ki-67 proliferasyon indeksi %22. Luminal A alt tipi
-                                            ile uyumlu.
+                                            İnvaziv duktal karsinom, histolojik grade 2. İmmünohistokimyasal incelemede ER(+), PR(+), HER2(-), Ki-67 proliferasyon indeksi %22. Luminal A alt tipi ile uyumlu.
                                         </p>
                                     </div>
                                     <div class="px-4 py-3 bg-gray-50 flex items-center justify-between">
                                         <div class="text-xs text-gray-500">Dr. Canan Öztürk</div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-eye-line"></i>
                                                 </div>
                                                 <span>Görüntüle</span>
                                             </button>
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-download-line"></i>
                                                 </div>
@@ -1232,8 +1100,7 @@
                                     <div class="p-4 border-b border-gray-100">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
+                                                <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
                                                     <i class="ri-medicine-bottle-line ri-lg"></i>
                                                 </div>
                                                 <div class="ml-3">
@@ -1242,29 +1109,24 @@
                                                     <p class="text-xs text-gray-500">12 Haziran 2025</p>
                                                 </div>
                                             </div>
-                                            <span
-                                                class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Tamamlandı</span>
+                                            <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Tamamlandı</span>
                                         </div>
                                     </div>
                                     <div class="p-4">
                                         <p class="text-sm text-gray-600 line-clamp-3">
-                                            AC-T protokolü 2. kür uygulaması tamamlandı. Doxorubicin 60 mg/m² ve
-                                            Siklofosfamid 600 mg/m² IV olarak uygulandı. Grade 2 bulantı ve yorgunluk
-                                            dışında önemli yan etki gözlenmedi.
+                                            AC-T protokolü 2. kür uygulaması tamamlandı. Doxorubicin 60 mg/m² ve Siklofosfamid 600 mg/m² IV olarak uygulandı. Grade 2 bulantı ve yorgunluk dışında önemli yan etki gözlenmedi.
                                         </p>
                                     </div>
                                     <div class="px-4 py-3 bg-gray-50 flex items-center justify-between">
                                         <div class="text-xs text-gray-500">Dr. Ahmet Yılmaz</div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-eye-line"></i>
                                                 </div>
                                                 <span>Görüntüle</span>
                                             </button>
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-download-line"></i>
                                                 </div>
@@ -1278,8 +1140,7 @@
                                     <div class="p-4 border-b border-gray-100">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
+                                                <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
                                                     <i class="ri-medicine-bottle-line ri-lg"></i>
                                                 </div>
                                                 <div class="ml-3">
@@ -1288,29 +1149,24 @@
                                                     <p class="text-xs text-gray-500">29 Mayıs 2025</p>
                                                 </div>
                                             </div>
-                                            <span
-                                                class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Tamamlandı</span>
+                                            <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Tamamlandı</span>
                                         </div>
                                     </div>
                                     <div class="p-4">
                                         <p class="text-sm text-gray-600 line-clamp-3">
-                                            AC-T protokolü 1. kür uygulaması tamamlandı. Doxorubicin 60 mg/m² ve
-                                            Siklofosfamid 600 mg/m² IV olarak uygulandı. Grade 1 bulantı dışında önemli
-                                            yan etki gözlenmedi.
+                                            AC-T protokolü 1. kür uygulaması tamamlandı. Doxorubicin 60 mg/m² ve Siklofosfamid 600 mg/m² IV olarak uygulandı. Grade 1 bulantı dışında önemli yan etki gözlenmedi.
                                         </p>
                                     </div>
                                     <div class="px-4 py-3 bg-gray-50 flex items-center justify-between">
                                         <div class="text-xs text-gray-500">Dr. Ahmet Yılmaz</div>
                                         <div class="flex space-x-2">
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-eye-line"></i>
                                                 </div>
                                                 <span>Görüntüle</span>
                                             </button>
-                                            <button
-                                                class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                                            <button class="flex items-center px-2 py-1 bg-white border border-gray-300 rounded-button text-xs font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                                                 <div class="w-3 h-3 mr-1 flex items-center justify-center">
                                                     <i class="ri-download-line"></i>
                                                 </div>
@@ -1324,12 +1180,10 @@
                     </div>
 
                     <!-- AI Analysis Panel (Hidden by default) -->
-                    <div id="aiAnalysisPanel"
-                        class="hidden w-96 bg-white border-l border-gray-200 overflow-y-auto custom-scrollbar">
+                    <div id="aiAnalysisPanel" class="hidden w-96 bg-white border-l border-gray-200 overflow-y-auto custom-scrollbar">
                         <div class="p-4 border-b border-gray-200 flex items-center justify-between">
                             <div class="flex items-center">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+                                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
                                     <i class="ri-robot-line"></i>
                                 </div>
                                 <div class="ml-2">
@@ -1337,8 +1191,7 @@
                                     <p class="text-xs text-gray-500">DocMate AI Asistanı</p>
                                 </div>
                             </div>
-                            <button id="closeAIPanel"
-                                class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
+                            <button id="closeAIPanel" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
                                 <i class="ri-close-line"></i>
                             </button>
                         </div>
@@ -1347,10 +1200,8 @@
                             <div class="mb-6">
                                 <h4 class="text-sm font-medium text-gray-700 mb-2">Rapor Özeti</h4>
                                 <div class="p-3 bg-gray-50 rounded-lg text-sm text-gray-700">
-                                    <p>Zeynep Kaya'nın son 3 aydaki raporları analiz edildi. Hasta, Meme Kanseri (Evre
-                                        II) tanısıyla takip edilmekte ve neoadjuvan kemoterapi almaktadır.</p>
-                                    <p class="mt-2">Toplam 9 rapor incelendi: 3 laboratuvar, 2 görüntüleme, 2 patoloji
-                                        ve 2 tedavi raporu.</p>
+                                    <p>Zeynep Kaya'nın son 3 aydaki raporları analiz edildi. Hasta, Meme Kanseri (Evre II) tanısıyla takip edilmekte ve neoadjuvan kemoterapi almaktadır.</p>
+                                    <p class="mt-2">Toplam 9 rapor incelendi: 3 laboratuvar, 2 görüntüleme, 2 patoloji ve 2 tedavi raporu.</p>
                                 </div>
                             </div>
 
@@ -1358,16 +1209,13 @@
                                 <h4 class="text-sm font-medium text-gray-700 mb-2">Önemli Bulgular</h4>
                                 <div class="space-y-3">
                                     <div class="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
-                                        <p class="text-sm text-yellow-800">Kemoterapiye bağlı grade 1 miyelosupresyon
-                                            (15 Haziran 2025)</p>
+                                        <p class="text-sm text-yellow-800">Kemoterapiye bağlı grade 1 miyelosupresyon (15 Haziran 2025)</p>
                                     </div>
                                     <div class="p-3 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
-                                        <p class="text-sm text-green-800">Tümör boyutunda %21 küçülme (2.8 cm → 2.2 cm)
-                                            (10 Haziran 2025)</p>
+                                        <p class="text-sm text-green-800">Tümör boyutunda %21 küçülme (2.8 cm → 2.2 cm) (10 Haziran 2025)</p>
                                     </div>
                                     <div class="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
-                                        <p class="text-sm text-yellow-800">CA 15-3 tümör belirteci yüksek (32 U/mL) (1
-                                            Haziran 2025)</p>
+                                        <p class="text-sm text-yellow-800">CA 15-3 tümör belirteci yüksek (32 U/mL) (1 Haziran 2025)</p>
                                     </div>
                                 </div>
                             </div>
@@ -1386,35 +1234,29 @@
                                 <h4 class="text-sm font-medium text-gray-700 mb-2">Öneriler</h4>
                                 <div class="space-y-2">
                                     <div class="flex items-start">
-                                        <div
-                                            class="w-5 h-5 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
+                                        <div class="w-5 h-5 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
                                             <i class="ri-checkbox-circle-line"></i>
                                         </div>
                                         <p class="text-sm text-gray-700">Hematolojik parametrelerin yakın takibi</p>
                                     </div>
                                     <div class="flex items-start">
-                                        <div
-                                            class="w-5 h-5 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
+                                        <div class="w-5 h-5 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
                                             <i class="ri-checkbox-circle-line"></i>
                                         </div>
-                                        <p class="text-sm text-gray-700">Anti-emetik tedavinin optimizasyonu (grade 2
-                                            bulantı için)</p>
+                                        <p class="text-sm text-gray-700">Anti-emetik tedavinin optimizasyonu (grade 2 bulantı için)</p>
                                     </div>
                                     <div class="flex items-start">
-                                        <div
-                                            class="w-5 h-5 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
+                                        <div class="w-5 h-5 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
                                             <i class="ri-checkbox-circle-line"></i>
                                         </div>
-                                        <p class="text-sm text-gray-700">Bir sonraki kemoterapi öncesi tam kan sayımı
-                                            kontrolü</p>
+                                        <p class="text-sm text-gray-700">Bir sonraki kemoterapi öncesi tam kan sayımı kontrolü
+                                        </p>
                                     </div>
                                     <div class="flex items-start">
-                                        <div
-                                            class="w-5 h-5 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
+                                        <div class="w-5 h-5 mt-0.5 mr-2 flex-shrink-0 flex items-center justify-center text-primary">
                                             <i class="ri-checkbox-circle-line"></i>
                                         </div>
-                                        <p class="text-sm text-gray-700">4. kür sonrası yanıt değerlendirmesi için
-                                            kontrol MR planlanması</p>
+                                        <p class="text-sm text-gray-700">4. kür sonrası yanıt değerlendirmesi için kontrol MR planlanması</p>
                                     </div>
                                 </div>
                             </div>
@@ -1422,11 +1264,8 @@
                             <div class="mb-6">
                                 <h4 class="text-sm font-medium text-gray-700 mb-2">Ek Analiz İsteği</h4>
                                 <div class="relative">
-                                    <textarea
-                                        class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-                                        rows="3" placeholder="AI'dan özel analiz isteyin..."></textarea>
-                                    <button
-                                        class="absolute right-2 bottom-2 w-8 h-8 flex items-center justify-center text-white bg-primary rounded-full hover:bg-indigo-600">
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" rows="3" placeholder="AI'dan özel analiz isteyin..."></textarea>
+                                    <button class="absolute right-2 bottom-2 w-8 h-8 flex items-center justify-center text-white bg-primary rounded-full hover:bg-indigo-600">
                                         <i class="ri-send-plane-fill"></i>
                                     </button>
                                 </div>
@@ -1439,11 +1278,11 @@
     </div>
 
     <script id="themeToggleScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
 
-            themeToggle.addEventListener('change', function () {
+            themeToggle.addEventListener('change', function() {
                 if (this.checked) {
                     html.classList.add('dark');
                     document.body.style.backgroundColor = '#111827';
@@ -1456,13 +1295,13 @@
     </script>
 
     <script id="viewToggleScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const btnListView = document.getElementById('btnListView');
             const btnGridView = document.getElementById('btnGridView');
             const reportsListView = document.getElementById('reportsListView');
             const reportsGridView = document.getElementById('reportsGridView');
 
-            btnListView.addEventListener('click', function () {
+            btnListView.addEventListener('click', function() {
                 // Update button styles
                 btnListView.classList.remove('bg-white', 'border', 'border-gray-300', 'text-gray-700');
                 btnListView.classList.add('bg-primary', 'text-white');
@@ -1475,7 +1314,7 @@
                 reportsGridView.classList.add('hidden');
             });
 
-            btnGridView.addEventListener('click', function () {
+            btnGridView.addEventListener('click', function() {
                 // Update button styles
                 btnGridView.classList.remove('bg-white', 'border', 'border-gray-300', 'text-gray-700');
                 btnGridView.classList.add('bg-primary', 'text-white');
@@ -1491,26 +1330,26 @@
     </script>
 
     <script id="dropdownToggleScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const dateFilterBtn = document.getElementById('dateFilterBtn');
             const dateFilterDropdown = document.getElementById('dateFilterDropdown');
             const sortFilterBtn = document.getElementById('sortFilterBtn');
             const sortFilterDropdown = document.getElementById('sortFilterDropdown');
 
             // Date filter dropdown
-            dateFilterBtn.addEventListener('click', function () {
+            dateFilterBtn.addEventListener('click', function() {
                 dateFilterDropdown.classList.toggle('hidden');
                 sortFilterDropdown.classList.add('hidden'); // Hide other dropdown
             });
 
             // Sort filter dropdown
-            sortFilterBtn.addEventListener('click', function () {
+            sortFilterBtn.addEventListener('click', function() {
                 sortFilterDropdown.classList.toggle('hidden');
                 dateFilterDropdown.classList.add('hidden'); // Hide other dropdown
             });
 
             // Close dropdowns when clicking outside
-            document.addEventListener('click', function (event) {
+            document.addEventListener('click', function(event) {
                 if (!dateFilterBtn.contains(event.target) && !dateFilterDropdown.contains(event.target)) {
                     dateFilterDropdown.classList.add('hidden');
                 }
@@ -1523,7 +1362,7 @@
             // Handle dropdown item clicks
             const dateFilterItems = dateFilterDropdown.querySelectorAll('a');
             dateFilterItems.forEach(item => {
-                item.addEventListener('click', function (e) {
+                item.addEventListener('click', function(e) {
                     e.preventDefault();
                     const selectedText = this.textContent;
                     dateFilterBtn.querySelector('span').textContent = selectedText;
@@ -1533,7 +1372,7 @@
 
             const sortFilterItems = sortFilterDropdown.querySelectorAll('a');
             sortFilterItems.forEach(item => {
-                item.addEventListener('click', function (e) {
+                item.addEventListener('click', function(e) {
                     e.preventDefault();
                     const selectedText = this.textContent;
                     sortFilterBtn.querySelector('span').textContent = selectedText;
@@ -1544,11 +1383,11 @@
     </script>
 
     <script id="tabsToggleScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.tab-active, .tab-inactive');
 
             tabs.forEach(tab => {
-                tab.addEventListener('click', function () {
+                tab.addEventListener('click', function() {
                     // Remove active class from all tabs
                     tabs.forEach(t => {
                         t.classList.remove('tab-active');
@@ -1564,12 +1403,12 @@
     </script>
 
     <script id="aiAnalysisPanelScript">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const btnAIAnalysis = document.getElementById('btnAIAnalysis');
             const aiAnalysisPanel = document.getElementById('aiAnalysisPanel');
             const closeAIPanel = document.getElementById('closeAIPanel');
 
-            btnAIAnalysis.addEventListener('click', function () {
+            btnAIAnalysis.addEventListener('click', function() {
                 aiAnalysisPanel.classList.toggle('hidden');
 
                 // Toggle button style
@@ -1586,7 +1425,7 @@
                 }
             });
 
-            closeAIPanel.addEventListener('click', function () {
+            closeAIPanel.addEventListener('click', function() {
                 aiAnalysisPanel.classList.add('hidden');
 
                 // Reset button style
@@ -1635,102 +1474,100 @@
                             color: '#1f2937'
                         }
                     },
-                    yAxis: [
-                        {
-                            type: 'value',
-                            name: 'Tümör Boyutu (cm)',
-                            nameTextStyle: {
-                                color: '#1f2937'
-                            },
-                            axisLine: {
-                                lineStyle: {
-                                    color: '#E5E7EB'
-                                }
-                            },
-                            axisLabel: {
-                                color: '#1f2937'
-                            },
-                            splitLine: {
-                                lineStyle: {
-                                    color: '#F3F4F6'
-                                }
+                    yAxis: [{
+                        type: 'value',
+                        name: 'Tümör Boyutu (cm)',
+                        nameTextStyle: {
+                            color: '#1f2937'
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: '#E5E7EB'
                             }
                         },
-                        {
-                            type: 'value',
-                            name: 'CA 15-3 (U/mL)',
-                            nameTextStyle: {
-                                color: '#1f2937'
-                            },
-                            axisLine: {
-                                lineStyle: {
-                                    color: '#E5E7EB'
-                                }
-                            },
-                            axisLabel: {
-                                color: '#1f2937'
-                            },
-                            splitLine: {
-                                show: false
+                        axisLabel: {
+                            color: '#1f2937'
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: '#F3F4F6'
                             }
                         }
-                    ],
-                    series: [
-                        {
-                            name: 'Tümör Boyutu (cm)',
-                            type: 'line',
-                            smooth: true,
-                            lineStyle: {
-                                width: 3,
-                                color: 'rgba(87, 181, 231, 1)'
-                            },
-                            areaStyle: {
-                                color: {
-                                    type: 'linear',
-                                    x: 0,
-                                    y: 0,
-                                    x2: 0,
-                                    y2: 1,
-                                    colorStops: [{
-                                        offset: 0, color: 'rgba(87, 181, 231, 0.2)'
-                                    }, {
-                                        offset: 1, color: 'rgba(87, 181, 231, 0.05)'
-                                    }]
-                                }
-                            },
-                            data: [2.8, 2.8, 2.6, 2.2, 2.2]
+                    }, {
+                        type: 'value',
+                        name: 'CA 15-3 (U/mL)',
+                        nameTextStyle: {
+                            color: '#1f2937'
                         },
-                        {
-                            name: 'CA 15-3 (U/mL)',
-                            type: 'line',
-                            yAxisIndex: 1,
-                            smooth: true,
+                        axisLine: {
                             lineStyle: {
-                                width: 3,
-                                color: 'rgba(251, 191, 114, 1)'
-                            },
-                            areaStyle: {
-                                color: {
-                                    type: 'linear',
-                                    x: 0,
-                                    y: 0,
-                                    x2: 0,
-                                    y2: 1,
-                                    colorStops: [{
-                                        offset: 0, color: 'rgba(251, 191, 114, 0.2)'
-                                    }, {
-                                        offset: 1, color: 'rgba(251, 191, 114, 0.05)'
-                                    }]
-                                }
-                            },
-                            data: [38, 36, 32, 30, 28]
+                                color: '#E5E7EB'
+                            }
+                        },
+                        axisLabel: {
+                            color: '#1f2937'
+                        },
+                        splitLine: {
+                            show: false
                         }
-                    ]
+                    }],
+                    series: [{
+                        name: 'Tümör Boyutu (cm)',
+                        type: 'line',
+                        smooth: true,
+                        lineStyle: {
+                            width: 3,
+                            color: 'rgba(87, 181, 231, 1)'
+                        },
+                        areaStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0,
+                                    color: 'rgba(87, 181, 231, 0.2)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(87, 181, 231, 0.05)'
+                                }]
+                            }
+                        },
+                        data: [2.8, 2.8, 2.6, 2.2, 2.2]
+                    }, {
+                        name: 'CA 15-3 (U/mL)',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        smooth: true,
+                        lineStyle: {
+                            width: 3,
+                            color: 'rgba(251, 191, 114, 1)'
+                        },
+                        areaStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0,
+                                    color: 'rgba(251, 191, 114, 0.2)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(251, 191, 114, 0.05)'
+                                }]
+                            }
+                        },
+                        data: [38, 36, 32, 30, 28]
+                    }]
                 };
 
                 myChart.setOption(option);
 
-                window.addEventListener('resize', function () {
+                window.addEventListener('resize', function() {
                     myChart.resize();
                 });
             }
@@ -1792,47 +1629,119 @@
                             }
                         }
                     },
-                    series: [
-                        {
-                            name: 'Hemoglobin',
-                            type: 'line',
-                            smooth: true,
-                            lineStyle: {
-                                width: 3,
-                                color: 'rgba(87, 181, 231, 1)'
-                            },
-                            data: [13.2, 12.5, 11.8, 11.2]
+                    series: [{
+                        name: 'Hemoglobin',
+                        type: 'line',
+                        smooth: true,
+                        lineStyle: {
+                            width: 3,
+                            color: 'rgba(87, 181, 231, 1)'
                         },
-                        {
-                            name: 'Lökosit',
-                            type: 'line',
-                            smooth: true,
-                            lineStyle: {
-                                width: 3,
-                                color: 'rgba(141, 211, 199, 1)'
-                            },
-                            data: [6.8, 5.2, 4.5, 3.8]
+                        data: [13.2, 12.5, 11.8, 11.2]
+                    }, {
+                        name: 'Lökosit',
+                        type: 'line',
+                        smooth: true,
+                        lineStyle: {
+                            width: 3,
+                            color: 'rgba(141, 211, 199, 1)'
                         },
-                        {
-                            name: 'Trombosit',
-                            type: 'line',
-                            smooth: true,
-                            lineStyle: {
-                                width: 3,
-                                color: 'rgba(252, 141, 98, 1)'
-                            },
-                            data: [210, 180, 160, 142]
-                        }
-                    ]
+                        data: [6.8, 5.2, 4.5, 3.8]
+                    }, {
+                        name: 'Trombosit',
+                        type: 'line',
+                        smooth: true,
+                        lineStyle: {
+                            width: 3,
+                            color: 'rgba(252, 141, 98, 1)'
+                        },
+                        data: [210, 180, 160, 142]
+                    }]
                 };
 
                 myChart.setOption(option);
 
-                window.addEventListener('resize', function () {
+                window.addEventListener('resize', function() {
                     myChart.resize();
                 });
             }
         });
+    </script>
+
+    <!-- Hasta Durumu Analizi Modalı (Sıfırdan) -->
+    <div id="myPatientModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-gray-800">Hasta Seçin</h3>
+                <button id="closeMyPatientModal" class="text-gray-500 hover:text-gray-700">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-4">
+                    <input type="text" id="myPatientSearchInput" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Hasta ara...">
+                </div>
+                <div class="max-h-64 overflow-y-auto custom-scrollbar">
+                    <div id="myPatientList" class="space-y-2">
+                        <!-- Hasta listesi dinamik olarak doldurulacak -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Buton ve modal referansları
+        const hastaAnalizBtn = document.getElementById('patientAnalysisModule');
+        const modal = document.getElementById('myPatientModal');
+        const closeModalBtn = document.getElementById('closeMyPatientModal');
+        const patientListDiv = document.getElementById('myPatientList');
+        const searchInput = document.getElementById('myPatientSearchInput');
+
+        // Örnek hasta verisi
+        const hastalar = [
+            { id: 'ZK-10254', name: 'Zeynep Kaya', diagnosis: 'Meme Kanseri', stage: 'Evre II' },
+            { id: 'MA-10255', name: 'Mehmet Aydın', diagnosis: 'Akciğer Kanseri', stage: 'Evre III' },
+            { id: 'AD-10256', name: 'Ayşe Demir', diagnosis: 'Lenfoma', stage: 'Hodgkin' }
+        ];
+
+        // Modalı aç
+        hastaAnalizBtn.addEventListener('click', function() {
+            modal.classList.remove('hidden');
+            showPatients(hastalar);
+        });
+        // Modalı kapat
+        closeModalBtn.addEventListener('click', function() {
+            modal.classList.add('hidden');
+        });
+        // Dışarı tıklayınca kapat
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+        // Hasta arama
+        searchInput.addEventListener('input', function() {
+            const term = searchInput.value.toLowerCase();
+            const filtered = hastalar.filter(h => h.name.toLowerCase().includes(term) || h.id.toLowerCase().includes(term));
+            showPatients(filtered);
+        });
+        // Hasta listesini göster
+        function showPatients(list) {
+            patientListDiv.innerHTML = '';
+            list.forEach(hasta => {
+                const div = document.createElement('div');
+                div.className = 'p-3 border border-gray-200 rounded-md hover:bg-gray-50 cursor-pointer flex justify-between items-center';
+                div.innerHTML = `<div><div class='text-sm font-medium text-gray-900'>${hasta.name}</div><div class='text-xs text-gray-500'>${hasta.id}</div></div><div class='text-right'><div class='text-sm text-gray-900'>${hasta.diagnosis}</div><div class='text-xs text-gray-500'>${hasta.stage}</div></div>`;
+                div.addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+                patientListDiv.appendChild(div);
+            });
+        }
+    });
     </script>
 
 </body>
