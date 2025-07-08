@@ -416,10 +416,7 @@
                     <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
                         <!-- Categories Tabs -->
                         <div class="flex border-b border-gray-200 mb-4">
-                            <button class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary -mb-px" data-category="all">Tümü</button>
-                            <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-category="clinical">Klinik Notlar</button>
-                            <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-category="treatment">Tedavi Notları</button>
-                            <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-category="personal">Kişisel Notlar</button>
+                            <button class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary -mb-px" data-category="all">Tüm Notlar</button>
                         </div>
                         <!-- Filters -->
                         <div class="flex flex-wrap items-center justify-between gap-4">
@@ -742,14 +739,7 @@
                     </div>
                     <!-- Note Category and Priority -->
                     <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="noteCategory" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
-                            <select id="noteCategory" class="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary pr-8">
-                <option value="clinical">Klinik Not</option>
-                <option value="treatment">Tedavi Notu</option>
-                <option value="personal">Kişisel Not</option>
-              </select>
-                        </div>
+
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Önem Derecesi</label>
                             <div class="flex items-center space-x-4">
@@ -1105,106 +1095,117 @@
         });
     </script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Buton ve modal referansları
-        const hastaAnalizBtn = document.getElementById('patientAnalysisModule');
-        const modal = document.getElementById('myPatientModal');
-        const closeModalBtn = document.getElementById('closeMyPatientModal');
-        const patientListDiv = document.getElementById('myPatientList');
-        const searchInput = document.getElementById('myPatientSearchInput');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Buton ve modal referansları
+            const hastaAnalizBtn = document.getElementById('patientAnalysisModule');
+            const modal = document.getElementById('myPatientModal');
+            const closeModalBtn = document.getElementById('closeMyPatientModal');
+            const patientListDiv = document.getElementById('myPatientList');
+            const searchInput = document.getElementById('myPatientSearchInput');
 
-        // Örnek hasta verisi
-        const hastalar = [
-            { id: 'ZK-10254', name: 'Zeynep Kaya', diagnosis: 'Meme Kanseri', stage: 'Evre II' },
-            { id: 'MA-10255', name: 'Mehmet Aydın', diagnosis: 'Akciğer Kanseri', stage: 'Evre III' },
-            { id: 'AD-10256', name: 'Ayşe Demir', diagnosis: 'Lenfoma', stage: 'Hodgkin' }
-        ];
+            // Örnek hasta verisi
+            const hastalar = [{
+                id: 'ZK-10254',
+                name: 'Zeynep Kaya',
+                diagnosis: 'Meme Kanseri',
+                stage: 'Evre II'
+            }, {
+                id: 'MA-10255',
+                name: 'Mehmet Aydın',
+                diagnosis: 'Akciğer Kanseri',
+                stage: 'Evre III'
+            }, {
+                id: 'AD-10256',
+                name: 'Ayşe Demir',
+                diagnosis: 'Lenfoma',
+                stage: 'Hodgkin'
+            }];
 
-        // Modalı aç
-        hastaAnalizBtn.addEventListener('click', function() {
-            modal.classList.remove('hidden');
-            showPatients(hastalar);
-        });
-        // Modalı kapat
-        closeModalBtn.addEventListener('click', function() {
-            modal.classList.add('hidden');
-        });
-        // Dışarı tıklayınca kapat
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
+            // Modalı aç
+            hastaAnalizBtn.addEventListener('click', function() {
+                modal.classList.remove('hidden');
+                showPatients(hastalar);
+            });
+            // Modalı kapat
+            closeModalBtn.addEventListener('click', function() {
                 modal.classList.add('hidden');
+            });
+            // Dışarı tıklayınca kapat
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+            // Hasta arama
+            searchInput.addEventListener('input', function() {
+                const term = searchInput.value.toLowerCase();
+                const filtered = hastalar.filter(h => h.name.toLowerCase().includes(term) || h.id.toLowerCase().includes(term));
+                showPatients(filtered);
+            });
+            // Hasta listesini göster
+            function showPatients(list) {
+                patientListDiv.innerHTML = '';
+                list.forEach(hasta => {
+                    const div = document.createElement('div');
+                    div.className = 'p-3 border border-gray-200 rounded-md hover:bg-gray-50 cursor-pointer flex justify-between items-center';
+                    div.innerHTML = `<div><div class='text-sm font-medium text-gray-900'>${hasta.name}</div><div class='text-xs text-gray-500'>${hasta.id}</div></div><div class='text-right'><div class='text-sm text-gray-900'>${hasta.diagnosis}</div><div class='text-xs text-gray-500'>${hasta.stage}</div></div>`;
+                    div.addEventListener('click', function() {
+                        window.location.href = 'index.html';
+                    });
+                    patientListDiv.appendChild(div);
+                });
             }
         });
-        // Hasta arama
-        searchInput.addEventListener('input', function() {
-            const term = searchInput.value.toLowerCase();
-            const filtered = hastalar.filter(h => h.name.toLowerCase().includes(term) || h.id.toLowerCase().includes(term));
-            showPatients(filtered);
-        });
-        // Hasta listesini göster
-        function showPatients(list) {
-            patientListDiv.innerHTML = '';
-            list.forEach(hasta => {
-                const div = document.createElement('div');
-                div.className = 'p-3 border border-gray-200 rounded-md hover:bg-gray-50 cursor-pointer flex justify-between items-center';
-                div.innerHTML = `<div><div class='text-sm font-medium text-gray-900'>${hasta.name}</div><div class='text-xs text-gray-500'>${hasta.id}</div></div><div class='text-right'><div class='text-sm text-gray-900'>${hasta.diagnosis}</div><div class='text-xs text-gray-500'>${hasta.stage}</div></div>`;
-                div.addEventListener('click', function() {
-                    window.location.href = 'index.html';
-                });
-                patientListDiv.appendChild(div);
-            });
-        }
-    });
     </script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Modal referansları
-        const editModal = document.getElementById('editNoteModal');
-        const closeEditModalBtn = document.getElementById('closeEditNoteModal');
-        const cancelEditBtn = document.getElementById('cancelEditNote');
-        const saveEditBtn = document.getElementById('saveEditNote');
-        const noteContentInput = document.getElementById('editNoteContent');
-        const notePriorityInput = document.getElementById('editNotePriority');
-        let currentNoteContent = '';
-        let currentNotePriority = '';
-        // Tüm düzenle butonlarını bul
-        const editButtons = Array.from(document.querySelectorAll('button')).filter(btn => btn.textContent.trim() === 'Düzenle');
-        editButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Not içeriğini ve önceliğini bul
-                const noteCard = btn.closest('.bg-white.rounded-lg.shadow-sm.overflow-hidden, .bg-white.rounded-lg.shadow-sm');
-                const noteText = noteCard ? noteCard.querySelector('p.text-gray-700') : null;
-                const notePriority = noteCard ? noteCard.querySelector('span.bg-amber-100, span.bg-green-100, span.bg-red-100') : null;
-                noteContentInput.value = noteText ? noteText.textContent.trim() : '';
-                // Öncelik seçimini ayarla
-                if (notePriority) {
-                    if (notePriority.textContent.includes('Yüksek')) notePriorityInput.value = 'high';
-                    else if (notePriority.textContent.includes('Orta')) notePriorityInput.value = 'medium';
-                    else notePriorityInput.value = 'low';
-                } else {
-                    notePriorityInput.value = 'medium';
-                }
-                editModal.classList.remove('hidden');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal referansları
+            const editModal = document.getElementById('editNoteModal');
+            const closeEditModalBtn = document.getElementById('closeEditNoteModal');
+            const cancelEditBtn = document.getElementById('cancelEditNote');
+            const saveEditBtn = document.getElementById('saveEditNote');
+            const noteContentInput = document.getElementById('editNoteContent');
+            const notePriorityInput = document.getElementById('editNotePriority');
+            let currentNoteContent = '';
+            let currentNotePriority = '';
+            // Tüm düzenle butonlarını bul
+            const editButtons = Array.from(document.querySelectorAll('button')).filter(btn => btn.textContent.trim() === 'Düzenle');
+            editButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Not içeriğini ve önceliğini bul
+                    const noteCard = btn.closest('.bg-white.rounded-lg.shadow-sm.overflow-hidden, .bg-white.rounded-lg.shadow-sm');
+                    const noteText = noteCard ? noteCard.querySelector('p.text-gray-700') : null;
+                    const notePriority = noteCard ? noteCard.querySelector('span.bg-amber-100, span.bg-green-100, span.bg-red-100') : null;
+                    noteContentInput.value = noteText ? noteText.textContent.trim() : '';
+                    // Öncelik seçimini ayarla
+                    if (notePriority) {
+                        if (notePriority.textContent.includes('Yüksek')) notePriorityInput.value = 'high';
+                        else if (notePriority.textContent.includes('Orta')) notePriorityInput.value = 'medium';
+                        else notePriorityInput.value = 'low';
+                    } else {
+                        notePriorityInput.value = 'medium';
+                    }
+                    editModal.classList.remove('hidden');
+                });
+            });
+            // Modalı kapat
+            function closeEditModal() {
+                editModal.classList.add('hidden');
+                noteContentInput.value = '';
+                notePriorityInput.value = 'medium';
+            }
+            closeEditModalBtn.addEventListener('click', closeEditModal);
+            cancelEditBtn.addEventListener('click', closeEditModal);
+            // Kaydet butonu (örnek: sadece modalı kapatır)
+            saveEditBtn.addEventListener('click', function() {
+                // Burada gerçek kaydetme işlemi yapılabilir
+                closeEditModal();
+            });
+            // Dışarı tıklayınca kapat
+            editModal.addEventListener('click', function(e) {
+                if (e.target === editModal) closeEditModal();
             });
         });
-        // Modalı kapat
-        function closeEditModal() {
-            editModal.classList.add('hidden');
-            noteContentInput.value = '';
-            notePriorityInput.value = 'medium';
-        }
-        closeEditModalBtn.addEventListener('click', closeEditModal);
-        cancelEditBtn.addEventListener('click', closeEditModal);
-        // Kaydet butonu (örnek: sadece modalı kapatır)
-        saveEditBtn.addEventListener('click', function() {
-            // Burada gerçek kaydetme işlemi yapılabilir
-            closeEditModal();
-        });
-        // Dışarı tıklayınca kapat
-        editModal.addEventListener('click', function(e) {
-            if (e.target === editModal) closeEditModal();
-        });
-    });
     </script>
 </body>
 
